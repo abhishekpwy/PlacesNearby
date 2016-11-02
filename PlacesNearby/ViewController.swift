@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 	let reuseIdentifier = "places"
 	let itemsPerRow:CGFloat = 2
 	let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+	let data = PNCategoriesData().listOfPlacesCategory
 
 	@IBOutlet weak var placesCollectionView: UICollectionView!
 	override func viewDidLoad() {
@@ -44,16 +45,17 @@ extension ViewController:UICollectionViewDelegate, UICollectionViewDataSource, U
 	}
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 18
+		return data.count
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
 		                                              for: indexPath) as! PNCollectionViewCell
 		cell.backgroundColor = UIColor.white
-		cell.placesImage.image = UIImage(named: "PlacesFood")
-		cell.placesTitle.text = "Food"
-		cell.placesSubtitle.text = "Resturents, Cafe, Bakery"
+		let dataAtIndex = data[indexPath.row]
+		cell.placesImage.image = UIImage(named: dataAtIndex.placesDetails.imageName)
+		cell.placesTitle.text = dataAtIndex.placesDetails.placeTitle
+		cell.placesSubtitle.text = dataAtIndex.placesDetails.placeSubtitle
 		cell.setBorderColorToSomething()
 		return cell
 	}

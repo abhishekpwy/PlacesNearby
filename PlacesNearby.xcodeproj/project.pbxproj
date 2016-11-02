@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */; };
+		469740A61DCA675400D0B9D9 /* PNCategoriesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */; };
 		469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B71291DCA469C002B00A8 /* AppDelegate.swift */; };
 		469B712C1DCA469C002B00A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B712B1DCA469C002B00A8 /* ViewController.swift */; };
 		469B712F1DCA469C002B00A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469B712D1DCA469C002B00A8 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNCollectionViewCell.swift; sourceTree = "<group>"; };
+		469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNCategoriesData.swift; sourceTree = "<group>"; };
 		469B71261DCA469C002B00A8 /* PlacesNearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesNearby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469B71291DCA469C002B00A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		469B712B1DCA469C002B00A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,9 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				469B71291DCA469C002B00A8 /* AppDelegate.swift */,
-				469B712D1DCA469C002B00A8 /* Main.storyboard */,
+				469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */,
 				469B712B1DCA469C002B00A8 /* ViewController.swift */,
 				4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */,
+				469B712D1DCA469C002B00A8 /* Main.storyboard */,
 				469B71351DCA469C002B00A8 /* LaunchScreen.storyboard */,
 				469B71381DCA469C002B00A8 /* Info.plist */,
 				469B71301DCA469C002B00A8 /* PlacesNearby.xcdatamodeld */,
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				469B712C1DCA469C002B00A8 /* ViewController.swift in Sources */,
+				469740A61DCA675400D0B9D9 /* PNCategoriesData.swift in Sources */,
 				469B71321DCA469C002B00A8 /* PlacesNearby.xcdatamodeld in Sources */,
 				4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */,
 				469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */,
