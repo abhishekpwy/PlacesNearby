@@ -15,6 +15,7 @@
 		469B71321DCA469C002B00A8 /* PlacesNearby.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 469B71301DCA469C002B00A8 /* PlacesNearby.xcdatamodeld */; };
 		469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 469B71331DCA469C002B00A8 /* Assets.xcassets */; };
 		469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469B71351DCA469C002B00A8 /* LaunchScreen.storyboard */; };
+		46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		469B71331DCA469C002B00A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		469B71361DCA469C002B00A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		469B71381DCA469C002B00A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */,
 				469B712B1DCA469C002B00A8 /* ViewController.swift */,
 				4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */,
+				46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */,
 				469B712D1DCA469C002B00A8 /* Main.storyboard */,
 				469B71351DCA469C002B00A8 /* LaunchScreen.storyboard */,
 				469B71381DCA469C002B00A8 /* Info.plist */,
@@ -150,6 +153,7 @@
 				469B71321DCA469C002B00A8 /* PlacesNearby.xcdatamodeld in Sources */,
 				4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */,
 				469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */,
+				46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

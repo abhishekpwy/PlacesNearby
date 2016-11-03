@@ -10,23 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	@IBOutlet weak var placesCollectionView: UICollectionView!
+	@IBOutlet weak var headerView: UIView!
+
 	let reuseIdentifier = "places"
 	let itemsPerRow:CGFloat = 2
 	let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 	let data = PNCategoriesData().listOfPlacesCategory
 
-	@IBOutlet weak var placesCollectionView: UICollectionView!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-		layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		layout.sectionInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
 		layout.itemSize = CGSize(width: self.view.frame.width / 2, height: 134)
 		layout.minimumInteritemSpacing = 0
 		layout.minimumLineSpacing = 0
 		placesCollectionView!.collectionViewLayout = layout
 		// Do any additional setup after loading the view, typically from a nib.
 	}
-
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
