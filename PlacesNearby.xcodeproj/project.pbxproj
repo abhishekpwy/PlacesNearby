@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464071F21DD0D66D00D9170F /* PNBApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F11DD0D66D00D9170F /* PNBApiManager.swift */; };
+		464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */; };
+		464071F71DD0DA8100D9170F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464071F61DD0DA8100D9170F /* CoreLocation.framework */; };
+		464071F91DD0DC7B00D9170F /* PNBLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F81DD0DC7B00D9170F /* PNBLocationManager.swift */; };
+		464071FB1DD0EC6900D9170F /* PNBDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071FA1DD0EC6800D9170F /* PNBDataManager.swift */; };
 		4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */; };
+		468C23A41DD616F500D438EC /* PNBListOfResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468C23A21DD616F500D438EC /* PNBListOfResultViewController.swift */; };
+		468C23A51DD616F500D438EC /* PNBListOfResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 468C23A31DD616F500D438EC /* PNBListOfResultViewController.xib */; };
 		469740A61DCA675400D0B9D9 /* PNCategoriesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */; };
 		469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B71291DCA469C002B00A8 /* AppDelegate.swift */; };
 		469B712C1DCA469C002B00A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B712B1DCA469C002B00A8 /* ViewController.swift */; };
@@ -19,7 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		464071F11DD0D66D00D9170F /* PNBApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBApiManager.swift; sourceTree = "<group>"; };
+		464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBUserDefaultManager.swift; sourceTree = "<group>"; };
+		464071F61DD0DA8100D9170F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		464071F81DD0DC7B00D9170F /* PNBLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBLocationManager.swift; sourceTree = "<group>"; };
+		464071FA1DD0EC6800D9170F /* PNBDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBDataManager.swift; sourceTree = "<group>"; };
 		4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNCollectionViewCell.swift; sourceTree = "<group>"; };
+		468C23A21DD616F500D438EC /* PNBListOfResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBListOfResultViewController.swift; sourceTree = "<group>"; };
+		468C23A31DD616F500D438EC /* PNBListOfResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBListOfResultViewController.xib; sourceTree = "<group>"; };
 		469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNCategoriesData.swift; sourceTree = "<group>"; };
 		469B71261DCA469C002B00A8 /* PlacesNearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesNearby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469B71291DCA469C002B00A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,17 +51,70 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464071F71DD0DA8100D9170F /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		464071EF1DD0D61100D9170F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				468C23A11DD616D500D438EC /* ListOfResultUI */,
+				468C23A01DD616C300D438EC /* AppLaunch */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		464071F01DD0D63C00D9170F /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				464071F11DD0D66D00D9170F /* PNBApiManager.swift */,
+				464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */,
+				464071F81DD0DC7B00D9170F /* PNBLocationManager.swift */,
+				464071FA1DD0EC6800D9170F /* PNBDataManager.swift */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		464071F51DD0DA8100D9170F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				464071F61DD0DA8100D9170F /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		468C23A01DD616C300D438EC /* AppLaunch */ = {
+			isa = PBXGroup;
+			children = (
+				469B71291DCA469C002B00A8 /* AppDelegate.swift */,
+				469B71351DCA469C002B00A8 /* LaunchScreen.storyboard */,
+				469B712D1DCA469C002B00A8 /* Main.storyboard */,
+				46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */,
+				4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */,
+				469B712B1DCA469C002B00A8 /* ViewController.swift */,
+				469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */,
+			);
+			name = AppLaunch;
+			sourceTree = "<group>";
+		};
+		468C23A11DD616D500D438EC /* ListOfResultUI */ = {
+			isa = PBXGroup;
+			children = (
+				468C23A21DD616F500D438EC /* PNBListOfResultViewController.swift */,
+				468C23A31DD616F500D438EC /* PNBListOfResultViewController.xib */,
+			);
+			name = ListOfResultUI;
+			sourceTree = "<group>";
+		};
 		469B711D1DCA469C002B00A8 = {
 			isa = PBXGroup;
 			children = (
 				469B71281DCA469C002B00A8 /* PlacesNearby */,
 				469B71271DCA469C002B00A8 /* Products */,
+				464071F51DD0DA8100D9170F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,13 +129,8 @@
 		469B71281DCA469C002B00A8 /* PlacesNearby */ = {
 			isa = PBXGroup;
 			children = (
-				469B71291DCA469C002B00A8 /* AppDelegate.swift */,
-				469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */,
-				469B712B1DCA469C002B00A8 /* ViewController.swift */,
-				4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */,
-				46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */,
-				469B712D1DCA469C002B00A8 /* Main.storyboard */,
-				469B71351DCA469C002B00A8 /* LaunchScreen.storyboard */,
+				464071F01DD0D63C00D9170F /* DataManager */,
+				464071EF1DD0D61100D9170F /* UI */,
 				469B71381DCA469C002B00A8 /* Info.plist */,
 				469B71301DCA469C002B00A8 /* PlacesNearby.xcdatamodeld */,
 				469B71331DCA469C002B00A8 /* Assets.xcassets */,
@@ -138,6 +200,7 @@
 				469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */,
 				469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */,
 				469B712F1DCA469C002B00A8 /* Main.storyboard in Resources */,
+				468C23A51DD616F500D438EC /* PNBListOfResultViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,9 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				469B712C1DCA469C002B00A8 /* ViewController.swift in Sources */,
+				464071F91DD0DC7B00D9170F /* PNBLocationManager.swift in Sources */,
+				468C23A41DD616F500D438EC /* PNBListOfResultViewController.swift in Sources */,
 				469740A61DCA675400D0B9D9 /* PNCategoriesData.swift in Sources */,
 				469B71321DCA469C002B00A8 /* PlacesNearby.xcdatamodeld in Sources */,
+				464071FB1DD0EC6900D9170F /* PNBDataManager.swift in Sources */,
+				464071F21DD0D66D00D9170F /* PNBApiManager.swift in Sources */,
 				4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */,
+				464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */,
 				469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */,
 				46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */,
 			);

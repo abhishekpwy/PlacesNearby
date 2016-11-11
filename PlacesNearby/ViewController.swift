@@ -60,5 +60,10 @@ extension ViewController:UICollectionViewDelegate, UICollectionViewDataSource, U
 		cell.setBorderColorToSomething()
 		return cell
 	}
+
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let listOfItemViewController = PNBListOfResultViewController(placesType: PlaceType.Food)
+		self.navigationController?.pushViewController(listOfItemViewController, animated: true)
+	}
 }
 
