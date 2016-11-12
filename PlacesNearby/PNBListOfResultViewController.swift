@@ -30,12 +30,27 @@ class PlaceDataForListAndMap {
 
 class PNBListOfResultViewController: UIViewController {
 	let currentPlaceType:PlaceType
+	@IBOutlet weak var backButton: UIButton!
+	@IBOutlet weak var placeTopImage: UIImageView!
+	@IBOutlet weak var placesHeaderLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+		setUpIntialUI()
 		tryToFetchListOfPlacesNearBy()
+
     }
+
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+
+	private func setUpIntialUI(){
+		self.placeTopImage.image = currentPlaceType.imageForHeader
+		self.placesHeaderLabel.text = currentPlaceType.title + " Near By"
+	}
+
 
 	init(placesType:PlaceType){
 		self.currentPlaceType = placesType
@@ -52,5 +67,10 @@ class PNBListOfResultViewController: UIViewController {
 		}
 	}
 
+	
+
+	@IBAction func didClickBackButton(_ sender: AnyObject) {
+		self.navigationController?.popViewController(animated: true)
+	}
 
 }

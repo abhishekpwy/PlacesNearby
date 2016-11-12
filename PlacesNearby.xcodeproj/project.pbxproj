@@ -70,6 +70,7 @@
 		464071F01DD0D63C00D9170F /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */,
 				464071F11DD0D66D00D9170F /* PNBApiManager.swift */,
 				464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */,
 				464071F81DD0DC7B00D9170F /* PNBLocationManager.swift */,
@@ -95,7 +96,6 @@
 				46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */,
 				4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */,
 				469B712B1DCA469C002B00A8 /* ViewController.swift */,
-				469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */,
 			);
 			name = AppLaunch;
 			sourceTree = "<group>";
@@ -105,8 +105,16 @@
 			children = (
 				468C23A21DD616F500D438EC /* PNBListOfResultViewController.swift */,
 				468C23A31DD616F500D438EC /* PNBListOfResultViewController.xib */,
+				468C23A61DD74FFB00D438EC /* ListUI */,
 			);
 			name = ListOfResultUI;
+			sourceTree = "<group>";
+		};
+		468C23A61DD74FFB00D438EC /* ListUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ListUI;
 			sourceTree = "<group>";
 		};
 		469B711D1DCA469C002B00A8 = {

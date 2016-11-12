@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum PlaceType{
 
@@ -90,7 +91,6 @@ enum PlaceType{
 	}
 
 	//keys for api
-
 	var typesForApi:String {
 		switch self {
 		case .Food:
@@ -148,6 +148,123 @@ enum PlaceType{
 			return "\"Offline\""
 		}
 	}
+
+	var imageForHeader:UIImage{
+		switch self {
+		case .Food:
+			return UIImage(named: "headerFood")!
+
+		case .Hotel:
+			return UIImage(named: "hotelHeader")!
+
+		case .Police:
+			return UIImage(named: "headerPolice")!
+
+		case .Medical:
+			return UIImage(named: "headerhospital")!
+
+		case .Bank:
+			return UIImage(named: "headerBank")!
+
+		case .GasStation:
+			return UIImage(named: "headerGasStation")!
+
+		case .Parking:
+			return UIImage(named: "headerParking")!
+
+		case .TrainStation:
+			return UIImage(named: "headerTrain")!
+
+		case .BusStation:
+			return UIImage(named: "headerBus")!
+
+		case .Car:
+			return UIImage(named: "headerCar")!
+
+		case .Shopping:
+			return UIImage(named: "headerShopping")!
+
+		case .Laundry:
+			return UIImage(named: "headerLaundry")!
+
+		case .LocalSee:
+			return UIImage(named: "headerLocalSee")!
+
+		case .Movies:
+			return UIImage(named: "headerMovie")!
+
+		case .Books:
+			return UIImage(named: "headerBooks")!
+
+		case .Liquor:
+			return UIImage(named: "headerLiquor")!
+
+		case .Beauty:
+			return UIImage(named: "headerBeauty")!
+			
+		case .Offline:
+			return UIImage(named: "headerOffline")!
+		}
+	}
+
+	var title:String {
+		switch self {
+		case .Food:
+			return "Food"
+
+		case .Hotel:
+			return "Hotel"
+
+		case .Police:
+			return "Police"
+
+		case .Medical:
+			return "Medical"
+
+		case .Bank:
+			return "Bank"
+
+		case .GasStation:
+			return "Gas Station"
+
+		case .Parking:
+			return "Parking"
+
+		case .TrainStation:
+			return "Train Station"
+
+		case .BusStation:
+			return "Bus station"
+
+		case .Car:
+			return "Car"
+
+		case .Shopping:
+			return "Shopping"
+
+		case .Laundry:
+			return "Laundry"
+
+		case .LocalSee:
+			return "Local See"
+
+		case .Movies:
+			return "Movies"
+
+		case .Books:
+			return "Books"
+
+		case .Liquor:
+			return "Liquor"
+
+		case .Beauty:
+			return "Beauty"
+
+		case .Offline:
+			return "Offline"
+		}
+	}
+
 
 }
 
