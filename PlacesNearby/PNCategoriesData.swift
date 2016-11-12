@@ -29,6 +29,7 @@ enum PlaceType{
 	Beauty,
 	Offline
 
+	//used in main screen collection view
 	var placesDetails:PlacesCategory {
 		switch self {
 		case .Food:
@@ -86,6 +87,66 @@ enum PlaceType{
 			return PlacesCategory(imageName: "PlacesOffline", placeTitle: "Offline", placeSubtitle: "Places saved offline")
 		}
 
+	}
+
+	//keys for api
+
+	var typesForApi:String {
+		switch self {
+		case .Food:
+			return "\"bakery|cafe|food|meal_delivery|meal_takeaway|restaurant|night_club\""
+
+		case .Hotel:
+			return "lodging"
+
+		case .Police:
+			return "police"
+
+		case .Medical:
+			return "\"doctor|dentist|health|hospital|pharmacy|hospital\""
+
+		case .Bank:
+			return "\"bank|accounting|atm\""
+
+		case .GasStation:
+			return "gas_station"
+
+		case .Parking:
+			return "\"park|rv_park\""
+
+		case .TrainStation:
+			return "\"train_station|subway_station|transit_station\""
+
+		case .BusStation:
+			return "\"bus_station|taxi_stand\""
+
+		case .Car:
+			return "\"car_dealer|car_rental|car_repair|car_wash\""
+
+		case .Shopping:
+			return "\"department_store|convenience_store|electronics_store|home_goods_store|shopping_mall|store|grocery_or_supermarket|hardware_store|furniture_store\""
+
+		case .Laundry:
+			return "\"clothing_store|laundry\""
+
+		case .LocalSee:
+			return "\"amusement_park|aquarium|art_gallery|museum|zoo|casino\""
+
+		case .Movies:
+			return "\"movie_rental|movie_theater\""
+
+		case .Books:
+			return "\"book_store|library\""
+
+		case .Liquor:
+			return "\"liquor_store|bar|night_club\""
+
+		case .Beauty:
+			return "beauty_salon"
+
+		case .Offline:
+			return "\"Offline\""
+		}
 	}
 
 }

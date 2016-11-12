@@ -62,7 +62,8 @@ extension ViewController:UICollectionViewDelegate, UICollectionViewDataSource, U
 	}
 
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let listOfItemViewController = PNBListOfResultViewController(placesType: PlaceType.Food)
+		let placeType = data[indexPath.row]
+		let listOfItemViewController = PNBListOfResultViewController(placesType: placeType)
 		self.navigationController?.pushViewController(listOfItemViewController, animated: true)
 	}
 }

@@ -7,6 +7,26 @@
 //
 
 import UIKit
+import CoreLocation
+
+class PlaceDataForListAndMap {
+	let placeID:String
+	let nameOfPlace:String
+	let addressOfPlace:String
+	let isOpenNow:Bool?
+	let currentLocation:CLLocation
+	let distanceFromCurrentLocation:Double
+	let rating:Double
+	init(placeID:String, nameOfPlace:String, addressOfPlace:String, isOpenNow:Bool?, location: CLLocation, distanceFromCurrentLocation:Double,  rating:Double){
+		self.placeID = placeID
+		self.nameOfPlace = nameOfPlace
+		self.addressOfPlace = addressOfPlace
+		self.isOpenNow = isOpenNow
+		self.distanceFromCurrentLocation = distanceFromCurrentLocation
+		self.rating = rating
+		self.currentLocation = location
+	}
+}
 
 class PNBListOfResultViewController: UIViewController {
 	let currentPlaceType:PlaceType
@@ -27,7 +47,9 @@ class PNBListOfResultViewController: UIViewController {
 	}
 
 	private func tryToFetchListOfPlacesNearBy(){
-		PNBDataManager.sharedDataManager.fetchListOfPlaces(placeType: self.currentPlaceType)
+		PNBDataManager.sharedDataManager.fetchListOfPlaces(placeType: self.currentPlaceType) { (listOfPlaces, error) in
+			//
+		}
 	}
 
 
