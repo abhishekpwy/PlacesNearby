@@ -33,6 +33,8 @@ class PNBListOfResultViewController: UIViewController {
 	@IBOutlet weak var backButton: UIButton!
 	@IBOutlet weak var placeTopImage: UIImageView!
 	@IBOutlet weak var placesHeaderLabel: UILabel!
+	@IBOutlet weak var containerView: UIView!
+	var listOfPlacesFromApi:[PlaceDataForListAndMap]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +64,20 @@ class PNBListOfResultViewController: UIViewController {
 	}
 
 	private func tryToFetchListOfPlacesNearBy(){
-		PNBDataManager.sharedDataManager.fetchListOfPlaces(placeType: self.currentPlaceType) { (listOfPlaces, error) in
+		PNBDataManager.sharedDataManager.fetchListOfPlaces(placeType: self.currentPlaceType) {
+			[weak self]
+			(listOfPlaces, error)
+			in
+			guard let blockSelf = self
+				else{
+					return
+			}
 			//
+			runInMainQueue {
+				blockSelf.listOfPlacesFromApi = listOfPlaces
+				Swift.print(error)
+				blockSelf.addControllerForList(withPlaces: listOfPlaces!)
+			}
 		}
 	}
 
@@ -73,4 +87,37 @@ class PNBListOfResultViewController: UIViewController {
 		self.navigationController?.popViewController(animated: true)
 	}
 
+	private func addControllerForList(withPlaces:[PlaceDataForListAndMap]){
+		let listViewController = PNBListTableControllerViewController(listOfPlaces: withPlaces)
+		self.replaceOrAddViewController(viewController: listViewController)
+	}
+
+	private func replaceOrAddViewController(viewController:UIViewController) {
+		if self.childViewControllers.count == 0{
+			self.addChildViewController(viewController)
+			self.addFittingSubviewViewInContainer(view: viewController.view)
+			return
+		}
+		self.childViewControllers[0].removeFromParentViewController()
+		self.childViewControllers[0].view.removeFromSuperview()
+		self.addChildViewController(viewController)
+		self.addFittingSubviewViewInContainer(view: viewController.view)
+	}
+
+	private func addFittingSubviewViewInContainer(view:UIView) {
+		self.containerView.addSubview(view)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		let left = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.containerView, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0.0)
+		let right = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.containerView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0)
+		let top = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.containerView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0.0)
+		let bottom = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.containerView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0.0)
+		NSLayoutConstraint.activate([left, right, top, bottom])
+	}
+
+}
+
+func runInMainQueue(block:@escaping (() -> Void)){
+	DispatchQueue.main.async {
+		block()
+	}
 }

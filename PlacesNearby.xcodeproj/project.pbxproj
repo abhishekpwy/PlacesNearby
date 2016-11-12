@@ -15,6 +15,12 @@
 		4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */; };
 		468C23A41DD616F500D438EC /* PNBListOfResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468C23A21DD616F500D438EC /* PNBListOfResultViewController.swift */; };
 		468C23A51DD616F500D438EC /* PNBListOfResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 468C23A31DD616F500D438EC /* PNBListOfResultViewController.xib */; };
+		468C23B11DD7647100D438EC /* PNBListTableControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468C23AF1DD7647100D438EC /* PNBListTableControllerViewController.swift */; };
+		468C23B21DD7647100D438EC /* PNBListTableControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 468C23B01DD7647100D438EC /* PNBListTableControllerViewController.xib */; };
+		468C23B71DD7706A00D438EC /* PNBListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468C23B51DD7706A00D438EC /* PNBListTableViewCell.swift */; };
+		468C23B81DD7706A00D438EC /* PNBListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 468C23B61DD7706A00D438EC /* PNBListTableViewCell.xib */; };
+		468C23BB1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468C23B91DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift */; };
+		468C23BC1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 468C23BA1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib */; };
 		469740A61DCA675400D0B9D9 /* PNCategoriesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */; };
 		469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B71291DCA469C002B00A8 /* AppDelegate.swift */; };
 		469B712C1DCA469C002B00A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B712B1DCA469C002B00A8 /* ViewController.swift */; };
@@ -34,6 +40,12 @@
 		4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNCollectionViewCell.swift; sourceTree = "<group>"; };
 		468C23A21DD616F500D438EC /* PNBListOfResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBListOfResultViewController.swift; sourceTree = "<group>"; };
 		468C23A31DD616F500D438EC /* PNBListOfResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBListOfResultViewController.xib; sourceTree = "<group>"; };
+		468C23AF1DD7647100D438EC /* PNBListTableControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBListTableControllerViewController.swift; sourceTree = "<group>"; };
+		468C23B01DD7647100D438EC /* PNBListTableControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBListTableControllerViewController.xib; sourceTree = "<group>"; };
+		468C23B51DD7706A00D438EC /* PNBListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBListTableViewCell.swift; sourceTree = "<group>"; };
+		468C23B61DD7706A00D438EC /* PNBListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBListTableViewCell.xib; sourceTree = "<group>"; };
+		468C23B91DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBLoadMoreTableViewCell.swift; sourceTree = "<group>"; };
+		468C23BA1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBLoadMoreTableViewCell.xib; sourceTree = "<group>"; };
 		469740A51DCA675400D0B9D9 /* PNCategoriesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNCategoriesData.swift; sourceTree = "<group>"; };
 		469B71261DCA469C002B00A8 /* PlacesNearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesNearby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469B71291DCA469C002B00A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +125,12 @@
 		468C23A61DD74FFB00D438EC /* ListUI */ = {
 			isa = PBXGroup;
 			children = (
+				468C23AF1DD7647100D438EC /* PNBListTableControllerViewController.swift */,
+				468C23B01DD7647100D438EC /* PNBListTableControllerViewController.xib */,
+				468C23B51DD7706A00D438EC /* PNBListTableViewCell.swift */,
+				468C23B61DD7706A00D438EC /* PNBListTableViewCell.xib */,
+				468C23B91DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift */,
+				468C23BA1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib */,
 			);
 			name = ListUI;
 			sourceTree = "<group>";
@@ -207,6 +225,9 @@
 			files = (
 				469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */,
 				469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */,
+				468C23B81DD7706A00D438EC /* PNBListTableViewCell.xib in Resources */,
+				468C23BC1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib in Resources */,
+				468C23B21DD7647100D438EC /* PNBListTableControllerViewController.xib in Resources */,
 				469B712F1DCA469C002B00A8 /* Main.storyboard in Resources */,
 				468C23A51DD616F500D438EC /* PNBListOfResultViewController.xib in Resources */,
 			);
@@ -223,13 +244,16 @@
 				464071F91DD0DC7B00D9170F /* PNBLocationManager.swift in Sources */,
 				468C23A41DD616F500D438EC /* PNBListOfResultViewController.swift in Sources */,
 				469740A61DCA675400D0B9D9 /* PNCategoriesData.swift in Sources */,
+				468C23B11DD7647100D438EC /* PNBListTableControllerViewController.swift in Sources */,
 				469B71321DCA469C002B00A8 /* PlacesNearby.xcdatamodeld in Sources */,
 				464071FB1DD0EC6900D9170F /* PNBDataManager.swift in Sources */,
 				464071F21DD0D66D00D9170F /* PNBApiManager.swift in Sources */,
 				4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */,
+				468C23B71DD7706A00D438EC /* PNBListTableViewCell.swift in Sources */,
 				464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */,
 				469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */,
 				46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */,
+				468C23BB1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

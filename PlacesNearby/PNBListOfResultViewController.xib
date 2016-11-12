@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNBListOfResultViewController" customModule="PlacesNearby" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="AtW-FF-MJM" id="bdZ-bz-zyk"/>
+                <outlet property="containerView" destination="YCn-uT-916" id="Avj-dV-PCL"/>
                 <outlet property="placeTopImage" destination="8yX-ze-0SK" id="oCS-eD-0I6"/>
                 <outlet property="placesHeaderLabel" destination="Ypy-pi-Z5g" id="Rnf-Bc-VhH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,6 +20,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCn-uT-916">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-cc-q6w">
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -60,9 +64,6 @@
                         <constraint firstItem="AtW-FF-MJM" firstAttribute="centerY" secondItem="fKc-gZ-pfH" secondAttribute="centerY" constant="5" id="lmV-1X-UKN"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCn-uT-916">
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -71,11 +72,11 @@
                 <constraint firstAttribute="trailing" secondItem="fKc-gZ-pfH" secondAttribute="trailing" id="9tu-mP-fHw"/>
                 <constraint firstItem="YCn-uT-916" firstAttribute="leading" secondItem="fKc-gZ-pfH" secondAttribute="leading" id="F5s-sL-T64"/>
                 <constraint firstAttribute="trailing" secondItem="aNv-cc-q6w" secondAttribute="trailing" id="Hbt-mG-NLD"/>
+                <constraint firstItem="aNv-cc-q6w" firstAttribute="top" secondItem="YCn-uT-916" secondAttribute="bottom" id="KNP-Un-fBX"/>
                 <constraint firstItem="YCn-uT-916" firstAttribute="trailing" secondItem="fKc-gZ-pfH" secondAttribute="trailing" id="Lxp-Io-gSf"/>
                 <constraint firstItem="fKc-gZ-pfH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PVw-Pw-zem"/>
                 <constraint firstItem="aNv-cc-q6w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YhL-YD-Y37"/>
                 <constraint firstAttribute="bottom" secondItem="aNv-cc-q6w" secondAttribute="bottom" id="lW6-xP-lNN"/>
-                <constraint firstAttribute="bottom" secondItem="YCn-uT-916" secondAttribute="bottom" id="yQm-Bf-FLg"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="107.5"/>
         </view>

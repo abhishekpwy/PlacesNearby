@@ -103,7 +103,7 @@ enum PlaceType{
 			return "police"
 
 		case .Medical:
-			return "\"doctor|dentist|health|hospital|pharmacy|hospital\""
+			return "\"doctor|dentist|pharmacy|hospital\""
 
 		case .Bank:
 			return "\"bank|accounting|atm\""
