@@ -55,41 +55,21 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 		let dataForRow = self.listOfPlaces[indexPath.row]
 		cell.nameOfPlace.text = dataForRow.nameOfPlace
 		cell.vicinityOfPlace.text = dataForRow.addressOfPlace
-		cell.ratingLabel.text = String(dataForRow.rating)
-		cell.ratingImageView.image = self.imageForRating(rating: dataForRow.rating)
-		cell.ratingLabel.textColor = self.getTextColorForRating(rating: dataForRow.rating)
+		let ratingData = dataForRow.imageTextAndTextColorForRating()
+		cell.ratingLabel.text = ratingData.text
+		cell.ratingImageView.image = ratingData.image
+		cell.ratingLabel.textColor = ratingData.colorForText
 		cell.distanceLabel.text = String(String(format: "%.1f KM", dataForRow.distanceFromCurrentLocation))
 		let colorAndImageForDistance = getImageForDistance(distance: dataForRow.distanceFromCurrentLocation)
 		cell.distanceLabel.textColor = colorAndImageForDistance.colorForText
 		cell.distanceImageView.image = colorAndImageForDistance.image
-		let openNowData = textColorAndImageForOpenNow(isOpen: dataForRow.isOpenNow)
+		let openNowData = dataForRow.textColorAndImageForOpenNow()
 		cell.openNowLabel.textColor = openNowData.color
 		cell.openNowLabel.text = openNowData.text
 		cell.openNowImageView.image = openNowData.image
 		return cell
 	}
 
-	private func imageForRating(rating:Double) -> UIImage {
-		if rating < 2.0 {
-			return UIImage(named: "Rating1")!
-		}else if rating < 3.0 {
-			return UIImage(named: "Rating2")!
-		}else if rating < 4.0 {
-			return UIImage(named: "Rating3")!
-		}
-		return UIImage(named: "Rating4")!
-	}
-
-	private func getTextColorForRating(rating:Double) -> UIColor{
-		if rating < 2.0 {
-			return UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1.0)
-		}else if rating < 3.0 {
-			return UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
-		}else if rating < 4.0 {
-			return UIColor(red: 90/255, green: 160/255, blue: 14/255, alpha: 1.0)
-		}
-		return UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
-	}
 
 	private func getImageForDistance(distance:Double)-> (image:UIImage, colorForText:UIColor) {
 		let currentMaxSearchDistance = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.radiusOfSearch) as! Int

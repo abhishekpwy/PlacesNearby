@@ -14,7 +14,7 @@ class PlaceDataForListAndMap {
 	let nameOfPlace:String
 	let addressOfPlace:String
 	let isOpenNow:Bool?
-	let currentLocation:CLLocation
+	let location:CLLocation
 	let distanceFromCurrentLocation:Double
 	let rating:Double
 	init(placeID:String, nameOfPlace:String, addressOfPlace:String, isOpenNow:Bool?, location: CLLocation, distanceFromCurrentLocation:Double,  rating:Double){
@@ -24,7 +24,50 @@ class PlaceDataForListAndMap {
 		self.isOpenNow = isOpenNow
 		self.distanceFromCurrentLocation = distanceFromCurrentLocation
 		self.rating = rating
-		self.currentLocation = location
+		self.location = location
+	}
+
+	public func textColorAndImageForOpenNow() -> (text:String, color:UIColor, image:UIImage){
+		guard let boolValue = self.isOpenNow
+			else{
+				let text = "Unknown"
+				let color = UIColor(red: 78/255, green: 71/255, blue: 81/255, alpha: 1.0)
+				let image = UIImage(named: "IsOpenUnknown")!
+				return (text, color, image)
+		}
+
+		if boolValue{
+			let text = "Open Now"
+			let color = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+			let image = UIImage(named: "IsOpenNow")!
+			return (text, color, image)
+		}
+
+		let text = "Closed Now"
+		let color = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1.0)
+		let image = UIImage(named: "IsClosedNow")!
+		return (text, color, image)
+	}
+
+	public func imageTextAndTextColorForRating() -> (text:String, colorForText:UIColor, image:UIImage){
+		let rating = self.rating
+		let text = String(String(self.rating))
+		if rating < 2.0 {
+			let color =  UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1.0)
+			let image =  UIImage(named: "Rating1")!
+			return (text!,color, image)
+		}else if rating < 3.0 {
+			let image =  UIImage(named: "Rating2")!
+			let color = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
+			return (text!,color, image)
+		}else if rating < 4.0 {
+			let image =  UIImage(named: "Rating3")!
+			let color = UIColor(red: 90/255, green: 160/255, blue: 14/255, alpha: 1.0)
+			return (text!,color, image)
+		}
+		let image =  UIImage(named: "Rating4")!
+		let color = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+		return (text!,color, image)
 	}
 }
 
@@ -76,7 +119,8 @@ class PNBListOfResultViewController: UIViewController {
 			runInMainQueue {
 				blockSelf.listOfPlacesFromApi = listOfPlaces
 				Swift.print(error)
-				blockSelf.addControllerForList(withPlaces: listOfPlaces!)
+//				blockSelf.addControllerForList(withPlaces: listOfPlaces!)
+				blockSelf.addMapViewController(withPlaces: listOfPlaces!)
 			}
 		}
 	}
@@ -90,6 +134,10 @@ class PNBListOfResultViewController: UIViewController {
 	private func addControllerForList(withPlaces:[PlaceDataForListAndMap]){
 		let listViewController = PNBListTableControllerViewController(listOfPlaces: withPlaces)
 		self.replaceOrAddViewController(viewController: listViewController)
+	}
+
+	private func addMapViewController(withPlaces:[PlaceDataForListAndMap]){
+		self.replaceOrAddViewController(viewController: PNBMapViewController(listOfPlaces:withPlaces))
 	}
 
 	private func replaceOrAddViewController(viewController:UIViewController) {
