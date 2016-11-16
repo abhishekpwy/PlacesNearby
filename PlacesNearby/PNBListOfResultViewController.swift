@@ -77,16 +77,23 @@ class PNBListOfResultViewController: UIViewController {
 	@IBOutlet weak var placeTopImage: UIImageView!
 	@IBOutlet weak var placesHeaderLabel: UILabel!
 	@IBOutlet weak var containerView: UIView!
-	
+	@IBOutlet weak var bottomBarView: UIView!
+	@IBOutlet weak var firstOptionButton: UIButton!
+	@IBOutlet weak var secondOptionButton: UIButton!
+	@IBOutlet weak var thirdOptionButton: UIButton!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet weak var bottomBarBottomContraint: NSLayoutConstraint!
 	var listOfPlacesFromApi:[PlaceDataForListAndMap]?
+
+	enum currentUIState:Int{
+		case list = 1,map = 2
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 		setUpIntialUI()
 		tryToFetchListOfPlacesNearBy()
-
     }
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -96,6 +103,10 @@ class PNBListOfResultViewController: UIViewController {
 	private func setUpIntialUI(){
 		self.placeTopImage.image = currentPlaceType.imageForHeader
 		self.placesHeaderLabel.text = currentPlaceType.title + " Near By"
+		self.bottomBarView.layer.shadowColor = UIColor.black.cgColor
+		self.bottomBarView.layer.shadowOpacity = 0.09
+		self.bottomBarView.layer.shadowOffset = CGSize(width: 0, height: -1)
+		self.bottomBarView.layer.shadowRadius = 5
 	}
 
 
@@ -132,22 +143,63 @@ class PNBListOfResultViewController: UIViewController {
 				}
 				//succesfully found more than one location
 				blockSelf.listOfPlacesFromApi = listOfPlaces
-				//blockSelf.addControllerForList(withPlaces: listOfPlaces!)
-				blockSelf.addMapViewController(withPlaces: listOfPlaces!)
-
+				blockSelf.loadCurrentUIType(currentType: nil)
 			}
 		}
 	}
 
-	
+	private func loadCurrentUIType(currentType:currentUIState?){
+		let uiType = currentType?.rawValue ?? PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.defaultUI) as! Int
+		setBottomBarStateForSelection(currentType: currentUIState(rawValue: uiType)!)
+		if uiType == currentUIState.list.rawValue{
+			self.addControllerForList()
+		} else {
+			self.addMapViewController()
+		}
+	}
+
+	private func setBottomBarStateForSelection(currentType:currentUIState){
+		switch currentType {
+		case .map:
+			self.secondOptionButton.layer.backgroundColor = UIColor(red: 74/255, green: 211/255, blue: 122/255, alpha: 1.0).cgColor
+			self.secondOptionButton.setImage(UIImage(named:"MapUiWhite") , for: UIControlState.normal)
+			self.firstOptionButton.layer.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0).cgColor
+			self.firstOptionButton.setImage(UIImage(named:"ListUI") , for: UIControlState.normal)
+		case .list:
+			self.firstOptionButton.layer.backgroundColor = UIColor(red: 74/255, green: 211/255, blue: 122/255, alpha: 1.0).cgColor
+			self.firstOptionButton.setImage(UIImage(named:"ListUIWhite") , for: UIControlState.normal)
+			self.secondOptionButton.layer.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0).cgColor
+			self.secondOptionButton.setImage(UIImage(named:"MapUi") , for: UIControlState.normal)
+
+		}
+	}
 
 	@IBAction func didClickBackButton(_ sender: AnyObject) {
 		self.navigationController?.popViewController(animated: true)
 	}
+	@IBAction func didSelectedFirstOption(_ sender: Any) {
+		loadCurrentUIType(currentType: currentUIState.list)
+	}
 
-	private func addControllerForList(withPlaces:[PlaceDataForListAndMap]){
-		let listViewController = PNBListTableControllerViewController(listOfPlaces: withPlaces)
+	@IBAction func didSelectedSecondOption(_ sender: Any) {
+		loadCurrentUIType(currentType: currentUIState.map)
+	}
+	
+	@IBOutlet weak var didSelectedThirdOption: UIButton!
+
+	private func addControllerForList(){
+		let listViewController = PNBListTableControllerViewController(listOfPlaces: self.listOfPlacesFromApi!)
 		self.replaceOrAddViewController(viewController: listViewController)
+		if self.bottomBarBottomContraint.constant < 0 {
+			slideInBottomBar()
+		}
+	}
+
+	private func slideInBottomBar(){
+		self.bottomBarBottomContraint.constant = 0
+		UIView.animate(withDuration: 0.5) {
+			self.view.layoutIfNeeded()
+		}
 	}
 
 	private func checkErrorAndShowErrorView(error:NSError){
@@ -155,8 +207,11 @@ class PNBListOfResultViewController: UIViewController {
 		self.replaceOrAddViewController(viewController: errorController)
 	}
 
-	private func addMapViewController(withPlaces:[PlaceDataForListAndMap]){
-		self.replaceOrAddViewController(viewController: PNBMapViewController(listOfPlaces:withPlaces))
+	private func addMapViewController(){
+		self.replaceOrAddViewController(viewController: PNBMapViewController(listOfPlaces:self.listOfPlacesFromApi!))
+		if self.bottomBarBottomContraint.constant < 0 {
+			slideInBottomBar()
+		}
 	}
 
 	private func replaceOrAddViewController(viewController:UIViewController) {
@@ -165,8 +220,8 @@ class PNBListOfResultViewController: UIViewController {
 			self.addFittingSubviewViewInContainer(view: viewController.view)
 			return
 		}
-		self.childViewControllers[0].removeFromParentViewController()
 		self.childViewControllers[0].view.removeFromSuperview()
+		self.childViewControllers[0].removeFromParentViewController()
 		self.addChildViewController(viewController)
 		self.addFittingSubviewViewInContainer(view: viewController.view)
 	}

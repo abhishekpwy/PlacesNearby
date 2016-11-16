@@ -13,9 +13,15 @@
             <connections>
                 <outlet property="activityIndicator" destination="sJu-F9-B9E" id="o0f-Lz-Noy"/>
                 <outlet property="backButton" destination="AtW-FF-MJM" id="bdZ-bz-zyk"/>
+                <outlet property="bottomBarBottomContraint" destination="lW6-xP-lNN" id="M40-Vl-GjI"/>
+                <outlet property="bottomBarView" destination="aNv-cc-q6w" id="45o-Px-8Pu"/>
                 <outlet property="containerView" destination="YCn-uT-916" id="Avj-dV-PCL"/>
+                <outlet property="didSelectedThirdOption" destination="f98-e1-L5s" id="ArO-qA-byf"/>
+                <outlet property="firstOptionButton" destination="UBv-am-TRd" id="N9d-Hx-n8W"/>
                 <outlet property="placeTopImage" destination="8yX-ze-0SK" id="oCS-eD-0I6"/>
                 <outlet property="placesHeaderLabel" destination="Ypy-pi-Z5g" id="Rnf-Bc-VhH"/>
+                <outlet property="secondOptionButton" destination="sU2-xd-wwL" id="Rob-UX-Skp"/>
+                <outlet property="thirdOptionButton" destination="f98-e1-L5s" id="es1-hf-w9v"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,14 +31,66 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCn-uT-916">
-                    <rect key="frame" x="0.0" y="72" width="375" height="547"/>
+                    <rect key="frame" x="0.0" y="72" width="375" height="647"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-cc-q6w">
-                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                    <rect key="frame" x="0.0" y="719" width="375" height="48"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efb-vU-PCa">
+                            <rect key="frame" x="124.5" y="0.0" width="1" height="48"/>
+                            <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="Cd1-n9-L1u"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Imc-H3-Mna">
+                            <rect key="frame" x="249.5" y="0.0" width="1" height="48"/>
+                            <color key="backgroundColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="c2G-zJ-0Ug"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBv-am-TRd">
+                            <rect key="frame" x="0.0" y="0.0" width="124.5" height="48"/>
+                            <state key="normal" image="ListUI"/>
+                            <connections>
+                                <action selector="didSelectedFirstOption:" destination="-1" eventType="touchUpInside" id="VZK-eK-i51"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sU2-xd-wwL">
+                            <rect key="frame" x="125.5" y="0.0" width="124" height="48"/>
+                            <state key="normal" image="MapUi"/>
+                            <connections>
+                                <action selector="didSelectedSecondOption:" destination="-1" eventType="touchUpInside" id="6H4-3R-unj"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f98-e1-L5s">
+                            <rect key="frame" x="250.5" y="0.0" width="124.5" height="48"/>
+                            <state key="normal" image="FilterUi"/>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="sU2-xd-wwL" firstAttribute="leading" secondItem="efb-vU-PCa" secondAttribute="trailing" id="08P-W2-beL"/>
+                        <constraint firstAttribute="trailing" secondItem="f98-e1-L5s" secondAttribute="trailing" id="1XX-Sg-ZwS"/>
+                        <constraint firstAttribute="bottom" secondItem="efb-vU-PCa" secondAttribute="bottom" id="HpY-8r-fay"/>
+                        <constraint firstItem="Imc-H3-Mna" firstAttribute="top" secondItem="aNv-cc-q6w" secondAttribute="top" id="KN9-GO-5xo"/>
+                        <constraint firstAttribute="bottom" secondItem="sU2-xd-wwL" secondAttribute="bottom" id="KvM-RH-lbF"/>
+                        <constraint firstItem="UBv-am-TRd" firstAttribute="top" secondItem="aNv-cc-q6w" secondAttribute="top" id="MSB-ef-r6J"/>
+                        <constraint firstAttribute="bottom" secondItem="UBv-am-TRd" secondAttribute="bottom" id="Ps8-BN-p3m"/>
+                        <constraint firstItem="UBv-am-TRd" firstAttribute="width" secondItem="f98-e1-L5s" secondAttribute="width" id="TRM-cM-yWt"/>
+                        <constraint firstItem="f98-e1-L5s" firstAttribute="top" secondItem="aNv-cc-q6w" secondAttribute="top" id="UMA-hV-X2c"/>
+                        <constraint firstAttribute="bottom" secondItem="Imc-H3-Mna" secondAttribute="bottom" id="VY1-bz-F3B"/>
+                        <constraint firstItem="UBv-am-TRd" firstAttribute="width" secondItem="sU2-xd-wwL" secondAttribute="width" id="Zmx-nJ-Wxk"/>
+                        <constraint firstItem="efb-vU-PCa" firstAttribute="top" secondItem="aNv-cc-q6w" secondAttribute="top" id="aWP-Dr-nBJ"/>
                         <constraint firstAttribute="height" constant="48" id="cKq-WR-Wyg"/>
+                        <constraint firstItem="sU2-xd-wwL" firstAttribute="top" secondItem="aNv-cc-q6w" secondAttribute="top" id="hvu-We-qKt"/>
+                        <constraint firstItem="UBv-am-TRd" firstAttribute="leading" secondItem="aNv-cc-q6w" secondAttribute="leading" id="kV9-Rv-Thf"/>
+                        <constraint firstAttribute="bottom" secondItem="f98-e1-L5s" secondAttribute="bottom" id="oRn-Sd-Ej7"/>
+                        <constraint firstItem="Imc-H3-Mna" firstAttribute="leading" secondItem="sU2-xd-wwL" secondAttribute="trailing" id="vRD-Hh-w1k"/>
+                        <constraint firstItem="efb-vU-PCa" firstAttribute="leading" secondItem="UBv-am-TRd" secondAttribute="trailing" id="vpK-pR-FW1"/>
+                        <constraint firstItem="f98-e1-L5s" firstAttribute="leading" secondItem="Imc-H3-Mna" secondAttribute="trailing" id="yff-a8-uzX"/>
                     </constraints>
                 </view>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sJu-F9-B9E">
@@ -91,12 +149,15 @@
                 <constraint firstItem="sJu-F9-B9E" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ROH-Jq-YZa"/>
                 <constraint firstItem="sJu-F9-B9E" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="X09-TV-8Pq"/>
                 <constraint firstItem="aNv-cc-q6w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YhL-YD-Y37"/>
-                <constraint firstAttribute="bottom" secondItem="aNv-cc-q6w" secondAttribute="bottom" id="lW6-xP-lNN"/>
+                <constraint firstAttribute="bottom" secondItem="aNv-cc-q6w" secondAttribute="bottom" constant="-100" id="lW6-xP-lNN"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="107.5"/>
         </view>
     </objects>
     <resources>
+        <image name="FilterUi" width="20" height="23"/>
         <image name="Header-Back_button" width="14" height="24"/>
+        <image name="ListUI" width="20" height="20"/>
+        <image name="MapUi" width="20" height="25"/>
     </resources>
 </document>

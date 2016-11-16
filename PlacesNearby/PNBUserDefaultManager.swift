@@ -13,6 +13,7 @@ class PNBUserDefaultManager{
 
 	enum KeysForUserDefault:String {
 		case radiusOfSearch = "radiusOfSearch"
+		case defaultUI = "defaultUI"
 	}
 	final func getValueObject(key:KeysForUserDefault) -> AnyObject?{
 		if let value = UserDefaults.standard.value(forKey: key.rawValue) {
@@ -22,6 +23,9 @@ class PNBUserDefaultManager{
 		switch key{
 		case .radiusOfSearch:
 			return Int(10) as AnyObject?
+
+		case .defaultUI:
+			return PNBListOfResultViewController.currentUIState.list.rawValue as AnyObject?
 		}
 
 	}
