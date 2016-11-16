@@ -22,7 +22,7 @@ class PNBLocationManager:NSObject, CLLocationManagerDelegate {
 			locationHelper.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
 			locationHelper.startUpdatingLocation()
 		}else {
-			let error = NSError(domain: "PNBError", code: PNBErrorCodes.locationNotAvailableError.rawValue, userInfo: nil)
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.locationNotAvailableError.rawValue, userInfo: nil)
 			currentCompletion!(error, nil)
 		}
 	}

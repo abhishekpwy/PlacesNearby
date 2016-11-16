@@ -35,6 +35,10 @@
 		46A79A871DDA10830005087B /* PNBAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79A861DDA10830005087B /* PNBAnnotationView.swift */; };
 		46A79A891DDA18010005087B /* MapCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A79A881DDA18010005087B /* MapCalloutView.xib */; };
 		46A79A8B1DDA1ABB0005087B /* PNBMapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79A8A1DDA1ABB0005087B /* PNBMapDetailView.swift */; };
+		46D7345C1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D7345B1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift */; };
+		46D7345E1DDCC0C6003B7889 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D7345D1DDCC0C6003B7889 /* SystemConfiguration.framework */; };
+		46D734621DDCC2DE003B7889 /* PNBErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D734601DDCC2DE003B7889 /* PNBErrorViewController.swift */; };
+		46D734631DDCC2DE003B7889 /* PNBErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46D734611DDCC2DE003B7889 /* PNBErrorViewController.xib */; };
 		46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +73,10 @@
 		46A79A861DDA10830005087B /* PNBAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBAnnotationView.swift; sourceTree = "<group>"; };
 		46A79A881DDA18010005087B /* MapCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCalloutView.xib; sourceTree = "<group>"; };
 		46A79A8A1DDA1ABB0005087B /* PNBMapDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBMapDetailView.swift; sourceTree = "<group>"; };
+		46D7345B1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBNetwrokConnectivity.swift; sourceTree = "<group>"; };
+		46D7345D1DDCC0C6003B7889 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		46D734601DDCC2DE003B7889 /* PNBErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBErrorViewController.swift; sourceTree = "<group>"; };
+		46D734611DDCC2DE003B7889 /* PNBErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBErrorViewController.xib; sourceTree = "<group>"; };
 		46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D7345E1DDCC0C6003B7889 /* SystemConfiguration.framework in Frameworks */,
 				46A79A811DD9FA9F0005087B /* MapKit.framework in Frameworks */,
 				464071F71DD0DA8100D9170F /* CoreLocation.framework in Frameworks */,
 			);
@@ -102,6 +111,7 @@
 				464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */,
 				464071F81DD0DC7B00D9170F /* PNBLocationManager.swift */,
 				464071FA1DD0EC6800D9170F /* PNBDataManager.swift */,
+				46D7345B1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift */,
 			);
 			name = DataManager;
 			sourceTree = "<group>";
@@ -109,6 +119,7 @@
 		464071F51DD0DA8100D9170F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46D7345D1DDCC0C6003B7889 /* SystemConfiguration.framework */,
 				46A79A801DD9FA9F0005087B /* MapKit.framework */,
 				464071F61DD0DA8100D9170F /* CoreLocation.framework */,
 			);
@@ -133,6 +144,7 @@
 			children = (
 				468C23A21DD616F500D438EC /* PNBListOfResultViewController.swift */,
 				468C23A31DD616F500D438EC /* PNBListOfResultViewController.xib */,
+				46D7345F1DDCC2A8003B7889 /* ErrorController */,
 				46A79A7B1DD9F96F0005087B /* MapViewUI */,
 				468C23A61DD74FFB00D438EC /* ListUI */,
 			);
@@ -192,6 +204,15 @@
 				46A79A8A1DDA1ABB0005087B /* PNBMapDetailView.swift */,
 			);
 			name = MapViewUI;
+			sourceTree = "<group>";
+		};
+		46D7345F1DDCC2A8003B7889 /* ErrorController */ = {
+			isa = PBXGroup;
+			children = (
+				46D734601DDCC2DE003B7889 /* PNBErrorViewController.swift */,
+				46D734611DDCC2DE003B7889 /* PNBErrorViewController.xib */,
+			);
+			name = ErrorController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +276,7 @@
 			files = (
 				46A79A891DDA18010005087B /* MapCalloutView.xib in Resources */,
 				469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */,
+				46D734631DDCC2DE003B7889 /* PNBErrorViewController.xib in Resources */,
 				469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */,
 				468C23B81DD7706A00D438EC /* PNBListTableViewCell.xib in Resources */,
 				468C23BC1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib in Resources */,
@@ -288,7 +310,9 @@
 				464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */,
 				469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */,
 				46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */,
+				46D734621DDCC2DE003B7889 /* PNBErrorViewController.swift in Sources */,
 				468C23BB1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift in Sources */,
+				46D7345C1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift in Sources */,
 				46A79A7E1DD9F9AF0005087B /* PNBMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

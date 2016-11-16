@@ -77,6 +77,8 @@ class PNBListOfResultViewController: UIViewController {
 	@IBOutlet weak var placeTopImage: UIImageView!
 	@IBOutlet weak var placesHeaderLabel: UILabel!
 	@IBOutlet weak var containerView: UIView!
+	
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	var listOfPlacesFromApi:[PlaceDataForListAndMap]?
 
     override func viewDidLoad() {
@@ -107,20 +109,32 @@ class PNBListOfResultViewController: UIViewController {
 	}
 
 	private func tryToFetchListOfPlacesNearBy(){
+		self.activityIndicator.startAnimating()
 		PNBDataManager.sharedDataManager.fetchListOfPlaces(placeType: self.currentPlaceType) {
 			[weak self]
 			(listOfPlaces, error)
 			in
-			guard let blockSelf = self
+			guard let _ = self
 				else{
 					return
 			}
-			//
 			runInMainQueue {
+				[weak self]
+				in
+				guard let blockSelf = self
+					else{
+						return
+				}
+				blockSelf.activityIndicator.stopAnimating()
+				if error != nil {
+					blockSelf.checkErrorAndShowErrorView(error: error!)
+					return
+				}
+				//succesfully found more than one location
 				blockSelf.listOfPlacesFromApi = listOfPlaces
-				Swift.print(error)
-//				blockSelf.addControllerForList(withPlaces: listOfPlaces!)
+				//blockSelf.addControllerForList(withPlaces: listOfPlaces!)
 				blockSelf.addMapViewController(withPlaces: listOfPlaces!)
+
 			}
 		}
 	}
@@ -134,6 +148,11 @@ class PNBListOfResultViewController: UIViewController {
 	private func addControllerForList(withPlaces:[PlaceDataForListAndMap]){
 		let listViewController = PNBListTableControllerViewController(listOfPlaces: withPlaces)
 		self.replaceOrAddViewController(viewController: listViewController)
+	}
+
+	private func checkErrorAndShowErrorView(error:NSError){
+		let errorController = PNBErrorViewController(error: error)
+		self.replaceOrAddViewController(viewController: errorController)
 	}
 
 	private func addMapViewController(withPlaces:[PlaceDataForListAndMap]){

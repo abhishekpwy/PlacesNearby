@@ -14,7 +14,12 @@ enum PNBErrorCodes:Int{
 	case locationNotAvailableError = 1
 	case statusCodeNot200 = 2
 	case listOfPlacesFromApiEmpty = 3
+	case InternetNotAvailable = 4
+	case locationServiceDisabled = 5
 }
+
+//somes constants
+let PNBErrorDomain = "PNBError"
 
 class PNBDataManager {
 	//singelton
@@ -22,8 +27,35 @@ class PNBDataManager {
 	let locationDataManager = PNBLocationManager()
 	let apiManager = PNBApiManager()
 
+	var isLocationEnabled:Bool {
+		if CLLocationManager.locationServicesEnabled() {
+			switch(CLLocationManager.authorizationStatus()) {
+			case .notDetermined, .restricted, .denied:
+				return false
+			case .authorizedAlways, .authorizedWhenInUse:
+				return true
+			}
+		} else {
+			return false
+		}
+	}
+
 	final func fetchListOfPlaces(placeType:PlaceType, completion:@escaping ((_ listOfPlaces:[PlaceDataForListAndMap]?, _ error:NSError?) -> Void))
 	{
+		//check for netwrok connectivity first
+		if !Reachability.isConnectedToNetwork(){
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.InternetNotAvailable.rawValue, userInfo: nil)
+			completion(nil, error)
+			return
+		}
+
+		//location error
+		if !self.isLocationEnabled {
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.locationServiceDisabled.rawValue, userInfo: nil)
+			completion(nil, error)
+			return
+		}
+
 		locationDataManager.getCurrentLocation {
 			[weak self]
 			(error, currentLocation)
@@ -58,7 +90,7 @@ class PNBDataManager {
 						return
 					}
 				}
-				let error = NSError(domain: "PNBError", code: PNBErrorCodes.listOfPlacesFromApiEmpty.rawValue, userInfo: nil)
+				let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.listOfPlacesFromApiEmpty.rawValue, userInfo: nil)
 				completion(nil, error)
 			})
 
