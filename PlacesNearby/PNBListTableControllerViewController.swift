@@ -32,45 +32,6 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 		tableView.register(UINib(nibName: "PNBLoadMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "loadMoreCell")
     }
 
-	private func updateListOfPlacesFromParent(){
-		self.listOfPlaces = (parent as! PNBListOfResultViewController).listOfPlacesFromApi!
-		self.tableView.reloadData()
-	}
-
-	//MARK:Table data source
-	func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
-	}
-
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return listOfPlaces.count + 1 //one load more cell
-	}
-
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.row == self.listOfPlaces.count{
-			let cell = tableView.dequeueReusableCell(withIdentifier: "loadMoreCell", for: indexPath) as! PNBLoadMoreTableViewCell
-			return cell
-		}
-		let cell = tableView.dequeueReusableCell(withIdentifier: "PNBCell", for: indexPath) as! PNBListTableViewCell
-		let dataForRow = self.listOfPlaces[indexPath.row]
-		cell.nameOfPlace.text = dataForRow.nameOfPlace
-		cell.vicinityOfPlace.text = dataForRow.addressOfPlace
-		let ratingData = dataForRow.imageTextAndTextColorForRating()
-		cell.ratingLabel.text = ratingData.text
-		cell.ratingImageView.image = ratingData.image
-		cell.ratingLabel.textColor = ratingData.colorForText
-		cell.distanceLabel.text = String(String(format: "%.1f KM", dataForRow.distanceFromCurrentLocation))
-		let colorAndImageForDistance = getImageForDistance(distance: dataForRow.distanceFromCurrentLocation)
-		cell.distanceLabel.textColor = colorAndImageForDistance.colorForText
-		cell.distanceImageView.image = colorAndImageForDistance.image
-		let openNowData = dataForRow.textColorAndImageForOpenNow()
-		cell.openNowLabel.textColor = openNowData.color
-		cell.openNowLabel.text = openNowData.text
-		cell.openNowImageView.image = openNowData.image
-		return cell
-	}
-
-
 	private func getImageForDistance(distance:Double)-> (image:UIImage, colorForText:UIColor) {
 		let currentMaxSearchDistance = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.radiusOfSearch) as! Int
 		let halfDistance = Double(currentMaxSearchDistance/2)
@@ -115,5 +76,70 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 		let image = UIImage(named: "IsClosedNow")!
 		return (text, color, image)
 	}
+
+	private func loadMoreInParentAndSelf(){
+		(parent as! PNBListOfResultViewController).loadMore {
+			[weak self]
+			(success, list)
+			in
+			guard let blockSelf = self
+				else{
+					return
+			}
+			if success {
+				for item in list!{
+					blockSelf.listOfPlaces.append(item)
+				}
+				runInMainQueue {
+					blockSelf.tableView.reloadData()
+				}
+			}
+
+		}
+	}
+
+	//MARK:Table data source
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
+
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if (parent as! PNBListOfResultViewController).hasMoreToLoad {
+			return listOfPlaces.count + 1 //one load more cell
+		}
+		return listOfPlaces.count
+	}
+
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.row == self.listOfPlaces.count{
+			let cell = tableView.dequeueReusableCell(withIdentifier: "loadMoreCell", for: indexPath) as! PNBLoadMoreTableViewCell
+			return cell
+		}
+		let cell = tableView.dequeueReusableCell(withIdentifier: "PNBCell", for: indexPath) as! PNBListTableViewCell
+		let dataForRow = self.listOfPlaces[indexPath.row]
+		cell.nameOfPlace.text = dataForRow.nameOfPlace
+		cell.vicinityOfPlace.text = dataForRow.addressOfPlace
+		let ratingData = dataForRow.imageTextAndTextColorForRating()
+		cell.ratingLabel.text = ratingData.text
+		cell.ratingImageView.image = ratingData.image
+		cell.ratingLabel.textColor = ratingData.colorForText
+		cell.distanceLabel.text = String(String(format: "%.1f KM", dataForRow.distanceFromCurrentLocation))
+		let colorAndImageForDistance = getImageForDistance(distance: dataForRow.distanceFromCurrentLocation)
+		cell.distanceLabel.textColor = colorAndImageForDistance.colorForText
+		cell.distanceImageView.image = colorAndImageForDistance.image
+		let openNowData = dataForRow.textColorAndImageForOpenNow()
+		cell.openNowLabel.textColor = openNowData.color
+		cell.openNowLabel.text = openNowData.text
+		cell.openNowImageView.image = openNowData.image
+		return cell
+	}
+
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if indexPath.row == self.listOfPlaces.count {
+			//it is loadmore row
+			loadMoreInParentAndSelf()
+		}
+	}
+
 
 }

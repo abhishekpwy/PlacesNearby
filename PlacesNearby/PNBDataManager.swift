@@ -16,6 +16,8 @@ enum PNBErrorCodes:Int{
 	case listOfPlacesFromApiEmpty = 3
 	case InternetNotAvailable = 4
 	case locationServiceDisabled = 5
+	case loadMoreWithoudNextPageToken = 6
+	case loadMoreReturnedZeroPlaces = 7
 }
 
 //somes constants
@@ -27,18 +29,7 @@ class PNBDataManager {
 	let locationDataManager = PNBLocationManager()
 	let apiManager = PNBApiManager()
 
-	var isLocationEnabled:Bool {
-		if CLLocationManager.locationServicesEnabled() {
-			switch(CLLocationManager.authorizationStatus()) {
-			case .notDetermined, .restricted, .denied:
-				return false
-			case .authorizedAlways, .authorizedWhenInUse:
-				return true
-			}
-		} else {
-			return false
-		}
-	}
+	
 
 	final func fetchListOfPlaces(placeType:PlaceType, completion:@escaping ((_ listOfPlaces:[PlaceDataForListAndMap]?, _ error:NSError?) -> Void))
 	{
@@ -48,13 +39,8 @@ class PNBDataManager {
 			completion(nil, error)
 			return
 		}
-
-		//location error
-		if !self.isLocationEnabled {
-			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.locationServiceDisabled.rawValue, userInfo: nil)
-			completion(nil, error)
-			return
-		}
+		//this is fresh place request query so make next page token nil
+		PNBUserDefaultManager().setValueForObject(value: nil, forKey: PNBUserDefaultManager.KeysForUserDefault.nextPageToken)
 
 		locationDataManager.getCurrentLocation {
 			[weak self]
@@ -102,6 +88,11 @@ class PNBDataManager {
 		guard let arrayOfPlacesDetailsInJson = jsonDict["results"] as? [[String:AnyObject]]
 			else{
 				return nil
+		}
+		if let nextPageToken = jsonDict["next_page_token"] as? String{
+			PNBUserDefaultManager().setValueForObject(value: nextPageToken as AnyObject?, forKey: PNBUserDefaultManager.KeysForUserDefault.nextPageToken)
+		}else {
+			PNBUserDefaultManager().setValueForObject(value: nil, forKey: PNBUserDefaultManager.KeysForUserDefault.nextPageToken)
 		}
 		for place in arrayOfPlacesDetailsInJson {
 			//get location
@@ -152,5 +143,56 @@ class PNBDataManager {
 			arrayOfPlaces.append(placeFromJsonData)
 		}
 		return arrayOfPlaces
+	}
+
+	final func loadMorePlaces(completion:@escaping ((_ listOfPlaces:[PlaceDataForListAndMap]?, _ error:NSError?) -> Void)){
+		//check for netwrok connectivity first
+		if !Reachability.isConnectedToNetwork(){
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.InternetNotAvailable.rawValue, userInfo: nil)
+			completion(nil, error)
+			return
+		}
+		guard let nextPageToken = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.nextPageToken) as? String
+			else{
+				let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.loadMoreWithoudNextPageToken.rawValue, userInfo: nil)
+				completion(nil, error)
+				return
+		}
+		locationDataManager.getCurrentLocation {
+			[weak self]
+			(error, currentLocation)
+			in
+			guard let blockSelf = self
+				else{
+					return
+			}
+			if error != nil {
+				completion(nil, error! as NSError)
+				return
+			}
+			blockSelf.apiManager.loadMorePlacesNearBy(nextPageToken: nextPageToken) {
+				[weak self]
+				(result, error)
+				in
+				guard let blockSelf = self
+					else{
+						return
+				}
+				if error != nil{
+					completion(nil, error! as NSError)
+					return
+				}
+				if let listOfPlacesFromApi = blockSelf.getListOfPlaceDataFromJson(currentLocation: currentLocation!, jsonDict: result!){
+					if listOfPlacesFromApi.count > 0{
+						completion(listOfPlacesFromApi, nil)
+						return
+					}
+				}
+				let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.loadMoreReturnedZeroPlaces.rawValue, userInfo: nil)
+				completion(nil, error)
+			}
+		}
+
+
 	}
 }

@@ -84,7 +84,7 @@ class PNBListOfResultViewController: UIViewController {
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var bottomBarBottomContraint: NSLayoutConstraint!
 	var listOfPlacesFromApi:[PlaceDataForListAndMap]?
-
+	var hasMoreToLoad = false
 	enum currentUIState:Int{
 		case list = 1,map = 2
 	}
@@ -136,15 +136,49 @@ class PNBListOfResultViewController: UIViewController {
 					else{
 						return
 				}
-				blockSelf.activityIndicator.stopAnimating()
+					blockSelf.activityIndicator.stopAnimating()
 				if error != nil {
 					blockSelf.checkErrorAndShowErrorView(error: error!)
 					return
 				}
 				//succesfully found more than one location
+				if let _ = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.nextPageToken) as? String{
+					blockSelf.hasMoreToLoad = true
+				}else {
+					blockSelf.hasMoreToLoad = false
+				}
 				blockSelf.listOfPlacesFromApi = listOfPlaces
 				blockSelf.loadCurrentUIType(currentType: nil)
 			}
+		}
+	}
+
+	final func loadMore(completion:@escaping (_ success:Bool, _ listOfPlacesFromApi:[PlaceDataForListAndMap]?) -> ()){
+		self.activityIndicator.startAnimating()
+		PNBDataManager.sharedDataManager.loadMorePlaces { [weak self]
+			(listOfPlaces, error)
+			in
+			guard let blockSelf = self
+				else{
+					return
+			}
+			runInMainQueue {
+				blockSelf.activityIndicator.stopAnimating()
+
+			}
+			if error != nil {
+				completion(false, nil)
+				return
+			}
+			if let _ = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.nextPageToken) as? String{
+				blockSelf.hasMoreToLoad = true
+			}else {
+				blockSelf.hasMoreToLoad = false
+			}
+			for element in listOfPlaces! {
+				blockSelf.listOfPlacesFromApi?.append(element)
+			}
+			completion(true, listOfPlaces)
 		}
 	}
 

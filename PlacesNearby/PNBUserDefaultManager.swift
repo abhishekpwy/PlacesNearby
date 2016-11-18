@@ -14,6 +14,7 @@ class PNBUserDefaultManager{
 	enum KeysForUserDefault:String {
 		case radiusOfSearch = "radiusOfSearch"
 		case defaultUI = "defaultUI"
+		case nextPageToken = "nextPageToken"
 	}
 	final func getValueObject(key:KeysForUserDefault) -> AnyObject?{
 		if let value = UserDefaults.standard.value(forKey: key.rawValue) {
@@ -26,11 +27,14 @@ class PNBUserDefaultManager{
 
 		case .defaultUI:
 			return PNBListOfResultViewController.currentUIState.list.rawValue as AnyObject?
+
+		case.nextPageToken:
+			return nil
 		}
 
 	}
 
-	final func setValueForObject(value:AnyObject, forKey:KeysForUserDefault) {
+	final func setValueForObject(value:AnyObject?, forKey:KeysForUserDefault) {
 		UserDefaults.standard.set(value, forKey: forKey.rawValue)
 	}
 }

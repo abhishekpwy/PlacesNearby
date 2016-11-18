@@ -13,18 +13,37 @@ class PNBLocationManager:NSObject, CLLocationManagerDelegate {
 
 	let locationHelper = CLLocationManager()
 	var currentCompletion:((_ error:Error?, _ currentLocation:CLLocation?) -> Void)?
+	var isLocationEnabled:Bool {
+		if CLLocationManager.locationServicesEnabled() {
+			switch(CLLocationManager.authorizationStatus()) {
+			case .notDetermined, .restricted, .denied:
+				return false
+			case .authorizedAlways, .authorizedWhenInUse:
+				return true
+			}
+		} else {
+			return false
+		}
+	}
 
 	final func getCurrentLocation(withCompletion:@escaping (_ error:Error?, _ currentLocation:CLLocation?) -> Void) {
 		self.currentCompletion = withCompletion
 		self.locationHelper.requestWhenInUseAuthorization()
-		if CLLocationManager.locationServicesEnabled() {
-			locationHelper.delegate = self
-			locationHelper.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-			locationHelper.startUpdatingLocation()
-		}else {
-			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.locationNotAvailableError.rawValue, userInfo: nil)
+		if !CLLocationManager.locationServicesEnabled() {
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.locationServiceDisabled.rawValue, userInfo: nil)
 			currentCompletion!(error, nil)
+			return
 		}
+		if CLLocationManager.authorizationStatus() == .denied {
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.locationServiceDisabled.rawValue, userInfo: nil)
+			currentCompletion!(error, nil)
+			return
+		}
+
+		//everything alright, user loves us and wants to share location:
+		locationHelper.delegate = self
+		locationHelper.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+		locationHelper.startUpdatingLocation()
 	}
 
 
