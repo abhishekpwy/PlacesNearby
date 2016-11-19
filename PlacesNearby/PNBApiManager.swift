@@ -12,6 +12,7 @@ class PNBApiManager{
 
 	let placesApiURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 	let loadMoreApiURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+	let placeDetailsApi = "https://maps.googleapis.com/maps/api/place/details/json?"
 	let appKey = "AIzaSyDbMghJ-L1LjL9cYUvY72cdYKgyk2rGBTc"
 
 
@@ -36,7 +37,6 @@ class PNBApiManager{
 				completion(nil, errorStatusNon200)
 				return
 			}
-
 			let data = blockSelf.getJsonFromData(data: dataFromRequest!)
 			completion(data, nil)
 			return
@@ -52,6 +52,11 @@ class PNBApiManager{
 
 	final func loadMorePlacesNearBy(nextPageToken:String,completion:@escaping (_ result: [String:Any]?, _ error:NSError?) -> Void){
 		let url = getUrlForLoadMore(pageToken: nextPageToken)
+		fireApiGetResponse(urlForApi: url as URL, completion: completion)
+	}
+
+	final func getPlaceDetails(forPlaceID:String, completion:@escaping (_ result: [String:Any]?, _ error:NSError?) -> Void) {
+		let url = getUrlForPlaceDetails(placeID: forPlaceID)
 		fireApiGetResponse(urlForApi: url as URL, completion: completion)
 	}
 
@@ -94,6 +99,17 @@ class PNBApiManager{
 		var stringForUrl = loadMoreApiURL
 		//pageToken
 		stringForUrl += "pagetoken=" + pageToken
+		//key
+		stringForUrl += "&key="+appKey
+		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
+		return urlToUse
+	}
+
+	private func getUrlForPlaceDetails(placeID:String) -> NSURL {
+		//https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=YOUR_API_KEY
+		var stringForUrl = placeDetailsApi
+		//pageToken
+		stringForUrl += "placeid=" + placeID
 		//key
 		stringForUrl += "&key="+appKey
 		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!

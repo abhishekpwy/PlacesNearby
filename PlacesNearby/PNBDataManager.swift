@@ -18,6 +18,7 @@ enum PNBErrorCodes:Int{
 	case locationServiceDisabled = 5
 	case loadMoreWithoudNextPageToken = 6
 	case loadMoreReturnedZeroPlaces = 7
+	case placeDetailsCanNotBeloaded = 8
 }
 
 //somes constants
@@ -192,7 +193,180 @@ class PNBDataManager {
 				completion(nil, error)
 			}
 		}
+	}
+
+	private func getPlaceDetailsObjectFromJson(jsonDict:[String:Any]) -> PNBPlaceDetails? {
+		guard let placesDetailsInJson = jsonDict["result"] as? [String:AnyObject]
+			else{
+				return nil
+		}
+		guard let fomattedAddress = placesDetailsInJson["formatted_address"] as? String
+			else {
+				return nil
+		}
+		guard let placeID = placesDetailsInJson["place_id"] as? String
+			else {
+				return nil
+		}
+		guard let placeTitle = placesDetailsInJson["name"] as? String
+			else {
+				return nil
+		}
+
+		guard let location = placesDetailsInJson["geometry"]?["location"] as? [String:AnyObject]
+			else{
+				return nil
+		}
+
+		guard let lat = location["lat"] as? Double
+			else{
+				return nil
+		}
+
+		guard let lng = location["lng"] as? Double
+			else{
+				return nil
+		}
+
+		let placeLocation = CLLocation(latitude: lat, longitude: lng)
+
+		//mendtry results fetched, now get optional values
+
+		let isPermanentlyClosed = placesDetailsInJson["permanently_closed"] as? Bool ?? false
+
+		var formattedOpeningHourText:String? = nil
+
+		if let openingHoursInfo = placesDetailsInJson["opening_hours"] as? [String:AnyObject] {
+			formattedOpeningHourText = getFormattedOpeningHourText(info: openingHoursInfo)
+		}
+
+		var website:String? = nil
+		if let webSiteUrl = placesDetailsInJson["website"] as? String {
+			website = webSiteUrl
+		}
+
+		var cost:Int? = nil
+		if let costOfPlace = placesDetailsInJson["price_level"] as? Int{
+			cost = costOfPlace
+		}
+
+		var photoReferences:[String]?
+		if let photos = placesDetailsInJson["photos"] as? [[String:AnyObject]]{
+			for photo in photos{
+				if let photoReference = photo["photo_reference"] as? String{
+					if photoReferences == nil {
+						photoReferences = [String]()
+					}
+					photoReferences!.append(photoReference)
+				}
+			}
+		}
+		var reviews:[PNBReviews]?
+		if let reviewsDict = placesDetailsInJson["reviews"] as? [[String:AnyObject]]{
+			for review in reviewsDict {
+				let name = review["author_name"] as! String
+				let text = review["text"] as! String
+				let rating = review["rating"] as! Double
+				if reviews == nil {
+					reviews = [PNBReviews]()
+				}
+				reviews!.append(PNBReviews(name: name, rating: rating, ratingText: text))
+			}
+		}
+
+		var types = ""
+		for type in placesDetailsInJson["types"] as! [String]
+		{
+			types += type
+		}
+
+		var phoneNumber:String?
+		if let phNo = placesDetailsInJson["international_phone_number"] as? String{
+			phoneNumber = phNo
+ 		}
 
 
+		return PNBPlaceDetails(placeID: placeID, placeTitle: placeTitle, address: fomattedAddress, type: types, phNo: phoneNumber, openingHrs: formattedOpeningHourText, websiteURL: website, cost: cost, placeLoaction: placeLocation, reviews: reviews, photoreferences: photoReferences)
+
+	}
+
+	final func getFormattedOpeningHourText(info:[String:AnyObject]?) -> String? {
+		var formattedOpeningHourText:String?
+		guard let openingHoursInfo = info
+			else{
+				return nil
+		}
+
+		let todayWeekIndex = getDayOfWeek()! - 1
+		if let periods = openingHoursInfo["periods"] as? [[String:AnyObject]]{
+			for periodItem in periods{
+				guard let open = periodItem["open"] as? [String:AnyObject]
+					else{
+						continue
+				}
+				guard let day = open["day"] as? Int, day == todayWeekIndex
+					else{
+						continue
+				}
+				let openTime = Int(open["time"] as! String)
+				let openTimeString = getStringTimeFromTime(time: openTime!)
+
+				guard let close = periodItem["close"] as? [String:AnyObject]
+					else{
+						if day == 0 && openTime == 0000{
+							return "Open 24 Hours"
+						}
+					continue
+				}
+
+				let closeTime = Int(close["time"] as! String)
+				let closeTimeString = getStringTimeFromTime(time: closeTime!)
+				formattedOpeningHourText? += "from \(openTimeString) to \(closeTimeString)"
+			}
+		}
+
+		return formattedOpeningHourText
+	}
+
+	func getDayOfWeek()->Int? {
+		let todayDate = NSDate()
+		let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier(rawValue: NSGregorianCalendar))
+		let myComponents = myCalendar?.components(.weekday, from: todayDate as Date)
+		let weekDay = myComponents?.weekday
+		return weekDay
+ }
+
+	private func getStringTimeFromTime(time:Int) -> String{
+		let min = (time % 100)
+		let hour = (time / 100)
+		if hour == 0 && min == 0{
+			return "Midnight"
+		}
+		let string = "\(hour):\(min)"
+		return string
+	}
+
+
+	final func getPlaceDetailsFor(placeID:String, completion: @escaping (_ placeDetails:PNBPlaceDetails?, _ error:NSError?) -> Void){
+		apiManager.getPlaceDetails(forPlaceID: placeID) {
+			[weak self]
+			(result, error)
+			in
+			guard let blockSelf = self
+				else{
+					return
+			}
+			if error != nil{
+				completion(nil, error! as NSError)
+				return
+			}
+			if let details = blockSelf.getPlaceDetailsObjectFromJson(jsonDict: result!){
+				completion(details, nil)
+				return
+			}
+
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.placeDetailsCanNotBeloaded.rawValue, userInfo: nil)
+			completion(nil, error)
+		}
 	}
 }

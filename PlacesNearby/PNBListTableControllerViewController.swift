@@ -98,6 +98,11 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 		}
 	}
 
+	private func loadDetailsControllerWithID(placeID:String){
+		let detailsController = PNBPlaceDetailsViewController(placeID: placeID)
+		self.navigationController?.pushViewController(detailsController, animated: true)
+	}
+
 	//MARK:Table data source
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -139,6 +144,8 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 			//it is loadmore row
 			loadMoreInParentAndSelf()
 		}
+		let placeID = self.listOfPlaces[indexPath.row].placeID
+		loadDetailsControllerWithID(placeID: placeID)
 	}
 
 

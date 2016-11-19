@@ -100,7 +100,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtW-FF-MJM">
-                            <rect key="frame" x="25" y="28.5" width="25" height="25"/>
+                            <rect key="frame" x="15" y="28.5" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="hcO-RB-fji"/>
                                 <constraint firstAttribute="width" constant="25" id="uLh-8S-aaQ"/>
@@ -130,7 +130,7 @@
                         <constraint firstItem="8yX-ze-0SK" firstAttribute="centerY" secondItem="fKc-gZ-pfH" secondAttribute="centerY" constant="5" id="E55-Ty-UUD"/>
                         <constraint firstAttribute="height" constant="72" id="S1L-Bv-lLL"/>
                         <constraint firstItem="Ypy-pi-Z5g" firstAttribute="centerX" secondItem="fKc-gZ-pfH" secondAttribute="centerX" constant="5" id="YOA-Ic-F4G"/>
-                        <constraint firstItem="AtW-FF-MJM" firstAttribute="leading" secondItem="fKc-gZ-pfH" secondAttribute="leading" constant="25" id="i7V-Ii-V06"/>
+                        <constraint firstItem="AtW-FF-MJM" firstAttribute="leading" secondItem="fKc-gZ-pfH" secondAttribute="leading" constant="15" id="i7V-Ii-V06"/>
                         <constraint firstItem="Ypy-pi-Z5g" firstAttribute="centerY" secondItem="fKc-gZ-pfH" secondAttribute="centerY" constant="5" id="jAa-4l-CB2"/>
                         <constraint firstItem="AtW-FF-MJM" firstAttribute="centerY" secondItem="fKc-gZ-pfH" secondAttribute="centerY" constant="5" id="lmV-1X-UKN"/>
                     </constraints>

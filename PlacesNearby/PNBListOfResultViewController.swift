@@ -84,6 +84,7 @@ class PNBListOfResultViewController: UIViewController {
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var bottomBarBottomContraint: NSLayoutConstraint!
 	var listOfPlacesFromApi:[PlaceDataForListAndMap]?
+	var currentUi:currentUIState?
 	var hasMoreToLoad = false
 	enum currentUIState:Int{
 		case list = 1,map = 2
@@ -212,16 +213,23 @@ class PNBListOfResultViewController: UIViewController {
 		self.navigationController?.popViewController(animated: true)
 	}
 	@IBAction func didSelectedFirstOption(_ sender: Any) {
+		if currentUi == currentUIState.list{
+			return
+		}
 		loadCurrentUIType(currentType: currentUIState.list)
 	}
 
 	@IBAction func didSelectedSecondOption(_ sender: Any) {
+		if currentUi == currentUIState.map{
+			return
+		}
 		loadCurrentUIType(currentType: currentUIState.map)
 	}
 	
 	@IBOutlet weak var didSelectedThirdOption: UIButton!
 
 	private func addControllerForList(){
+		currentUi = currentUIState.list
 		let listViewController = PNBListTableControllerViewController(listOfPlaces: self.listOfPlacesFromApi!)
 		self.replaceOrAddViewController(viewController: listViewController)
 		if self.bottomBarBottomContraint.constant < 0 {
@@ -242,6 +250,7 @@ class PNBListOfResultViewController: UIViewController {
 	}
 
 	private func addMapViewController(){
+		currentUi = currentUIState.map
 		self.replaceOrAddViewController(viewController: PNBMapViewController(listOfPlaces:self.listOfPlacesFromApi!))
 		if self.bottomBarBottomContraint.constant < 0 {
 			slideInBottomBar()

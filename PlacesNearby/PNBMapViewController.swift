@@ -43,6 +43,12 @@ class PNBMapViewController: UIViewController, MKMapViewDelegate, DetailsViewProt
 		mapView.showsUserLocation = true
 	}
 
+
+	private func loadDetailsControllerWithID(placeID:String){
+		let detailsController = PNBPlaceDetailsViewController(placeID: placeID)
+		self.navigationController?.pushViewController(detailsController, animated: true)
+	}
+
 	func configureDetailsView(annotationView:PNBAnnotationView, placeDetails:PlaceDataForListAndMap){
 		let viewForDetails = PNBMapDetailView.instanceFromNib()
 		let views = ["viewForDetails": viewForDetails]
@@ -75,6 +81,6 @@ class PNBMapViewController: UIViewController, MKMapViewDelegate, DetailsViewProt
 	}
 
 	func didTapOnDetailsViewWithID(placeID: String) {
-		Swift.print(placeID)
+		loadDetailsControllerWithID(placeID: placeID)
 	}
 }

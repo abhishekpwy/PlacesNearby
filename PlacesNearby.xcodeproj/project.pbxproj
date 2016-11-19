@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4618B2D11DE03427004E4022 /* PNBPlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4618B2CF1DE03427004E4022 /* PNBPlaceDetailsViewController.swift */; };
+		4618B2D21DE03427004E4022 /* PNBPlaceDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2D01DE03427004E4022 /* PNBPlaceDetailsViewController.xib */; };
+		4618B2D61DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4618B2D41DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift */; };
+		4618B2D71DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2D51DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib */; };
 		464071F21DD0D66D00D9170F /* PNBApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F11DD0D66D00D9170F /* PNBApiManager.swift */; };
 		464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */; };
 		464071F71DD0DA8100D9170F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464071F61DD0DA8100D9170F /* CoreLocation.framework */; };
@@ -43,6 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4618B2CF1DE03427004E4022 /* PNBPlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBPlaceDetailsViewController.swift; sourceTree = "<group>"; };
+		4618B2D01DE03427004E4022 /* PNBPlaceDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBPlaceDetailsViewController.xib; sourceTree = "<group>"; };
+		4618B2D41DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBDetailsImagesCellTableViewCell.swift; sourceTree = "<group>"; };
+		4618B2D51DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBDetailsImagesCellTableViewCell.xib; sourceTree = "<group>"; };
 		464071F11DD0D66D00D9170F /* PNBApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBApiManager.swift; sourceTree = "<group>"; };
 		464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBUserDefaultManager.swift; sourceTree = "<group>"; };
 		464071F61DD0DA8100D9170F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -94,9 +102,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4618B2CE1DE033AB004E4022 /* PlaceDetailsUI */ = {
+			isa = PBXGroup;
+			children = (
+				4618B2CF1DE03427004E4022 /* PNBPlaceDetailsViewController.swift */,
+				4618B2D01DE03427004E4022 /* PNBPlaceDetailsViewController.xib */,
+				4618B2D31DE04163004E4022 /* detailsViewCells */,
+			);
+			name = PlaceDetailsUI;
+			sourceTree = "<group>";
+		};
+		4618B2D31DE04163004E4022 /* detailsViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				4618B2D41DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift */,
+				4618B2D51DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib */,
+			);
+			name = detailsViewCells;
+			sourceTree = "<group>";
+		};
 		464071EF1DD0D61100D9170F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4618B2CE1DE033AB004E4022 /* PlaceDetailsUI */,
 				468C23A11DD616D500D438EC /* ListOfResultUI */,
 				468C23A01DD616C300D438EC /* AppLaunch */,
 			);
@@ -278,6 +306,8 @@
 				469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */,
 				46D734631DDCC2DE003B7889 /* PNBErrorViewController.xib in Resources */,
 				469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */,
+				4618B2D21DE03427004E4022 /* PNBPlaceDetailsViewController.xib in Resources */,
+				4618B2D71DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib in Resources */,
 				468C23B81DD7706A00D438EC /* PNBListTableViewCell.xib in Resources */,
 				468C23BC1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib in Resources */,
 				468C23B21DD7647100D438EC /* PNBListTableControllerViewController.xib in Resources */,
@@ -309,7 +339,9 @@
 				468C23B71DD7706A00D438EC /* PNBListTableViewCell.swift in Sources */,
 				464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */,
 				469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */,
+				4618B2D11DE03427004E4022 /* PNBPlaceDetailsViewController.swift in Sources */,
 				46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */,
+				4618B2D61DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift in Sources */,
 				46D734621DDCC2DE003B7889 /* PNBErrorViewController.swift in Sources */,
 				468C23BB1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift in Sources */,
 				46D7345C1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift in Sources */,
