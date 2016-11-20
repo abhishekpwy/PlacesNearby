@@ -22,7 +22,8 @@ class PNBPlaceDetails{
 	let reviews:[PNBReviews]?
 	let photoreferences:[String]?
 	let isOpenNow:Bool?
-	init (placeID:String, placeTitle:String, address:String, type:String, phNo:String?, openingHrs:String?, websiteURL:String?, cost:Int?, placeLoaction:CLLocation, reviews:[PNBReviews]?, photoreferences:[String]?, isOpenNow:Bool?){
+	let rating:Double?
+	init (placeID:String, placeTitle:String, address:String, type:String, phNo:String?, openingHrs:String?, websiteURL:String?, cost:Int?, placeLoaction:CLLocation, reviews:[PNBReviews]?, photoreferences:[String]?, isOpenNow:Bool?, rating:Double?){
 		self.placeID = placeID
 		self.placeTitle = placeTitle
 		self.placeFormattedAddress = address
@@ -35,6 +36,143 @@ class PNBPlaceDetails{
 		self.reviews = reviews
 		self.photoreferences = photoreferences
 		self.isOpenNow = isOpenNow
+		self.rating = rating
+	}
+
+	var shouldShowCostRow:Bool {
+		if self.placeCost != nil || self.reviews != nil {
+			return true
+		}
+
+		return false
+	}
+
+	var shouldShowOpenNowRow:Bool {
+		if self.isOpenNow != nil || self.placePhoneNumber != nil || self.placeWebsiteUrl != nil {
+			return true
+		}
+		return false
+	}
+
+	var shouldShowReviewsRow:Bool {
+		if self.reviews != nil && self.reviews!.count > 0 {
+			return true
+		}
+		return false
+	}
+
+	var numberOfRowNeeded:Int {
+		var numberOfRows = 2
+		if shouldShowCostRow {
+			numberOfRows += 1
+		}
+		if shouldShowOpenNowRow{
+			numberOfRows += 1
+		}
+		if shouldShowReviewsRow {
+			numberOfRows += self.reviews!.count
+		}
+		if self.rating != nil {
+			numberOfRows += 1
+		}
+		return numberOfRows
+	}
+
+	final func costImageTextAndColor() -> (cost:String, color:UIColor, image:UIImage){
+		var cost:String = "Cost- Unknown"
+		var image:UIImage = UIImage(named: "NotInfoCost")!
+		var color:UIColor = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
+		if let costOfPlace = self.placeCost		{
+			if costOfPlace == 0 {
+				cost  = "Free of cost"
+				image = UIImage(named: "CostLow")!
+				color = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+			}else if costOfPlace == 1 {
+				cost = "Low cost"
+				image = UIImage(named: "CostLow")!
+				color = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+			}else if costOfPlace == 2{
+				cost = "Moderate cost"
+				image = UIImage(named: "CostMed")!
+				color = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
+			}else if costOfPlace == 3{
+				cost = "Expensive place"
+				image = UIImage(named: "CostExpensive")!
+				color = UIColor(red: 197/255, green: 105/255, blue: 116/255, alpha: 1.0)
+			}else if costOfPlace == 4{
+				cost = "Very Expensive place"
+				image = UIImage(named: "CostVeyExpensive")!
+				color = UIColor(red: 174/255, green: 2/255, blue: 23/255, alpha: 1.0)
+			}
+		}
+		return (cost, color, image)
+	}
+
+	final func numberOfVisitorsDetails() -> (text:String, color:UIColor, image:UIImage){
+		var text = "Number of visitors Unkonwn"
+		var color = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
+		var image = UIImage(named: "Unknown")!
+		if let ratings = self.reviews{
+			if ratings.count == 0 {
+				text = "Low number of visitors"
+				color = UIColor(red: 174/255, green: 2/255, blue: 23/255, alpha: 1.0)
+				image = UIImage (named:"LowVisitors")!
+			}else if ratings.count < 5{
+				text = "Moderate number of visitors"
+				color = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
+				image = UIImage (named:"ModerateVisitors")!
+			}else {
+				text = "High number of visitors"
+				color = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+				image = UIImage (named:"HighVisitors")!
+			}
+		}
+		return (text, color, image)
+	}
+
+	final func ratingImageTextAndTextColor() -> (ratingText:String, color:UIColor, image:UIImage, visitorsText:String){
+		var ratingText = "Unknown rating"
+		var color = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
+		var image = UIImage(named: "UnknownRating")
+		var visitorsText = ""
+		if self.reviews != nil {
+			visitorsText = "- \(self.reviews!.count) Reviews"
+		}
+		if let ratingValue = self.rating {
+			ratingText = "\(self.rating!) Stars"
+			if ratingValue < 2 {
+				color = UIColor(red: 174/255, green: 2/255, blue: 23/255, alpha: 1.0)
+				image = UIImage(named:"LowRating")
+			}else if ratingValue <= 3 {
+				color = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
+				image = UIImage(named:"MediumRating")
+			}else if ratingValue <= 4 {
+				color = UIColor(red: 139/255, green: 226/255, blue: 51/255, alpha: 1.0)
+				image = UIImage(named:"ModerateRating")
+			}else {
+				color = UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+				image = UIImage(named:"HighRating")
+			}
+		}
+		return (ratingText, color, image!, visitorsText)
+	}
+
+	final func ratingTextAndColor(forIndex:Int) -> (rating:String, name:String, color:UIColor, text:String){
+		var name = "(No Name)"
+		var rating = "Unknown"
+		var color = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
+		var ratignText = ""
+		if let reviewsList = self.reviews{
+			let reviewIndex = forIndex - (self.numberOfRowNeeded - reviewsList.count)
+			if reviewIndex >= 0 && reviewIndex < reviewsList.count{
+				let review = reviewsList[reviewIndex]
+				name = review.nameOfReviewer
+				rating = "\(review.rating) Stars"
+				ratignText = review.ratingText
+				color = review.colorForRating
+			}
+		}
+		return (rating, name, color, ratignText)
 	}
 }
 
@@ -47,6 +185,18 @@ class PNBReviews{
 		self.rating = rating
 		self.ratingText = ratingText
 	}
+
+	var colorForRating:UIColor{
+		if rating < 2 {
+			return UIColor(red: 174/255, green: 2/255, blue: 23/255, alpha: 1.0)
+		}else if rating <= 3 {
+			return UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
+		}else if rating <= 4 {
+			return UIColor(red: 139/255, green: 226/255, blue: 51/255, alpha: 1.0)
+		}else {
+			return UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+		}
+	}
 }
 
 class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -57,6 +207,9 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 	let placeDetailsTitleAndAddress = "placetitleandaddress"
 	let blankCellID = "PNBDetailsTableViewCell"
 	let openNowCellID = "PNBDetailsOpenStatusTableViewCell"
+	let costCellID = "PNBDetailsCostTableViewCell"
+	let topRowReviewID = "PNBReviewsTopTableViewCell"
+	let reviewCellID = "PNBPlaceDetailsReviewsTableViewCell"
 	let placeID:String
 	var placeDetails:PNBPlaceDetails?
 	init(placeID:String){
@@ -77,6 +230,9 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		tableView.register(UINib(nibName: "PNBDetailsPageTitleCellTableViewCell", bundle: nil), forCellReuseIdentifier: placeDetailsTitleAndAddress)
 		tableView.register(UINib(nibName: "PNBDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: blankCellID)
 		tableView.register(UINib(nibName: "PNBDetailsOpenStatusTableViewCell", bundle: nil), forCellReuseIdentifier: openNowCellID)
+		tableView.register(UINib(nibName: "PNBDetailsCostTableViewCell", bundle: nil), forCellReuseIdentifier: costCellID)
+		tableView.register(UINib(nibName: "PNBReviewsTopTableViewCell", bundle: nil), forCellReuseIdentifier: topRowReviewID)
+		tableView.register(UINib(nibName: "PNBPlaceDetailsReviewsTableViewCell", bundle: nil), forCellReuseIdentifier: reviewCellID)
 		tryToGetPlaceDetails()
 	}
 
@@ -137,7 +293,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		if self.placeDetails == nil {
 			return 0
 		}
-		return 3
+		return self.placeDetails!.numberOfRowNeeded
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,7 +310,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 			return cell
 		}
 
-		if indexPath.row == 2 && (placeDetails!.isOpenNow != nil || placeDetails!.placePhoneNumber != nil || placeDetails!.placeWebsiteUrl != nil) {
+		if indexPath.row == 2 && (placeDetails!.shouldShowOpenNowRow) {
 			let cell = tableView.dequeueReusableCell(withIdentifier: openNowCellID, for: indexPath) as! PNBDetailsOpenStatusTableViewCell
 			//open now
 			cell.openStatueLabel.textColor = self.colorForOpenNow
@@ -190,7 +346,39 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 
 			return cell
 		}
+		if indexPath.row == 3 && placeDetails!.shouldShowCostRow {
+			let cell = tableView.dequeueReusableCell(withIdentifier: costCellID, for: indexPath) as! PNBDetailsCostTableViewCell
+			let costData = placeDetails!.costImageTextAndColor()
+			cell.costImage.image = costData.image
+			cell.costLabel.text = costData.cost
+			cell.costLabel.textColor = costData.color
+			let numberOfVisitorsDetails = placeDetails!.numberOfVisitorsDetails()
+			cell.numberOfVisitorsLabel.textColor = numberOfVisitorsDetails.color
+			cell.numberOfVisitorsLabel.text = numberOfVisitorsDetails.text
+			cell.noOfVisitorsImage.image = numberOfVisitorsDetails.image
+			return cell
+		}
 
+		if indexPath.row == 4 && self.placeDetails!.rating != nil{
+			let cell = tableView.dequeueReusableCell(withIdentifier: topRowReviewID, for: indexPath) as! PNBReviewsTopTableViewCell
+			let dataForRating = placeDetails!.ratingImageTextAndTextColor()
+			cell.starImage?.image = dataForRating.image
+			cell.ratingLabel.textColor = dataForRating.color
+			cell.ratingLabel.text = dataForRating.ratingText
+			cell.numberOfVisitorsLabel.text = dataForRating.visitorsText
+			cell.layoutIfNeeded()
+			return cell
+		}
+
+		if indexPath.row <= self.placeDetails!.numberOfRowNeeded && self.placeDetails?.reviews != nil{
+			let cell = tableView.dequeueReusableCell(withIdentifier: reviewCellID, for: indexPath) as! PNBPlaceDetailsReviewsTableViewCell
+			let data = self.placeDetails!.ratingTextAndColor(forIndex: indexPath.row)
+			cell.name.text = data.name
+			cell.rating.text = data.rating
+			cell.rating.textColor = data.color
+			cell.review.text = data.text
+			return cell
+		}
 		let blankCell = tableView.dequeueReusableCell(withIdentifier: blankCellID, for: indexPath) as! PNBDetailsTableViewCell
 		return blankCell
 	}

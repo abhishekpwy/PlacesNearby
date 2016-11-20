@@ -307,8 +307,13 @@ class PNBDataManager {
 			phoneNumber = phNo
  		}
 
+		var rating:Double?
+		if let ratingValue = placesDetailsInJson["rating"] as? Double{
+			rating = ratingValue
+		}
 
-		return PNBPlaceDetails(placeID: placeID, placeTitle: placeTitle, address: fomattedAddress, type: types, phNo: phoneNumber, openingHrs: formattedOpeningHourText, websiteURL: website, cost: cost, placeLoaction: placeLocation, reviews: reviews, photoreferences: photoReferences, isOpenNow:isOpenNow)
+
+		return PNBPlaceDetails(placeID: placeID, placeTitle: placeTitle, address: fomattedAddress, type: types, phNo: phoneNumber, openingHrs: formattedOpeningHourText, websiteURL: website, cost: cost, placeLoaction: placeLocation, reviews: reviews, photoreferences: photoReferences, isOpenNow:isOpenNow, rating:rating)
 
 	}
 
