@@ -56,6 +56,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 	let placesPicDetailsID = "PNBDetailsImages"
 	let placeDetailsTitleAndAddress = "placetitleandaddress"
 	let blankCellID = "PNBDetailsTableViewCell"
+	let openNowCellID = "PNBDetailsOpenStatusTableViewCell"
 	let placeID:String
 	var placeDetails:PNBPlaceDetails?
 	init(placeID:String){
@@ -75,6 +76,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		tableView.register(UINib(nibName: "PNBDetailsImagesCellTableViewCell", bundle: nil), forCellReuseIdentifier: placesPicDetailsID)
 		tableView.register(UINib(nibName: "PNBDetailsPageTitleCellTableViewCell", bundle: nil), forCellReuseIdentifier: placeDetailsTitleAndAddress)
 		tableView.register(UINib(nibName: "PNBDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: blankCellID)
+		tableView.register(UINib(nibName: "PNBDetailsOpenStatusTableViewCell", bundle: nil), forCellReuseIdentifier: openNowCellID)
 		tryToGetPlaceDetails()
 	}
 
@@ -116,6 +118,16 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 
 	}
 
+	var colorForOpenNow:UIColor {
+		if self.placeDetails!.isOpenNow == nil {
+			return UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0)
+		}
+		if self.placeDetails!.isOpenNow! {
+			return UIColor(red: 65/255, green: 117/255, blue: 5/255, alpha: 1.0)
+		}
+		return UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1.0)
+	}
+
 	//MARK:Table data source
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -125,7 +137,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		if self.placeDetails == nil {
 			return 0
 		}
-		return 2
+		return 3
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,6 +151,43 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 			cell.nameOfPlace.text = placeDetails!.placeTitle
 			cell.formattedAddress.text = placeDetails!.placeFormattedAddress
 			cell.types.text = placeDetails!.placeType
+			return cell
+		}
+
+		if indexPath.row == 2 && (placeDetails!.isOpenNow != nil || placeDetails!.placePhoneNumber != nil || placeDetails!.placeWebsiteUrl != nil) {
+			let cell = tableView.dequeueReusableCell(withIdentifier: openNowCellID, for: indexPath) as! PNBDetailsOpenStatusTableViewCell
+			//open now
+			cell.openStatueLabel.textColor = self.colorForOpenNow
+			if placeDetails!.isOpenNow == nil{
+				cell.openStatueLabel.text = "Current open Status is Unknown"
+			}else if placeDetails!.isOpenNow!{
+				cell.openStatueLabel.text = "Place is Open now"
+			}else {
+				cell.openStatueLabel.text = "Placed is closed currently"
+			}
+
+			//open time
+
+			if placeDetails!.placeFomattedOpeningHours == nil {
+				cell.openTimingLabel.text = "Opening and closing time are not shared"
+			}else {
+				cell.openTimingLabel.text = placeDetails!.placeFomattedOpeningHours!
+			}
+
+			//phone nu
+			if placeDetails!.placePhoneNumber == nil {
+				cell.pnNoLabel.text = "Phone Number not shared"
+			}else {
+				cell.pnNoLabel.text = placeDetails!.placePhoneNumber!
+			}
+
+			//website
+			if placeDetails!.placeWebsiteUrl == nil {
+				cell.websiteUrlButton.text = ""
+			}else {
+				cell.websiteUrlButton.text = placeDetails!.placeWebsiteUrl!
+			}
+
 			return cell
 		}
 

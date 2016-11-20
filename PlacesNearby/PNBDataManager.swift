@@ -239,7 +239,7 @@ class PNBDataManager {
 
 		if let openingHoursInfo = placesDetailsInJson["opening_hours"] as? [String:AnyObject] {
 			formattedOpeningHourText = getFormattedOpeningHourText(info: openingHoursInfo)
-			if let openStatus = openingHoursInfo["opening_hours"] as? Bool {
+			if let openStatus = openingHoursInfo["open_now"] as? Bool {
 				isOpenNow = openStatus
 			}
 		}
