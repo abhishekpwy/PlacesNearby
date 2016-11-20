@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNBPlaceDetailsViewController" customModule="PlacesNearby" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="caQ-EB-X2N" id="lAg-G8-ztk"/>
                 <outlet property="containerView" destination="XW0-Ht-US8" id="TXh-el-vgC"/>
+                <outlet property="tableContainerView" destination="DZH-b0-IYX" id="Btl-bY-zmj"/>
                 <outlet property="tableView" destination="oWF-bZ-WOh" id="Tgd-A3-Ubp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,6 +23,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="caQ-EB-X2N">
+                    <rect key="frame" x="177" y="323" width="20" height="20"/>
+                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-b0-IYX">
                     <rect key="frame" x="0.0" y="72" width="375" height="545"/>
                     <subviews>
@@ -87,10 +92,12 @@
                 <constraint firstAttribute="bottom" secondItem="XW0-Ht-US8" secondAttribute="bottom" id="FuP-vo-avy"/>
                 <constraint firstItem="DZH-b0-IYX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Glg-b4-VLF"/>
                 <constraint firstItem="D9Y-El-YR3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QbV-of-CT8"/>
+                <constraint firstItem="caQ-EB-X2N" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WKd-Sg-CwG"/>
                 <constraint firstItem="DZH-b0-IYX" firstAttribute="top" secondItem="D9Y-El-YR3" secondAttribute="bottom" id="Yrb-54-XuJ"/>
                 <constraint firstAttribute="trailing" secondItem="D9Y-El-YR3" secondAttribute="trailing" id="nFR-hF-hxZ"/>
                 <constraint firstAttribute="trailing" secondItem="DZH-b0-IYX" secondAttribute="trailing" id="nNY-Ou-XU2"/>
                 <constraint firstItem="D9Y-El-YR3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nzN-pR-45W"/>
+                <constraint firstItem="caQ-EB-X2N" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="vPV-YS-n7h"/>
                 <constraint firstAttribute="trailing" secondItem="XW0-Ht-US8" secondAttribute="trailing" id="ynL-Nm-Cg2"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="113.5"/>

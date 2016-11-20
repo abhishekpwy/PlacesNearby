@@ -71,7 +71,7 @@ class PlaceDataForListAndMap {
 	}
 }
 
-class PNBListOfResultViewController: UIViewController {
+class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 	let currentPlaceType:PlaceType
 	@IBOutlet weak var backButton: UIButton!
 	@IBOutlet weak var placeTopImage: UIImageView!
@@ -246,7 +246,7 @@ class PNBListOfResultViewController: UIViewController {
 	}
 
 	private func checkErrorAndShowErrorView(error:NSError){
-		let errorController = PNBErrorViewController(error: error)
+		let errorController = PNBErrorViewController(error: error, delgateToErrorController:self)
 		self.replaceOrAddViewController(viewController: errorController)
 	}
 
@@ -278,6 +278,17 @@ class PNBListOfResultViewController: UIViewController {
 		let top = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.containerView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0.0)
 		let bottom = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.containerView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0.0)
 		NSLayoutConstraint.activate([left, right, top, bottom])
+	}
+
+	//MARK:Error delegate
+	func didSelectedRetryForError(error: NSError) {
+		//
+		if error.domain == PNBErrorDomain {
+			if error.code == PNBErrorCodes.listOfPlacesFromApiEmpty.rawValue{
+				//
+			}
+		}
+		tryToFetchListOfPlacesNearBy()
 	}
 
 }

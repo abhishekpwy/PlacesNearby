@@ -19,6 +19,7 @@ enum PNBErrorCodes:Int{
 	case loadMoreWithoudNextPageToken = 6
 	case loadMoreReturnedZeroPlaces = 7
 	case placeDetailsCanNotBeloaded = 8
+	case someThingWentWrong = 9
 }
 
 //somes constants
@@ -375,6 +376,12 @@ class PNBDataManager {
 
 
 	final func getPlaceDetailsFor(placeID:String, completion: @escaping (_ placeDetails:PNBPlaceDetails?, _ error:NSError?) -> Void){
+		//check for netwrok connectivity first
+		if !Reachability.isConnectedToNetwork(){
+			let error = NSError(domain: PNBErrorDomain, code: PNBErrorCodes.InternetNotAvailable.rawValue, userInfo: nil)
+			completion(nil, error)
+			return
+		}
 		apiManager.getPlaceDetails(forPlaceID: placeID) {
 			[weak self]
 			(result, error)

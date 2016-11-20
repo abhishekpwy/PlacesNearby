@@ -8,14 +8,20 @@
 
 import UIKit
 
+protocol ErrorControllerDelagte:class {
+	func didSelectedRetryForError(error:NSError)
+}
+
 class PNBErrorViewController: UIViewController {
 
 	@IBOutlet weak var errorDiscriptionLabel: UILabel!
 	@IBOutlet weak var imageForError: UIImageView!
 	@IBOutlet weak var errorButton: UIButton!
+	weak var delgateToErrorController:ErrorControllerDelagte?
 	let errorForController:NSError
 
-	init(error:NSError){
+	init(error:NSError, delgateToErrorController:ErrorControllerDelagte){
+		self.delgateToErrorController = delgateToErrorController
 		self.errorForController = error
 		super.init(nibName: "PNBErrorViewController", bundle: nil)
 	}
@@ -36,7 +42,7 @@ class PNBErrorViewController: UIViewController {
     }
 
 	private func setTitleAndImage(){
-		var discriptionForError = ""
+		var discriptionForError = "Oops!! \n Something went wrong :("
 		var imageToShow = UIImage(named: "SadFace")
 		var buttonTitle = "Retry"
 		switch errorForController.code {
@@ -50,10 +56,14 @@ class PNBErrorViewController: UIViewController {
 			discriptionForError = "Oops! \n We can't find any relevant places around you :("
 			buttonTitle = "Modify Search"
 		default:
-			discriptionForError = errorForController.localizedDescription
+			discriptionForError = "Oops!! \n Something went wrong :("
 		}
 		self.imageForError.image = imageToShow
 		self.errorDiscriptionLabel.text = discriptionForError
 		self.errorButton.setTitle(buttonTitle, for: UIControlState.normal)
+	}
+
+	@IBAction func didSelectedRetry(_ sender: Any) {
+		self.delgateToErrorController?.didSelectedRetryForError(error: self.errorForController)
 	}
 }

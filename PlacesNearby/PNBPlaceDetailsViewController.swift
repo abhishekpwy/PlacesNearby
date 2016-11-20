@@ -199,10 +199,13 @@ class PNBReviews{
 	}
 }
 
-class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ErrorControllerDelagte {
 
+	@IBOutlet weak var tableContainerView: UIView!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var containerView: UIView!
 	@IBOutlet weak var tableView: UITableView!
+	var errorView:UIView?
 	let placesPicDetailsID = "PNBDetailsImages"
 	let placeDetailsTitleAndAddress = "placetitleandaddress"
 	let blankCellID = "PNBDetailsTableViewCell"
@@ -265,13 +268,33 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 						return
 				}
 				blockSelf.placeDetails = placeDetails!
-				blockSelf.tableView.reloadData()
+				blockSelf.loadPlaceDetails()
 			}
 		}
 	}
 
-	func showError(error:NSError){
+	func loadPlaceDetails(){
+		self.errorView?.removeFromSuperview()
+		self.tableView.reloadData()
+	}
 
+	func showError(error:NSError){
+		if self.errorView == nil {
+			let errorController = PNBErrorViewController(error: error, delgateToErrorController:self)
+			self.addChildViewController(errorController)
+			errorView = errorController.view
+		}
+		self.addFittingSubviewViewInContainer(view: errorView!)
+	}
+
+	private func addFittingSubviewViewInContainer(view:UIView) {
+		self.tableContainerView.addSubview(view)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		let left = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: self.tableContainerView, attribute: NSLayoutAttribute.left, multiplier: 1.0, constant: 0.0)
+		let right = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: self.tableContainerView, attribute: NSLayoutAttribute.right, multiplier: 1.0, constant: 0.0)
+		let top = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.tableContainerView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0.0)
+		let bottom = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.tableContainerView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0.0)
+		NSLayoutConstraint.activate([left, right, top, bottom])
 	}
 
 	var colorForOpenNow:UIColor {
@@ -383,8 +406,10 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		return blankCell
 	}
 
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+	//MARK:Error delegate
+	func didSelectedRetryForError(error: NSError) {
+		tryToGetPlaceDetails()
 	}
 
 

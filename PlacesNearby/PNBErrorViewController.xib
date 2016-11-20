@@ -41,6 +41,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="didSelectedRetry:" destination="-1" eventType="touchUpInside" id="VYi-xZ-aNh"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRY-Wn-i67">
                             <rect key="frame" x="1" y="87" width="39.5" height="19.5"/>
