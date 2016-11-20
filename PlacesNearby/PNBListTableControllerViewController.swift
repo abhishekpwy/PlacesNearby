@@ -31,6 +31,7 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 		tableView.register(UINib(nibName: "PNBListTableViewCell", bundle: nil), forCellReuseIdentifier: "PNBCell")
 		tableView.register(UINib(nibName: "PNBLoadMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "loadMoreCell")
     }
+	
 
 	private func getImageForDistance(distance:Double)-> (image:UIImage, colorForText:UIColor) {
 		let currentMaxSearchDistance = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.radiusOfSearch) as! Int
@@ -143,10 +144,9 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 		if indexPath.row == self.listOfPlaces.count {
 			//it is loadmore row
 			loadMoreInParentAndSelf()
+			return
 		}
 		let placeID = self.listOfPlaces[indexPath.row].placeID
 		loadDetailsControllerWithID(placeID: placeID)
 	}
-
-
 }

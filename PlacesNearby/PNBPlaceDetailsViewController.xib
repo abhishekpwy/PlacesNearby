@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNBPlaceDetailsViewController" customModule="PlacesNearby" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="XW0-Ht-US8" id="TXh-el-vgC"/>
+                <outlet property="tableView" destination="oWF-bZ-WOh" id="Tgd-A3-Ubp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,10 +21,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWF-bZ-WOh">
-                    <rect key="frame" x="0.0" y="73" width="375" height="543"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-b0-IYX">
+                    <rect key="frame" x="0.0" y="72" width="375" height="545"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="oWF-bZ-WOh">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="4qA-aS-Lz1"/>
+                                <outlet property="delegate" destination="-1" id="DMb-Z3-fuu"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="oWF-bZ-WOh" secondAttribute="trailing" id="3v8-D2-sbV"/>
+                        <constraint firstAttribute="bottom" secondItem="oWF-bZ-WOh" secondAttribute="bottom" id="D5e-ck-SCy"/>
+                        <constraint firstItem="oWF-bZ-WOh" firstAttribute="top" secondItem="DZH-b0-IYX" secondAttribute="top" id="iMu-Oy-GOq"/>
+                        <constraint firstItem="oWF-bZ-WOh" firstAttribute="leading" secondItem="DZH-b0-IYX" secondAttribute="leading" id="pH8-Ii-gpV"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9Y-El-YR3" customClass="PNHeaderView" customModule="PlacesNearby" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                     <subviews>
@@ -33,6 +51,9 @@
                                 <constraint firstAttribute="width" constant="25" id="Mfa-hj-4EW"/>
                             </constraints>
                             <state key="normal" image="Header-Back_button"/>
+                            <connections>
+                                <action selector="didClickBackButton:" destination="-1" eventType="touchUpInside" id="eKd-Qj-6dt"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rq-vY-0U8">
                             <rect key="frame" x="135.5" y="30.5" width="104" height="21"/>
@@ -61,14 +82,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="XW0-Ht-US8" firstAttribute="top" secondItem="DZH-b0-IYX" secondAttribute="bottom" id="BJc-oe-8b0"/>
                 <constraint firstItem="XW0-Ht-US8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DCy-9G-O3L"/>
-                <constraint firstItem="oWF-bZ-WOh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DkB-Kl-6qW"/>
                 <constraint firstAttribute="bottom" secondItem="XW0-Ht-US8" secondAttribute="bottom" id="FuP-vo-avy"/>
+                <constraint firstItem="DZH-b0-IYX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Glg-b4-VLF"/>
                 <constraint firstItem="D9Y-El-YR3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QbV-of-CT8"/>
-                <constraint firstAttribute="trailing" secondItem="oWF-bZ-WOh" secondAttribute="trailing" id="cwi-EB-7TD"/>
-                <constraint firstItem="oWF-bZ-WOh" firstAttribute="top" secondItem="D9Y-El-YR3" secondAttribute="bottom" constant="1" id="dzU-Z2-Rh8"/>
-                <constraint firstItem="XW0-Ht-US8" firstAttribute="top" secondItem="oWF-bZ-WOh" secondAttribute="bottom" constant="1" id="eo4-wg-VKy"/>
+                <constraint firstItem="DZH-b0-IYX" firstAttribute="top" secondItem="D9Y-El-YR3" secondAttribute="bottom" id="Yrb-54-XuJ"/>
                 <constraint firstAttribute="trailing" secondItem="D9Y-El-YR3" secondAttribute="trailing" id="nFR-hF-hxZ"/>
+                <constraint firstAttribute="trailing" secondItem="DZH-b0-IYX" secondAttribute="trailing" id="nNY-Ou-XU2"/>
                 <constraint firstItem="D9Y-El-YR3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nzN-pR-45W"/>
                 <constraint firstAttribute="trailing" secondItem="XW0-Ht-US8" secondAttribute="trailing" id="ynL-Nm-Cg2"/>
             </constraints>

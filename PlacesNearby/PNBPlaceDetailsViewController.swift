@@ -21,7 +21,8 @@ class PNBPlaceDetails{
 	let placeLoaction:CLLocation
 	let reviews:[PNBReviews]?
 	let photoreferences:[String]?
-	init (placeID:String, placeTitle:String, address:String, type:String, phNo:String?, openingHrs:String?, websiteURL:String?, cost:Int?, placeLoaction:CLLocation, reviews:[PNBReviews]?, photoreferences:[String]?){
+	let isOpenNow:Bool?
+	init (placeID:String, placeTitle:String, address:String, type:String, phNo:String?, openingHrs:String?, websiteURL:String?, cost:Int?, placeLoaction:CLLocation, reviews:[PNBReviews]?, photoreferences:[String]?, isOpenNow:Bool?){
 		self.placeID = placeID
 		self.placeTitle = placeTitle
 		self.placeFormattedAddress = address
@@ -33,6 +34,7 @@ class PNBPlaceDetails{
 		self.placeLoaction = placeLoaction
 		self.reviews = reviews
 		self.photoreferences = photoreferences
+		self.isOpenNow = isOpenNow
 	}
 }
 
@@ -47,9 +49,13 @@ class PNBReviews{
 	}
 }
 
-class PNBPlaceDetailsViewController: UIViewController {
+class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+	@IBOutlet weak var containerView: UIView!
+	@IBOutlet weak var tableView: UITableView!
+	let placesPicDetailsID = "PNBDetailsImages"
 	let placeID:String
+	var placeDetails:PNBPlaceDetails?
 	init(placeID:String){
 		self.placeID = placeID
 		super.init(nibName: "PNBPlaceDetailsViewController", bundle: nil)
@@ -61,7 +67,19 @@ class PNBPlaceDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.tableView.estimatedRowHeight = 90
+		self.tableView.rowHeight = UITableViewAutomaticDimension
+		self.automaticallyAdjustsScrollViewInsets = false
+		tableView.register(UINib(nibName: "PNBDetailsImagesCellTableViewCell", bundle: nil), forCellReuseIdentifier: placesPicDetailsID)
 		tryToGetPlaceDetails()
+	}
+
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+
+	@IBAction func didClickBackButton(_ sender: AnyObject) {
+		self.navigationController?.popViewController(animated: true)
 	}
 
 	private func tryToGetPlaceDetails() {
@@ -73,11 +91,48 @@ class PNBPlaceDetailsViewController: UIViewController {
 				else {
 					return
 			}
-			
-
+			if error != nil {
+				blockSelf.showError(error: error!)
+				return
+			}
+			runInMainQueue {
+				[weak self]
+				in
+				guard let blockSelf = self
+					else{
+						return
+				}
+				blockSelf.placeDetails = placeDetails!
+				blockSelf.tableView.reloadData()
+			}
 		}
 	}
 
-	
+	func showError(error:NSError){
+
+	}
+
+	//MARK:Table data source
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
+
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if self.placeDetails == nil {
+			return 0
+		}
+		return 1
+	}
+
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: placesPicDetailsID, for: indexPath) as! PNBDetailsImagesCellTableViewCell
+		cell.loadListOfPhotos(photoReferences: self.placeDetails!.photoreferences, parentController: self)
+		return cell
+	}
+
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+	}
+
 
 }

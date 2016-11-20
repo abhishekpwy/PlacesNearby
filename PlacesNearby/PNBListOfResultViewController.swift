@@ -95,6 +95,7 @@ class PNBListOfResultViewController: UIViewController {
         // Do any additional setup after loading the view.
 		setUpIntialUI()
 		tryToFetchListOfPlacesNearBy()
+		self.automaticallyAdjustsScrollViewInsets = false
     }
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {

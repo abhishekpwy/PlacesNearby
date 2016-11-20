@@ -235,10 +235,15 @@ class PNBDataManager {
 		let isPermanentlyClosed = placesDetailsInJson["permanently_closed"] as? Bool ?? false
 
 		var formattedOpeningHourText:String? = nil
+		var isOpenNow:Bool?
 
 		if let openingHoursInfo = placesDetailsInJson["opening_hours"] as? [String:AnyObject] {
 			formattedOpeningHourText = getFormattedOpeningHourText(info: openingHoursInfo)
+			if let openStatus = openingHoursInfo["opening_hours"] as? Bool {
+				isOpenNow = openStatus
+			}
 		}
+
 
 		var website:String? = nil
 		if let webSiteUrl = placesDetailsInJson["website"] as? String {
@@ -286,7 +291,7 @@ class PNBDataManager {
  		}
 
 
-		return PNBPlaceDetails(placeID: placeID, placeTitle: placeTitle, address: fomattedAddress, type: types, phNo: phoneNumber, openingHrs: formattedOpeningHourText, websiteURL: website, cost: cost, placeLoaction: placeLocation, reviews: reviews, photoreferences: photoReferences)
+		return PNBPlaceDetails(placeID: placeID, placeTitle: placeTitle, address: fomattedAddress, type: types, phNo: phoneNumber, openingHrs: formattedOpeningHourText, websiteURL: website, cost: cost, placeLoaction: placeLocation, reviews: reviews, photoreferences: photoReferences, isOpenNow:isOpenNow)
 
 	}
 

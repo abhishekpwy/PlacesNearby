@@ -13,7 +13,7 @@ class PNBApiManager{
 	let placesApiURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 	let loadMoreApiURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 	let placeDetailsApi = "https://maps.googleapis.com/maps/api/place/details/json?"
-	let appKey = "AIzaSyDbMghJ-L1LjL9cYUvY72cdYKgyk2rGBTc"
+	static let appKey = "AIzaSyDbMghJ-L1LjL9cYUvY72cdYKgyk2rGBTc"
 
 
 	private func fireApiGetResponse(urlForApi:URL, completion:@escaping (_ result: [String:Any]?, _ error:NSError?) -> Void){
@@ -88,7 +88,7 @@ class PNBApiManager{
 			stringForUrl += "&types=\(placeType.typesForApi)"
 		}
 		//key
-		stringForUrl += "&key="+appKey
+		stringForUrl += "&key="+PNBApiManager.appKey
 		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
 		return urlToUse
 
@@ -100,9 +100,25 @@ class PNBApiManager{
 		//pageToken
 		stringForUrl += "pagetoken=" + pageToken
 		//key
+		stringForUrl += "&key="+PNBApiManager.appKey
+		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
+		return urlToUse
+	}
+
+	static func getUrlForPhtotoDowload(photoReference:String, maxHeight:Int, maxWidth:Int) -> NSURL{
+		//https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=YOUR_API_KEY
+		var stringForUrl = "https://maps.googleapis.com/maps/api/place/photo?"
+		//photoreference
+		stringForUrl += "photoreference=" + photoReference
+
+		stringForUrl += "&maxheight=\(maxHeight)"
+
+		stringForUrl += "&maxwidth=\(maxWidth)"
+		//key
 		stringForUrl += "&key="+appKey
 		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
 		return urlToUse
+
 	}
 
 	private func getUrlForPlaceDetails(placeID:String) -> NSURL {
@@ -111,7 +127,7 @@ class PNBApiManager{
 		//pageToken
 		stringForUrl += "placeid=" + placeID
 		//key
-		stringForUrl += "&key="+appKey
+		stringForUrl += "&key="+PNBApiManager.appKey
 		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
 		return urlToUse
 	}

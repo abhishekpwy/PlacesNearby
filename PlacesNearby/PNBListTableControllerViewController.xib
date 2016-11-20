@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,20 +20,33 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2fs-Pe-Idw">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fc9-5a-BLl">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2fs-Pe-Idw">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Qpb-fb-ApY"/>
+                                <outlet property="delegate" destination="-1" id="NEo-ec-kH8"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="Qpb-fb-ApY"/>
-                        <outlet property="delegate" destination="-1" id="NEo-ec-kH8"/>
-                    </connections>
-                </tableView>
+                    <constraints>
+                        <constraint firstItem="2fs-Pe-Idw" firstAttribute="top" secondItem="fc9-5a-BLl" secondAttribute="top" id="aLP-BE-Dcu"/>
+                        <constraint firstAttribute="trailing" secondItem="2fs-Pe-Idw" secondAttribute="trailing" id="bxh-Rh-ahf"/>
+                        <constraint firstItem="2fs-Pe-Idw" firstAttribute="leading" secondItem="fc9-5a-BLl" secondAttribute="leading" id="n5h-iu-3hU"/>
+                        <constraint firstAttribute="bottom" secondItem="2fs-Pe-Idw" secondAttribute="bottom" id="vVp-we-lHM"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="2fs-Pe-Idw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3ie-Fu-Z8L"/>
-                <constraint firstItem="2fs-Pe-Idw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mMV-Iq-ciI"/>
-                <constraint firstAttribute="trailing" secondItem="2fs-Pe-Idw" secondAttribute="trailing" id="slz-wX-hZj"/>
-                <constraint firstAttribute="bottom" secondItem="2fs-Pe-Idw" secondAttribute="bottom" id="xgJ-ah-M47"/>
+                <constraint firstItem="fc9-5a-BLl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="b1L-PN-inf"/>
+                <constraint firstAttribute="trailing" secondItem="fc9-5a-BLl" secondAttribute="trailing" id="biD-rv-Nfe"/>
+                <constraint firstItem="fc9-5a-BLl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hS3-36-b63"/>
+                <constraint firstAttribute="bottom" secondItem="fc9-5a-BLl" secondAttribute="bottom" id="moc-G0-zjW"/>
             </constraints>
             <point key="canvasLocation" x="-9" y="458"/>
         </view>

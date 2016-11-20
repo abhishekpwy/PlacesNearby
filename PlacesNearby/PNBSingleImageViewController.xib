@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNBSingleImageViewController" customModule="PlacesNearby" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="r1w-LZ-Ekg" id="HOh-LG-KHn"/>
+                <outlet property="imageView" destination="bzR-Fi-YnK" id="fDB-ua-XIr"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bzR-Fi-YnK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="r1w-LZ-Ekg">
+                    <rect key="frame" x="177" y="90" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bzR-Fi-YnK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZdF-AI-vHO"/>
+                <constraint firstItem="r1w-LZ-Ekg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="efk-f3-8L3"/>
+                <constraint firstAttribute="bottom" secondItem="bzR-Fi-YnK" secondAttribute="bottom" id="nti-4O-V50"/>
+                <constraint firstItem="r1w-LZ-Ekg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ryM-oA-8mK"/>
+                <constraint firstAttribute="trailing" secondItem="bzR-Fi-YnK" secondAttribute="trailing" id="x5G-hR-GbV"/>
+                <constraint firstItem="bzR-Fi-YnK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x8S-a7-Se2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33.5" y="-162"/>
+        </view>
+    </objects>
+</document>

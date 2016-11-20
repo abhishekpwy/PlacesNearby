@@ -11,6 +11,10 @@
 		4618B2D21DE03427004E4022 /* PNBPlaceDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2D01DE03427004E4022 /* PNBPlaceDetailsViewController.xib */; };
 		4618B2D61DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4618B2D41DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift */; };
 		4618B2D71DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2D51DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib */; };
+		4618B2DA1DE174E4004E4022 /* PNBPageDetailsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4618B2D81DE174E4004E4022 /* PNBPageDetailsPageViewController.swift */; };
+		4618B2DB1DE174E4004E4022 /* PNBPageDetailsPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2D91DE174E4004E4022 /* PNBPageDetailsPageViewController.xib */; };
+		4618B2DE1DE176A1004E4022 /* PNBSingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4618B2DC1DE176A1004E4022 /* PNBSingleImageViewController.swift */; };
+		4618B2DF1DE176A1004E4022 /* PNBSingleImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2DD1DE176A1004E4022 /* PNBSingleImageViewController.xib */; };
 		464071F21DD0D66D00D9170F /* PNBApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F11DD0D66D00D9170F /* PNBApiManager.swift */; };
 		464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */; };
 		464071F71DD0DA8100D9170F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464071F61DD0DA8100D9170F /* CoreLocation.framework */; };
@@ -51,6 +55,10 @@
 		4618B2D01DE03427004E4022 /* PNBPlaceDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBPlaceDetailsViewController.xib; sourceTree = "<group>"; };
 		4618B2D41DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBDetailsImagesCellTableViewCell.swift; sourceTree = "<group>"; };
 		4618B2D51DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBDetailsImagesCellTableViewCell.xib; sourceTree = "<group>"; };
+		4618B2D81DE174E4004E4022 /* PNBPageDetailsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBPageDetailsPageViewController.swift; sourceTree = "<group>"; };
+		4618B2D91DE174E4004E4022 /* PNBPageDetailsPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBPageDetailsPageViewController.xib; sourceTree = "<group>"; };
+		4618B2DC1DE176A1004E4022 /* PNBSingleImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBSingleImageViewController.swift; sourceTree = "<group>"; };
+		4618B2DD1DE176A1004E4022 /* PNBSingleImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBSingleImageViewController.xib; sourceTree = "<group>"; };
 		464071F11DD0D66D00D9170F /* PNBApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBApiManager.swift; sourceTree = "<group>"; };
 		464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBUserDefaultManager.swift; sourceTree = "<group>"; };
 		464071F61DD0DA8100D9170F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -117,6 +125,10 @@
 			children = (
 				4618B2D41DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift */,
 				4618B2D51DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib */,
+				4618B2D81DE174E4004E4022 /* PNBPageDetailsPageViewController.swift */,
+				4618B2D91DE174E4004E4022 /* PNBPageDetailsPageViewController.xib */,
+				4618B2DC1DE176A1004E4022 /* PNBSingleImageViewController.swift */,
+				4618B2DD1DE176A1004E4022 /* PNBSingleImageViewController.xib */,
 			);
 			name = detailsViewCells;
 			sourceTree = "<group>";
@@ -304,6 +316,7 @@
 			files = (
 				46A79A891DDA18010005087B /* MapCalloutView.xib in Resources */,
 				469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */,
+				4618B2DF1DE176A1004E4022 /* PNBSingleImageViewController.xib in Resources */,
 				46D734631DDCC2DE003B7889 /* PNBErrorViewController.xib in Resources */,
 				469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */,
 				4618B2D21DE03427004E4022 /* PNBPlaceDetailsViewController.xib in Resources */,
@@ -314,6 +327,7 @@
 				469B712F1DCA469C002B00A8 /* Main.storyboard in Resources */,
 				46A79A7F1DD9F9AF0005087B /* PNBMapViewController.xib in Resources */,
 				468C23A51DD616F500D438EC /* PNBListOfResultViewController.xib in Resources */,
+				4618B2DB1DE174E4004E4022 /* PNBPageDetailsPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,9 +339,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				469B712C1DCA469C002B00A8 /* ViewController.swift in Sources */,
+				4618B2DA1DE174E4004E4022 /* PNBPageDetailsPageViewController.swift in Sources */,
 				464071F91DD0DC7B00D9170F /* PNBLocationManager.swift in Sources */,
 				468C23A41DD616F500D438EC /* PNBListOfResultViewController.swift in Sources */,
 				469740A61DCA675400D0B9D9 /* PNCategoriesData.swift in Sources */,
+				4618B2DE1DE176A1004E4022 /* PNBSingleImageViewController.swift in Sources */,
 				468C23B11DD7647100D438EC /* PNBListTableControllerViewController.swift in Sources */,
 				469B71321DCA469C002B00A8 /* PlacesNearby.xcdatamodeld in Sources */,
 				46A79A871DDA10830005087B /* PNBAnnotationView.swift in Sources */,
