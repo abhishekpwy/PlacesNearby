@@ -279,10 +279,27 @@ class PNBDataManager {
 			}
 		}
 
-		var types = ""
-		for type in placesDetailsInJson["types"] as! [String]
+		var types = "("
+		var arrayOfTypes = (placesDetailsInJson["types"] as! [String])
+		//remove point of interest and extablstmet
+		if let indexOfPtOfInterest = arrayOfTypes.index(of: "point_of_interest"){
+			arrayOfTypes.remove(at: indexOfPtOfInterest)
+		}
+
+		if let indexOfPtOfEstablishment = arrayOfTypes.index(of: "establishment"){
+			arrayOfTypes.remove(at: indexOfPtOfEstablishment)
+		}
+
+		for (index,type)in arrayOfTypes.enumerated()
 		{
-			types += type
+			var withoutUderscore = type.replacingOccurrences(of: "_", with: " ")
+			if index != arrayOfTypes.count - 1 {
+				withoutUderscore += ", "
+			}else {
+				withoutUderscore += ")"
+			}
+
+			types += withoutUderscore
 		}
 
 		var phoneNumber:String?

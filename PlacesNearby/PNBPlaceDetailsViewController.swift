@@ -54,6 +54,8 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 	@IBOutlet weak var containerView: UIView!
 	@IBOutlet weak var tableView: UITableView!
 	let placesPicDetailsID = "PNBDetailsImages"
+	let placeDetailsTitleAndAddress = "placetitleandaddress"
+	let blankCellID = "PNBDetailsTableViewCell"
 	let placeID:String
 	var placeDetails:PNBPlaceDetails?
 	init(placeID:String){
@@ -71,6 +73,8 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		self.tableView.rowHeight = UITableViewAutomaticDimension
 		self.automaticallyAdjustsScrollViewInsets = false
 		tableView.register(UINib(nibName: "PNBDetailsImagesCellTableViewCell", bundle: nil), forCellReuseIdentifier: placesPicDetailsID)
+		tableView.register(UINib(nibName: "PNBDetailsPageTitleCellTableViewCell", bundle: nil), forCellReuseIdentifier: placeDetailsTitleAndAddress)
+		tableView.register(UINib(nibName: "PNBDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: blankCellID)
 		tryToGetPlaceDetails()
 	}
 
@@ -121,13 +125,25 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		if self.placeDetails == nil {
 			return 0
 		}
-		return 1
+		return 2
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: placesPicDetailsID, for: indexPath) as! PNBDetailsImagesCellTableViewCell
-		cell.loadListOfPhotos(photoReferences: self.placeDetails!.photoreferences, parentController: self)
-		return cell
+		if indexPath.row == 0 {
+			let cell = tableView.dequeueReusableCell(withIdentifier: placesPicDetailsID, for: indexPath) as! PNBDetailsImagesCellTableViewCell
+			cell.loadListOfPhotos(photoReferences: self.placeDetails!.photoreferences, parentController: self)
+			return cell
+		}
+		if indexPath.row == 1{
+			let cell = tableView.dequeueReusableCell(withIdentifier: placeDetailsTitleAndAddress, for: indexPath) as! PNBDetailsPageTitleCellTableViewCell
+			cell.nameOfPlace.text = placeDetails!.placeTitle
+			cell.formattedAddress.text = placeDetails!.placeFormattedAddress
+			cell.types.text = placeDetails!.placeType
+			return cell
+		}
+
+		let blankCell = tableView.dequeueReusableCell(withIdentifier: blankCellID, for: indexPath) as! PNBDetailsTableViewCell
+		return blankCell
 	}
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
