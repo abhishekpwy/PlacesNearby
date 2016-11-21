@@ -29,9 +29,12 @@ class PNBTextSearchViewController: UIViewController, UITextFieldDelegate, UITabl
 		return .lightContent
 	}
 
+	override func viewWillAppear(_ animated: Bool) {
+		refreshData()
+
+	}
 	override func viewDidAppear(_ animated: Bool) {
 		self.textSearchField.becomeFirstResponder()
-		refreshData()
 	}
 	@IBAction func didSelectedBackButton(_ sender: Any) {
 		self.textSearchField.resignFirstResponder()
@@ -61,7 +64,6 @@ class PNBTextSearchViewController: UIViewController, UITextFieldDelegate, UITabl
 		self.textSearchField.resignFirstResponder()
 		let placeDetailsController = PNBListOfResultViewController(placesType: PlaceType.SearchPlaces, searchText: text)
 		self.navigationController?.pushViewController(placeDetailsController, animated: true)
-		return
 	}
 
 	//MARK:text field delegate

@@ -146,8 +146,8 @@ class PNBDataManager {
 				array.append(textSearch)
 			}
 		}else {
-			array.remove(at: 0)
-			array.append(textSearch)
+			array.removeLast()
+			array.insert(textSearch, at: 0)
 		}
 		userDefaultsManager.setValueForObject(value: array as AnyObject?, forKey: PNBUserDefaultManager.KeysForUserDefault.searchHisory)
 
@@ -390,7 +390,7 @@ class PNBDataManager {
 	}
 
 	final func getFormattedOpeningHourText(info:[String:AnyObject]?) -> String? {
-		var formattedOpeningHourText:String?
+		var formattedOpeningHourText:String? = nil
 		guard let openingHoursInfo = info
 			else{
 				return nil
@@ -403,7 +403,7 @@ class PNBDataManager {
 					else{
 						continue
 				}
-				guard let day = open["day"] as? Int, day == todayWeekIndex
+				guard let day = open["day"] as? Int
 					else{
 						continue
 				}
@@ -418,9 +418,11 @@ class PNBDataManager {
 					continue
 				}
 
-				let closeTime = Int(close["time"] as! String)
-				let closeTimeString = getStringTimeFromTime(time: closeTime!)
-				formattedOpeningHourText? += "from \(openTimeString) to \(closeTimeString)"
+				if day == todayWeekIndex {
+					let closeTime = Int(close["time"] as! String)
+					let closeTimeString = getStringTimeFromTime(time: closeTime!)
+					formattedOpeningHourText = "Today open from \(openTimeString) to \(closeTimeString)"
+				}
 			}
 		}
 
@@ -441,7 +443,19 @@ class PNBDataManager {
 		if hour == 0 && min == 0{
 			return "Midnight"
 		}
-		let string = "\(hour):\(min)"
+
+		let minText = min > 0 ?  "\(min)" : ""
+		var hourText = "\(hour)"
+		var amPMText = " AM"
+		if hour > 12 {
+			hourText = "\(hour - 12)"
+			amPMText = " PM"
+		}
+		if minText.isEmpty {
+			let string = "\(hourText)" + amPMText
+			return string
+		}
+		let string = "\(hourText):\(minText)" + amPMText
 		return string
 	}
 

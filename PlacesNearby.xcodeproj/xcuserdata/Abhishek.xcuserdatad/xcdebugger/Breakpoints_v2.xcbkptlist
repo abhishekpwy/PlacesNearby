@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlacesNearby/PNBApiManager.swift"
-            timestampString = "501443353.657865"
+            filePath = "PlacesNearby/PNBDataManager.swift"
+            timestampString = "501448117.651881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "getListOfPlacesNearbyWithTextSearch(searchText:lat:lang:radius:completion:)"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "getStringTimeFromTime(time:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,14 +57,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlacesNearby/PNBApiManager.swift"
-            timestampString = "501443375.513221"
+            filePath = "PlacesNearby/PNBDataManager.swift"
+            timestampString = "501448457.542134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "fireApiGetResponse(urlForApi:completion:)"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "getPlaceDetailsObjectFromJson(jsonDict:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlacesNearby.PNBDataManager.(getPlaceDetailsObjectFromJson in _DC15B94A7B8C9CB03B79CA30F5CE4E86) (jsonDict : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Optional&lt;PlacesNearby.PNBPlaceDetails&gt;"
+                  moduleName = "PlacesNearby"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/webyog/Desktop/Places/PlacesNearby/PlacesNearby/PNBDataManager.swift"
+                  timestampString = "501448468.919165"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "326"
+                  endingLineNumber = "326"
+                  offsetFromSymbolStart = "7413">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlacesNearby.PNBDataManager.(getPlaceDetailsObjectFromJson in _DC15B94A7B8C9CB03B79CA30F5CE4E86) (jsonDict : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Optional&lt;PlacesNearby.PNBPlaceDetails&gt;"
+                  moduleName = "PlacesNearby"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/webyog/Desktop/Places/PlacesNearby/PlacesNearby/PNBDataManager.swift"
+                  timestampString = "501448468.92131"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "326"
+                  endingLineNumber = "326"
+                  offsetFromSymbolStart = "7877">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,28 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlacesNearby/PNBApiManager.swift"
-            timestampString = "501444738.399496"
+            timestampString = "501448610.820088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "getListOfPlacesNearby(placeType:lat:lang:radius:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlacesNearby/PNBApiManager.swift"
-            timestampString = "501444820.048039"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "getUrlFor(placeType:lat:lang:radius:)"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "getUrlForPlaceDetails(placeID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
