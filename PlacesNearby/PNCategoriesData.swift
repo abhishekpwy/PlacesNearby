@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum PlaceType{
+enum PlaceType:Int{
 
 	case Food,
 	Hotel,
@@ -28,7 +28,8 @@ enum PlaceType{
 	Books,
 	Liquor,
 	Beauty,
-	Offline
+	Offline,
+	SearchPlaces
 
 	//used in main screen collection view
 	var placesDetails:PlacesCategory {
@@ -46,10 +47,10 @@ enum PlaceType{
 			return PlacesCategory(imageName: "PlacesMedical", placeTitle: "Medical", placeSubtitle: "Doctor, Hospital, Pharmacy")
 
 		case .Bank:
-			return PlacesCategory(imageName: "PlacesBank", placeTitle: "Bank", placeSubtitle: "Bank, Atm, Accounting")
+			return PlacesCategory(imageName: "PlacesBank", placeTitle: "Bank", placeSubtitle: "Bank, Atm")
 
 		case .GasStation:
-			return PlacesCategory(imageName: "PlacesGasStation", placeTitle: "Gas Station", placeSubtitle: "Petrol, Diesel, Gas, Fuel")
+			return PlacesCategory(imageName: "PlacesGasStation", placeTitle: "Fuel Station", placeSubtitle: "Petrol, Diesel, Gas")
 
 		case .Parking:
 			return PlacesCategory(imageName: "PlacesParking", placeTitle: "Parking", placeSubtitle: "Car parking, RV Parking")
@@ -86,6 +87,8 @@ enum PlaceType{
 
 		case .Offline:
 			return PlacesCategory(imageName: "PlacesOffline", placeTitle: "Offline", placeSubtitle: "Places saved offline")
+		case .SearchPlaces:
+			return PlacesCategory(imageName: "Search Places", placeTitle: "Search", placeSubtitle: "Text Search")
 		}
 
 	}
@@ -94,7 +97,7 @@ enum PlaceType{
 	var typesForApi:String {
 		switch self {
 		case .Food:
-			return "\"bakery|cafe|food|meal_delivery|meal_takeaway|restaurant|night_club\""
+			return "bakery|cafe|food|meal_delivery|meal_takeaway|restaurant|night_club"
 
 		case .Hotel:
 			return "lodging"
@@ -103,49 +106,51 @@ enum PlaceType{
 			return "police"
 
 		case .Medical:
-			return "\"doctor|dentist|pharmacy|hospital\""
+			return "doctor|dentist|pharmacy|hospital"
 
 		case .Bank:
-			return "\"bank|accounting|atm\""
+			return "bank|atm"
 
 		case .GasStation:
 			return "gas_station"
 
 		case .Parking:
-			return "\"park|rv_park\""
+			return "parking|rv_park"
 
 		case .TrainStation:
-			return "\"train_station|subway_station|transit_station\""
+			return "train_station|subway_station|transit_station"
 
 		case .BusStation:
-			return "\"bus_station|taxi_stand\""
+			return "bus_station|taxi_stand"
 
 		case .Car:
-			return "\"car_dealer|car_rental|car_repair|car_wash\""
+			return "car_dealer|car_rental|car_repair|car_wash"
 
 		case .Shopping:
-			return "\"department_store|convenience_store|electronics_store|home_goods_store|shopping_mall|store|grocery_or_supermarket|hardware_store|furniture_store\""
+			return "department_store|convenience_store|electronics_store|home_goods_store|shopping_mall|store|grocery_or_supermarket|hardware_store|furniture_store"
 
 		case .Laundry:
-			return "\"clothing_store|laundry\""
+			return "clothing_store|laundry"
 
 		case .LocalSee:
-			return "\"amusement_park|aquarium|art_gallery|museum|zoo|casino\""
+			return "amusement_park|aquarium|art_gallery|museum|zoo|casino"
 
 		case .Movies:
-			return "\"movie_rental|movie_theater\""
+			return "movie_rental|movie_theater"
 
 		case .Books:
-			return "\"book_store|library\""
+			return "book_store|library"
 
 		case .Liquor:
-			return "\"liquor_store|bar|night_club\""
+			return "liquor_store|bar|night_club"
 
 		case .Beauty:
 			return "beauty_salon"
 
 		case .Offline:
-			return "\"Offline\""
+			return "Offline"
+		case .SearchPlaces:
+			return "Search"
 		}
 	}
 
@@ -204,6 +209,8 @@ enum PlaceType{
 			
 		case .Offline:
 			return UIImage(named: "headerOffline")!
+		case .SearchPlaces:
+			return UIImage(named:"HeaderSearch")!
 		}
 	}
 
@@ -262,6 +269,9 @@ enum PlaceType{
 
 		case .Offline:
 			return "Offline"
+
+		case .SearchPlaces:
+			return "Search"
 		}
 	}
 

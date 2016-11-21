@@ -37,6 +37,12 @@ class ViewController: UIViewController {
 		return .lightContent
 	}
 
+	@IBAction func didSelectedSearch(_ sender: Any) {
+		let searchController = PNBTextSearchViewController(nibName: "PNBTextSearchViewController", bundle: nil)
+		self.navigationController?.pushViewController(searchController, animated: true)
+	}
+	
+
 }
 
 extension ViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

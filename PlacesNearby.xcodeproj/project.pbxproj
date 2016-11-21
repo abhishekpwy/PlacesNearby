@@ -27,6 +27,10 @@
 		4618B2F91DE215E8004E4022 /* PNBReviewsTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2F71DE215E8004E4022 /* PNBReviewsTopTableViewCell.xib */; };
 		4618B2FD1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4618B2FB1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.swift */; };
 		4618B2FE1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4618B2FC1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.xib */; };
+		461A4E3B1DE35C6300BA1966 /* PNBTextSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461A4E391DE35C6300BA1966 /* PNBTextSearchViewController.swift */; };
+		461A4E3C1DE35C6300BA1966 /* PNBTextSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 461A4E3A1DE35C6300BA1966 /* PNBTextSearchViewController.xib */; };
+		461A4E3F1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461A4E3D1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.swift */; };
+		461A4E401DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 461A4E3E1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.xib */; };
 		464071F21DD0D66D00D9170F /* PNBApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F11DD0D66D00D9170F /* PNBApiManager.swift */; };
 		464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */; };
 		464071F71DD0DA8100D9170F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464071F61DD0DA8100D9170F /* CoreLocation.framework */; };
@@ -83,6 +87,10 @@
 		4618B2F71DE215E8004E4022 /* PNBReviewsTopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBReviewsTopTableViewCell.xib; sourceTree = "<group>"; };
 		4618B2FB1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBPlaceDetailsReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		4618B2FC1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBPlaceDetailsReviewsTableViewCell.xib; sourceTree = "<group>"; };
+		461A4E391DE35C6300BA1966 /* PNBTextSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBTextSearchViewController.swift; sourceTree = "<group>"; };
+		461A4E3A1DE35C6300BA1966 /* PNBTextSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBTextSearchViewController.xib; sourceTree = "<group>"; };
+		461A4E3D1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBTextSearchHostoryCellTableViewCell.swift; sourceTree = "<group>"; };
+		461A4E3E1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBTextSearchHostoryCellTableViewCell.xib; sourceTree = "<group>"; };
 		464071F11DD0D66D00D9170F /* PNBApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBApiManager.swift; sourceTree = "<group>"; };
 		464071F31DD0D7F200D9170F /* PNBUserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBUserDefaultManager.swift; sourceTree = "<group>"; };
 		464071F61DD0DA8100D9170F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -217,9 +225,21 @@
 			name = ReviewsCell;
 			sourceTree = "<group>";
 		};
+		461A4E381DE35C4600BA1966 /* TextSearch */ = {
+			isa = PBXGroup;
+			children = (
+				461A4E391DE35C6300BA1966 /* PNBTextSearchViewController.swift */,
+				461A4E3A1DE35C6300BA1966 /* PNBTextSearchViewController.xib */,
+				461A4E3D1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.swift */,
+				461A4E3E1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.xib */,
+			);
+			name = TextSearch;
+			sourceTree = "<group>";
+		};
 		464071EF1DD0D61100D9170F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				461A4E381DE35C4600BA1966 /* TextSearch */,
 				4618B2CE1DE033AB004E4022 /* PlaceDetailsUI */,
 				468C23A11DD616D500D438EC /* ListOfResultUI */,
 				468C23A01DD616C300D438EC /* AppLaunch */,
@@ -402,6 +422,7 @@
 				469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */,
 				4618B2DF1DE176A1004E4022 /* PNBSingleImageViewController.xib in Resources */,
 				46D734631DDCC2DE003B7889 /* PNBErrorViewController.xib in Resources */,
+				461A4E3C1DE35C6300BA1966 /* PNBTextSearchViewController.xib in Resources */,
 				469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */,
 				4618B2EA1DE1A656004E4022 /* PNBDetailsTableViewCell.xib in Resources */,
 				4618B2D21DE03427004E4022 /* PNBPlaceDetailsViewController.xib in Resources */,
@@ -413,6 +434,7 @@
 				468C23B21DD7647100D438EC /* PNBListTableControllerViewController.xib in Resources */,
 				4618B2EF1DE1ADF1004E4022 /* PNBDetailsOpenStatusTableViewCell.xib in Resources */,
 				469B712F1DCA469C002B00A8 /* Main.storyboard in Resources */,
+				461A4E401DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.xib in Resources */,
 				46A79A7F1DD9F9AF0005087B /* PNBMapViewController.xib in Resources */,
 				4618B2F41DE20928004E4022 /* PNBDetailsCostTableViewCell.xib in Resources */,
 				468C23A51DD616F500D438EC /* PNBListOfResultViewController.xib in Resources */,
@@ -448,6 +470,7 @@
 				4618B2F81DE215E8004E4022 /* PNBReviewsTopTableViewCell.swift in Sources */,
 				468C23B71DD7706A00D438EC /* PNBListTableViewCell.swift in Sources */,
 				4618B2F31DE20928004E4022 /* PNBDetailsCostTableViewCell.swift in Sources */,
+				461A4E3B1DE35C6300BA1966 /* PNBTextSearchViewController.swift in Sources */,
 				464071F41DD0D7F200D9170F /* PNBUserDefaultManager.swift in Sources */,
 				469B712A1DCA469C002B00A8 /* AppDelegate.swift in Sources */,
 				4618B2D11DE03427004E4022 /* PNBPlaceDetailsViewController.swift in Sources */,
@@ -455,6 +478,7 @@
 				4618B2D61DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.swift in Sources */,
 				4618B2FD1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.swift in Sources */,
 				46D734621DDCC2DE003B7889 /* PNBErrorViewController.swift in Sources */,
+				461A4E3F1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.swift in Sources */,
 				468C23BB1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift in Sources */,
 				46D7345C1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift in Sources */,
 				46A79A7E1DD9F9AF0005087B /* PNBMapViewController.swift in Sources */,

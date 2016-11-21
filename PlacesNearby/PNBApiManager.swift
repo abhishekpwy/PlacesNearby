@@ -13,6 +13,7 @@ class PNBApiManager{
 	let placesApiURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 	let loadMoreApiURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 	let placeDetailsApi = "https://maps.googleapis.com/maps/api/place/details/json?"
+	let textSearchApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
 	static let appKey = "AIzaSyDbMghJ-L1LjL9cYUvY72cdYKgyk2rGBTc"
 
 
@@ -50,6 +51,12 @@ class PNBApiManager{
 		fireApiGetResponse(urlForApi: url as URL, completion: completion)
 	}
 
+	final func getListOfPlacesNearbyWithTextSearch(searchText:String, lat:Double, lang:Double, radius:Int, completion:@escaping (_ result: [String:Any]?, _ error:NSError?) -> Void)
+	{
+		let url = getURLForTextSearch(searchString: searchText, lat: lat, lang: lang, radius: radius)
+		fireApiGetResponse(urlForApi: url as URL, completion: completion)
+	}
+
 	final func loadMorePlacesNearBy(nextPageToken:String,completion:@escaping (_ result: [String:Any]?, _ error:NSError?) -> Void){
 		let url = getUrlForLoadMore(pageToken: nextPageToken)
 		fireApiGetResponse(urlForApi: url as URL, completion: completion)
@@ -83,9 +90,9 @@ class PNBApiManager{
 		stringForUrl += "&radius=\(radius)"
 		//types
 		if placeType.typesForApi.contains("|"){
-			stringForUrl += "&type=\(placeType.typesForApi)"
-		}else {
 			stringForUrl += "&types=\(placeType.typesForApi)"
+		}else {
+			stringForUrl += "&type=\(placeType.typesForApi)"
 		}
 		//key
 		stringForUrl += "&key="+PNBApiManager.appKey
@@ -126,6 +133,24 @@ class PNBApiManager{
 		var stringForUrl = placeDetailsApi
 		//pageToken
 		stringForUrl += "placeid=" + placeID
+		//key
+		stringForUrl += "&key="+PNBApiManager.appKey
+		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!
+		return urlToUse
+	}
+
+	private func getURLForTextSearch(searchString:String, lat:Double, lang:Double, radius:Int) -> NSURL{
+		//https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&key=YOUR_API_KEY
+		var stringForUrl = textSearchApi
+		//query String
+		let queryString = searchString.replacingOccurrences(of: " ", with: "+")
+		 stringForUrl += "query=" + queryString
+
+		//location
+		stringForUrl += "&location=\(lat),\(lang)"
+		//radius
+		stringForUrl += "&radius=\(radius)"
+
 		//key
 		stringForUrl += "&key="+PNBApiManager.appKey
 		let urlToUse = NSURL(string: (stringForUrl as NSString).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!)!

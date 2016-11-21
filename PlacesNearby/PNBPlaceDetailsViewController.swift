@@ -248,6 +248,8 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 	}
 
 	private func tryToGetPlaceDetails() {
+		self.activityIndicator.isHidden = false
+		self.activityIndicator.startAnimating()
 		PNBDataManager.sharedDataManager.getPlaceDetailsFor(placeID: self.placeID) {
 			[weak self]
 			(placeDetails, error)
@@ -255,6 +257,9 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 			guard let blockSelf = self
 				else {
 					return
+			}
+			runInMainQueue {
+				blockSelf.activityIndicator.stopAnimating()
 			}
 			if error != nil {
 				blockSelf.showError(error: error!)

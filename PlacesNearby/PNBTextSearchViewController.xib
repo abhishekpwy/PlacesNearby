@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNBTextSearchViewController" customModule="PlacesNearby" customModuleProvider="target">
+            <connections>
+                <outlet property="searchContainerView" destination="Ghz-bf-Zjv" id="EG2-1K-r3l"/>
+                <outlet property="tableView" destination="s18-BX-Poc" id="aCG-Vu-ODy"/>
+                <outlet property="textSearchField" destination="AGS-ke-1oG" id="b0H-fa-aSD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZO-s1-6Jr" customClass="PNHeaderView" customModule="PlacesNearby" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgw-gZ-8sh">
+                            <rect key="frame" x="15" y="28.5" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="0Mi-Un-RWX"/>
+                                <constraint firstAttribute="height" constant="25" id="dJh-K8-AWC"/>
+                            </constraints>
+                            <state key="normal" image="Header-Back_button"/>
+                            <connections>
+                                <action selector="didSelectedBackButton:" destination="-1" eventType="touchUpInside" id="oe1-2b-tdj"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghz-bf-Zjv">
+                            <rect key="frame" x="67" y="23.5" width="263" height="35"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-ke-1oG">
+                                    <rect key="frame" x="34" y="0.0" width="221" height="35"/>
+                                    <color key="tintColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="didEnterText:" destination="-1" eventType="editingDidEnd" id="9UB-uS-lHf"/>
+                                    </connections>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBo-FR-98U">
+                                    <rect key="frame" x="10" y="0.0" width="16" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="7VB-NZ-bzV"/>
+                                        <constraint firstAttribute="width" constant="16" id="VfB-xJ-DRF"/>
+                                    </constraints>
+                                    <state key="normal" image="SearchTextField"/>
+                                    <connections>
+                                        <action selector="didTappedOnSearchButton:" destination="-1" eventType="touchUpInside" id="guJ-Ua-dIK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="AGS-ke-1oG" secondAttribute="bottom" id="EDx-q7-XQq"/>
+                                <constraint firstItem="AGS-ke-1oG" firstAttribute="top" secondItem="Ghz-bf-Zjv" secondAttribute="top" id="JM9-ub-40e"/>
+                                <constraint firstItem="WBo-FR-98U" firstAttribute="top" secondItem="Ghz-bf-Zjv" secondAttribute="top" id="Jq0-MU-h3c"/>
+                                <constraint firstAttribute="height" constant="35" id="Pw0-7v-gO3"/>
+                                <constraint firstItem="WBo-FR-98U" firstAttribute="leading" secondItem="Ghz-bf-Zjv" secondAttribute="leading" constant="10" id="rep-Xt-I5r"/>
+                                <constraint firstAttribute="bottom" secondItem="WBo-FR-98U" secondAttribute="bottom" id="sPh-Cb-3vk"/>
+                                <constraint firstItem="AGS-ke-1oG" firstAttribute="leading" secondItem="WBo-FR-98U" secondAttribute="trailing" constant="8" id="uTE-MD-9ia"/>
+                                <constraint firstAttribute="trailing" secondItem="AGS-ke-1oG" secondAttribute="trailing" constant="8" id="zTZ-wJ-RbQ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.2901960784" green="0.82745098039999998" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="72" id="1TZ-Ah-fFI"/>
+                        <constraint firstItem="bgw-gZ-8sh" firstAttribute="centerY" secondItem="zZO-s1-6Jr" secondAttribute="centerY" constant="5" id="AEb-rj-fU0"/>
+                        <constraint firstItem="bgw-gZ-8sh" firstAttribute="leading" secondItem="zZO-s1-6Jr" secondAttribute="leading" constant="15" id="DDg-bQ-eu3"/>
+                        <constraint firstAttribute="trailing" secondItem="Ghz-bf-Zjv" secondAttribute="trailing" constant="45" id="Hwa-jk-wsg"/>
+                        <constraint firstItem="Ghz-bf-Zjv" firstAttribute="centerY" secondItem="zZO-s1-6Jr" secondAttribute="centerY" constant="5" id="Yrf-Dh-KGJ"/>
+                        <constraint firstItem="Ghz-bf-Zjv" firstAttribute="leading" secondItem="bgw-gZ-8sh" secondAttribute="trailing" constant="27" id="ySh-oT-c1d"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s18-BX-Poc">
+                    <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="nf9-hK-ILA"/>
+                        <outlet property="delegate" destination="-1" id="ZrD-xY-fRX"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zZO-s1-6Jr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4eU-dU-qtE"/>
+                <constraint firstAttribute="bottom" secondItem="s18-BX-Poc" secondAttribute="bottom" id="GJP-rg-Okb"/>
+                <constraint firstItem="s18-BX-Poc" firstAttribute="top" secondItem="zZO-s1-6Jr" secondAttribute="bottom" id="GYy-N8-vpl"/>
+                <constraint firstAttribute="trailing" secondItem="s18-BX-Poc" secondAttribute="trailing" id="Szk-DI-JYo"/>
+                <constraint firstItem="s18-BX-Poc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TXU-59-jUM"/>
+                <constraint firstAttribute="trailing" secondItem="zZO-s1-6Jr" secondAttribute="trailing" id="eD8-tk-xu4"/>
+                <constraint firstItem="zZO-s1-6Jr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="p6c-IH-pYM"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="77.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Header-Back_button" width="14" height="24"/>
+        <image name="SearchTextField" width="16" height="16"/>
+    </resources>
+</document>

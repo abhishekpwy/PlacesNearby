@@ -73,6 +73,7 @@ class PlaceDataForListAndMap {
 
 class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 	let currentPlaceType:PlaceType
+	let searchText:String?
 	@IBOutlet weak var backButton: UIButton!
 	@IBOutlet weak var placeTopImage: UIImageView!
 	@IBOutlet weak var placesHeaderLabel: UILabel!
@@ -112,8 +113,9 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 	}
 
 
-	init(placesType:PlaceType){
+	init(placesType:PlaceType, searchText:String? = nil){
 		self.currentPlaceType = placesType
+		self.searchText = searchText
 		super.init(nibName: "PNBListOfResultViewController", bundle: nil)
 	}
 	
@@ -122,6 +124,51 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 	}
 
 	private func tryToFetchListOfPlacesNearBy(){
+		if self.currentPlaceType == .SearchPlaces{
+			tryFetchingListOfPlcesForSearch()
+		}else if self.currentPlaceType == .Offline{
+
+		}else {
+			teyFetchingListOfPlacesForPlaceType()
+		}
+	}
+
+	private func tryFetchingListOfPlcesForSearch() {
+		self.activityIndicator.isHidden = false
+		self.activityIndicator.startAnimating()
+		PNBDataManager.sharedDataManager.fetchListOfPlacesFromTextSearch(searchText: self.searchText!) {
+			[weak self]
+			(listOfPlaces, error)
+			in
+			guard let _ = self
+				else{
+					return
+			}
+			runInMainQueue {
+				[weak self]
+				in
+				guard let blockSelf = self
+					else{
+						return
+				}
+				blockSelf.activityIndicator.stopAnimating()
+				if error != nil {
+					blockSelf.checkErrorAndShowErrorView(error: error!)
+					return
+				}
+				//succesfully found more than one location
+				if let _ = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.nextPageToken) as? String{
+					blockSelf.hasMoreToLoad = true
+				}else {
+					blockSelf.hasMoreToLoad = false
+				}
+				blockSelf.listOfPlacesFromApi = listOfPlaces
+				blockSelf.loadCurrentUIType(currentType: nil)
+			}
+		}
+	}
+	private func teyFetchingListOfPlacesForPlaceType(){
+		self.activityIndicator.isHidden = false
 		self.activityIndicator.startAnimating()
 		PNBDataManager.sharedDataManager.fetchListOfPlaces(placeType: self.currentPlaceType) {
 			[weak self]
@@ -138,7 +185,7 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 					else{
 						return
 				}
-					blockSelf.activityIndicator.stopAnimating()
+				blockSelf.activityIndicator.stopAnimating()
 				if error != nil {
 					blockSelf.checkErrorAndShowErrorView(error: error!)
 					return
