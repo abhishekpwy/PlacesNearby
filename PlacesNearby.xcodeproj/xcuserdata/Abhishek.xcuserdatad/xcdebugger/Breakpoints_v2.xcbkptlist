@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlacesNearby/PNBListOfResultViewController.swift"
-            timestampString = "501443342.358385"
+            timestampString = "501525921.088863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "tryFetchingListOfPlcesForSearch()"
             landmarkType = "7">
          </BreakpointContent>

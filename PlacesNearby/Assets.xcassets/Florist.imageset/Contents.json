@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "headerOffline.png",
+      "filename" : "Florist.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "headerOffline@2x.png",
+      "filename" : "Florist@2x.png",
       "scale" : "2x"
     },
     {

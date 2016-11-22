@@ -126,8 +126,6 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 	private func tryToFetchListOfPlacesNearBy(){
 		if self.currentPlaceType == .SearchPlaces{
 			tryFetchingListOfPlcesForSearch()
-		}else if self.currentPlaceType == .Offline{
-
 		}else {
 			teyFetchingListOfPlacesForPlaceType()
 		}

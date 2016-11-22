@@ -28,7 +28,7 @@ enum PlaceType:Int{
 	Books,
 	Liquor,
 	Beauty,
-	Offline,
+	florist,
 	SearchPlaces
 
 	//used in main screen collection view
@@ -85,8 +85,8 @@ enum PlaceType:Int{
 		case .Beauty:
 			return PlacesCategory(imageName: "PlacesBeauty", placeTitle: "Beauty", placeSubtitle: "Local beauty salon")
 
-		case .Offline:
-			return PlacesCategory(imageName: "PlacesOffline", placeTitle: "Offline", placeSubtitle: "Places saved offline")
+		case .florist:
+			return PlacesCategory(imageName: "Florist", placeTitle: "Florist", placeSubtitle: "Near by florist")
 		case .SearchPlaces:
 			return PlacesCategory(imageName: "Search Places", placeTitle: "Search", placeSubtitle: "Text Search")
 		}
@@ -147,8 +147,8 @@ enum PlaceType:Int{
 		case .Beauty:
 			return "beauty_salon"
 
-		case .Offline:
-			return "Offline"
+		case .florist:
+			return "florist"
 		case .SearchPlaces:
 			return "Search"
 		}
@@ -207,8 +207,8 @@ enum PlaceType:Int{
 		case .Beauty:
 			return UIImage(named: "headerBeauty")!
 			
-		case .Offline:
-			return UIImage(named: "headerOffline")!
+		case .florist:
+			return UIImage(named: "headerFlorist")!
 		case .SearchPlaces:
 			return UIImage(named:"HeaderSearch")!
 		}
@@ -267,8 +267,8 @@ enum PlaceType:Int{
 		case .Beauty:
 			return "Beauty"
 
-		case .Offline:
-			return "Offline"
+		case .florist:
+			return "Florist"
 
 		case .SearchPlaces:
 			return "Search"
@@ -304,6 +304,6 @@ class PNCategoriesData{
 	.Books,
 	.Liquor,
 	.Beauty,
-	.Offline
+	.florist
 	]
 }
