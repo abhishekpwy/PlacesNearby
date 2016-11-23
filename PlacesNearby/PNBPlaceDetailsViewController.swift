@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class PNBPlaceDetails{
 	let placeID:String
@@ -241,6 +242,26 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
+	}
+	@IBAction func loadDirectionToPlace(_ sender: Any) {
+		openMapForPlace()
+	}
+
+	func openMapForPlace() {
+
+		let placeCoordinate = placeDetails!.placeLoaction.coordinate
+		let regionDistance:CLLocationDistance = 10000
+		let regionSpan = MKCoordinateRegionMakeWithDistance(placeCoordinate, regionDistance, regionDistance)
+		let options = [
+			MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+			MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span),
+			MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDefault
+		] as [String : Any]
+		let placemark = MKPlacemark(coordinate: placeCoordinate, addressDictionary: nil)
+		let mapItem = MKMapItem(placemark: placemark)
+		mapItem.name = "\(self.placeDetails!.placeTitle)"
+		mapItem.openInMaps(launchOptions: options)
+
 	}
 
 	@IBAction func didClickBackButton(_ sender: AnyObject) {

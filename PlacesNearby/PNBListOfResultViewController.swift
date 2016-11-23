@@ -240,7 +240,8 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 			for element in listOfPlaces! {
 				blockSelf.listOfPlacesFromApi?.append(element)
 			}
-			completion(true, listOfPlaces)
+			blockSelf.listOfPlacesFromApi = blockSelf.getSortedListAccordingToPreferences(listOfPlaces: blockSelf.listOfPlacesFromApi!)
+			completion(true, blockSelf.listOfPlacesFromApi)
 		}
 	}
 
@@ -304,6 +305,10 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 	}
 	
 	@IBAction func didSelectedThirdOption(_ sender: Any) {
+		showFilterOptions()
+	}
+
+	private func showFilterOptions(){
 		let filterController = PNBFilterViewController(delegate: self)
 		self.present(filterController, animated: true, completion: nil)
 	}
@@ -364,7 +369,7 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 		//
 		if error.domain == PNBErrorDomain {
 			if error.code == PNBErrorCodes.listOfPlacesFromApiEmpty.rawValue{
-				//
+				showFilterOptions()
 			}
 		}
 		tryToFetchListOfPlacesNearBy()

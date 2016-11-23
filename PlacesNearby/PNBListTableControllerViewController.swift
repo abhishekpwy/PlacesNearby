@@ -92,9 +92,7 @@ class PNBListTableControllerViewController: UIViewController, UITableViewDelegat
 					return
 			}
 			if success {
-				for item in list!{
-					blockSelf.listOfPlaces.append(item)
-				}
+					blockSelf.listOfPlaces = list!
 				runInMainQueue {
 					blockSelf.tableView.reloadData()
 				}

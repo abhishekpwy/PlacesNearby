@@ -65,6 +65,7 @@ class PNBMapViewController: UIViewController, MKMapViewDelegate, DetailsViewProt
 
 	func configureDetailsView(annotationView:PNBAnnotationView, placeDetails:PlaceDataForListAndMap){
 		let viewForDetails = PNBMapDetailView.instanceFromNib()
+		viewForDetails.layer.backgroundColor = UIColor.clear.cgColor
 		let views = ["viewForDetails": viewForDetails]
 		viewForDetails.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[viewForDetails(150)]", options: [], metrics: nil, views: views))
 		viewForDetails.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[viewForDetails(55)]", options: [], metrics: nil, views: views))
