@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11761" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +16,6 @@
                 <outlet property="bottomBarBottomContraint" destination="lW6-xP-lNN" id="M40-Vl-GjI"/>
                 <outlet property="bottomBarView" destination="aNv-cc-q6w" id="45o-Px-8Pu"/>
                 <outlet property="containerView" destination="YCn-uT-916" id="Avj-dV-PCL"/>
-                <outlet property="didSelectedThirdOption" destination="f98-e1-L5s" id="ArO-qA-byf"/>
                 <outlet property="firstOptionButton" destination="UBv-am-TRd" id="N9d-Hx-n8W"/>
                 <outlet property="placeTopImage" destination="8yX-ze-0SK" id="oCS-eD-0I6"/>
                 <outlet property="placesHeaderLabel" destination="Ypy-pi-Z5g" id="Rnf-Bc-VhH"/>
@@ -68,6 +67,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f98-e1-L5s">
                             <rect key="frame" x="250.5" y="0.0" width="124.5" height="48"/>
                             <state key="normal" image="FilterUi"/>
+                            <connections>
+                                <action selector="didSelectedThirdOption:" destination="-1" eventType="touchUpInside" id="eyV-VH-tra"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -59,6 +59,14 @@
 		46A79A871DDA10830005087B /* PNBAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79A861DDA10830005087B /* PNBAnnotationView.swift */; };
 		46A79A891DDA18010005087B /* MapCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A79A881DDA18010005087B /* MapCalloutView.xib */; };
 		46A79A8B1DDA1ABB0005087B /* PNBMapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79A8A1DDA1ABB0005087B /* PNBMapDetailView.swift */; };
+		46D7324F1DE4AF5400969BEF /* PNBFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D7324D1DE4AF5400969BEF /* PNBFilterViewController.swift */; };
+		46D732501DE4AF5400969BEF /* PNBFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46D7324E1DE4AF5400969BEF /* PNBFilterViewController.xib */; };
+		46D732531DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D732511DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.swift */; };
+		46D732541DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46D732521DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.xib */; };
+		46D732571DE4BF2B00969BEF /* PNBSortByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D732551DE4BF2B00969BEF /* PNBSortByTableViewCell.swift */; };
+		46D732581DE4BF2B00969BEF /* PNBSortByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46D732561DE4BF2B00969BEF /* PNBSortByTableViewCell.xib */; };
+		46D7325B1DE4CB0C00969BEF /* PNBMapTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D732591DE4CB0C00969BEF /* PNBMapTypeTableViewCell.swift */; };
+		46D7325C1DE4CB0C00969BEF /* PNBMapTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46D7325A1DE4CB0C00969BEF /* PNBMapTypeTableViewCell.xib */; };
 		46D7345C1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D7345B1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift */; };
 		46D7345E1DDCC0C6003B7889 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D7345D1DDCC0C6003B7889 /* SystemConfiguration.framework */; };
 		46D734621DDCC2DE003B7889 /* PNBErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D734601DDCC2DE003B7889 /* PNBErrorViewController.swift */; };
@@ -121,6 +129,14 @@
 		46A79A861DDA10830005087B /* PNBAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBAnnotationView.swift; sourceTree = "<group>"; };
 		46A79A881DDA18010005087B /* MapCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCalloutView.xib; sourceTree = "<group>"; };
 		46A79A8A1DDA1ABB0005087B /* PNBMapDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBMapDetailView.swift; sourceTree = "<group>"; };
+		46D7324D1DE4AF5400969BEF /* PNBFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBFilterViewController.swift; sourceTree = "<group>"; };
+		46D7324E1DE4AF5400969BEF /* PNBFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBFilterViewController.xib; sourceTree = "<group>"; };
+		46D732511DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBFilterSearchDistanceTableViewCell.swift; sourceTree = "<group>"; };
+		46D732521DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBFilterSearchDistanceTableViewCell.xib; sourceTree = "<group>"; };
+		46D732551DE4BF2B00969BEF /* PNBSortByTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBSortByTableViewCell.swift; sourceTree = "<group>"; };
+		46D732561DE4BF2B00969BEF /* PNBSortByTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBSortByTableViewCell.xib; sourceTree = "<group>"; };
+		46D732591DE4CB0C00969BEF /* PNBMapTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBMapTypeTableViewCell.swift; sourceTree = "<group>"; };
+		46D7325A1DE4CB0C00969BEF /* PNBMapTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBMapTypeTableViewCell.xib; sourceTree = "<group>"; };
 		46D7345B1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBNetwrokConnectivity.swift; sourceTree = "<group>"; };
 		46D7345D1DDCC0C6003B7889 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		46D734601DDCC2DE003B7889 /* PNBErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBErrorViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +255,7 @@
 		464071EF1DD0D61100D9170F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				46D7324C1DE4AE6D00969BEF /* Filter */,
 				461A4E381DE35C4600BA1966 /* TextSearch */,
 				4618B2CE1DE033AB004E4022 /* PlaceDetailsUI */,
 				468C23A11DD616D500D438EC /* ListOfResultUI */,
@@ -350,6 +367,21 @@
 			name = MapViewUI;
 			sourceTree = "<group>";
 		};
+		46D7324C1DE4AE6D00969BEF /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				46D7324D1DE4AF5400969BEF /* PNBFilterViewController.swift */,
+				46D7324E1DE4AF5400969BEF /* PNBFilterViewController.xib */,
+				46D732511DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.swift */,
+				46D732521DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.xib */,
+				46D732551DE4BF2B00969BEF /* PNBSortByTableViewCell.swift */,
+				46D732561DE4BF2B00969BEF /* PNBSortByTableViewCell.xib */,
+				46D732591DE4CB0C00969BEF /* PNBMapTypeTableViewCell.swift */,
+				46D7325A1DE4CB0C00969BEF /* PNBMapTypeTableViewCell.xib */,
+			);
+			name = Filter;
+			sourceTree = "<group>";
+		};
 		46D7345F1DDCC2A8003B7889 /* ErrorController */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,14 +452,17 @@
 			files = (
 				46A79A891DDA18010005087B /* MapCalloutView.xib in Resources */,
 				469B71371DCA469C002B00A8 /* LaunchScreen.storyboard in Resources */,
+				46D732581DE4BF2B00969BEF /* PNBSortByTableViewCell.xib in Resources */,
 				4618B2DF1DE176A1004E4022 /* PNBSingleImageViewController.xib in Resources */,
 				46D734631DDCC2DE003B7889 /* PNBErrorViewController.xib in Resources */,
+				46D732501DE4AF5400969BEF /* PNBFilterViewController.xib in Resources */,
 				461A4E3C1DE35C6300BA1966 /* PNBTextSearchViewController.xib in Resources */,
 				469B71341DCA469C002B00A8 /* Assets.xcassets in Resources */,
 				4618B2EA1DE1A656004E4022 /* PNBDetailsTableViewCell.xib in Resources */,
 				4618B2D21DE03427004E4022 /* PNBPlaceDetailsViewController.xib in Resources */,
 				4618B2D71DE04198004E4022 /* PNBDetailsImagesCellTableViewCell.xib in Resources */,
 				4618B2F91DE215E8004E4022 /* PNBReviewsTopTableViewCell.xib in Resources */,
+				46D732541DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.xib in Resources */,
 				468C23B81DD7706A00D438EC /* PNBListTableViewCell.xib in Resources */,
 				468C23BC1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.xib in Resources */,
 				4618B2FE1DE22231004E4022 /* PNBPlaceDetailsReviewsTableViewCell.xib in Resources */,
@@ -440,6 +475,7 @@
 				468C23A51DD616F500D438EC /* PNBListOfResultViewController.xib in Resources */,
 				4618B2E41DE1A18D004E4022 /* PNBDetailsPageTitleCellTableViewCell.xib in Resources */,
 				4618B2DB1DE174E4004E4022 /* PNBPageDetailsPageViewController.xib in Resources */,
+				46D7325C1DE4CB0C00969BEF /* PNBMapTypeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,8 +494,10 @@
 				4618B2E31DE1A18D004E4022 /* PNBDetailsPageTitleCellTableViewCell.swift in Sources */,
 				4618B2DE1DE176A1004E4022 /* PNBSingleImageViewController.swift in Sources */,
 				468C23B11DD7647100D438EC /* PNBListTableControllerViewController.swift in Sources */,
+				46D7324F1DE4AF5400969BEF /* PNBFilterViewController.swift in Sources */,
 				469B71321DCA469C002B00A8 /* PlacesNearby.xcdatamodeld in Sources */,
 				4618B2E91DE1A656004E4022 /* PNBDetailsTableViewCell.swift in Sources */,
+				46D7325B1DE4CB0C00969BEF /* PNBMapTypeTableViewCell.swift in Sources */,
 				46A79A871DDA10830005087B /* PNBAnnotationView.swift in Sources */,
 				464071FB1DD0EC6900D9170F /* PNBDataManager.swift in Sources */,
 				464071F21DD0D66D00D9170F /* PNBApiManager.swift in Sources */,
@@ -467,6 +505,7 @@
 				46A79A8B1DDA1ABB0005087B /* PNBMapDetailView.swift in Sources */,
 				4689CBB01DCA518E00329905 /* PNCollectionViewCell.swift in Sources */,
 				46A79A851DDA07570005087B /* PNBAnnotation.swift in Sources */,
+				46D732571DE4BF2B00969BEF /* PNBSortByTableViewCell.swift in Sources */,
 				4618B2F81DE215E8004E4022 /* PNBReviewsTopTableViewCell.swift in Sources */,
 				468C23B71DD7706A00D438EC /* PNBListTableViewCell.swift in Sources */,
 				4618B2F31DE20928004E4022 /* PNBDetailsCostTableViewCell.swift in Sources */,
@@ -480,6 +519,7 @@
 				46D734621DDCC2DE003B7889 /* PNBErrorViewController.swift in Sources */,
 				461A4E3F1DE3757B00BA1966 /* PNBTextSearchHostoryCellTableViewCell.swift in Sources */,
 				468C23BB1DD7A28C00D438EC /* PNBLoadMoreTableViewCell.swift in Sources */,
+				46D732531DE4B47100969BEF /* PNBFilterSearchDistanceTableViewCell.swift in Sources */,
 				46D7345C1DDCC0AA003B7889 /* PNBNetwrokConnectivity.swift in Sources */,
 				46A79A7E1DD9F9AF0005087B /* PNBMapViewController.swift in Sources */,
 			);

@@ -71,7 +71,7 @@ class PlaceDataForListAndMap {
 	}
 }
 
-class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
+class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, FilterDelegate {
 	let currentPlaceType:PlaceType
 	let searchText:String?
 	@IBOutlet weak var backButton: UIButton!
@@ -272,7 +272,10 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 		loadCurrentUIType(currentType: currentUIState.map)
 	}
 	
-	@IBOutlet weak var didSelectedThirdOption: UIButton!
+	@IBAction func didSelectedThirdOption(_ sender: Any) {
+		let filterController = PNBFilterViewController(delegate: self)
+		self.present(filterController, animated: true, completion: nil)
+	}
 
 	private func addControllerForList(){
 		currentUi = currentUIState.list
@@ -334,6 +337,14 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte {
 			}
 		}
 		tryToFetchListOfPlacesNearBy()
+	}
+
+	//MARK:FilterDelegate
+	func didApplyFilter(hasRadiusChanged:Bool) {
+
+	}
+	func didCloseWithoutFilter() {
+		
 	}
 
 }

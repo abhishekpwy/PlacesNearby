@@ -16,6 +16,8 @@ class PNBUserDefaultManager{
 		case defaultUI = "defaultUI"
 		case nextPageToken = "nextPageToken"
 		case searchHisory = "searchHisory"
+		case sortBy = "sortBy"
+		case mapType = "mapType"
 	}
 	final func getValueObject(key:KeysForUserDefault) -> AnyObject?{
 		if let value = UserDefaults.standard.value(forKey: key.rawValue) {
@@ -34,6 +36,12 @@ class PNBUserDefaultManager{
 
 		case .searchHisory:
 			return [String]() as AnyObject?
+
+		case .sortBy:
+			return SortingMethod.distance.rawValue as AnyObject?
+
+		case .mapType:
+			return MapType.standard.rawValue as AnyObject?
 		}
 
 	}

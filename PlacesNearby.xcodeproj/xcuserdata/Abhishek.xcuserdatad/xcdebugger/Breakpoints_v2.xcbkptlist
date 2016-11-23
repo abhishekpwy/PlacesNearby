@@ -42,22 +42,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlacesNearby/PNBDataManager.swift"
-            timestampString = "501448117.651881"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
-            landmarkName = "getStringTimeFromTime(time:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlacesNearby/PNBDataManager.swift"
             timestampString = "501448457.542134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -73,8 +57,8 @@
                   symbolName = "PlacesNearby.PNBDataManager.(getPlaceDetailsObjectFromJson in _DC15B94A7B8C9CB03B79CA30F5CE4E86) (jsonDict : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Optional&lt;PlacesNearby.PNBPlaceDetails&gt;"
                   moduleName = "PlacesNearby"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/webyog/Desktop/Places/PlacesNearby/PlacesNearby/PNBDataManager.swift"
-                  timestampString = "501448468.919165"
+                  urlString = "file:///Users/webyog/Desktop/TestProjects/PlacesNearby/PlacesNearby/PNBDataManager.swift"
+                  timestampString = "501532842.16545"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "326"
@@ -88,8 +72,8 @@
                   symbolName = "PlacesNearby.PNBDataManager.(getPlaceDetailsObjectFromJson in _DC15B94A7B8C9CB03B79CA30F5CE4E86) (jsonDict : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Optional&lt;PlacesNearby.PNBPlaceDetails&gt;"
                   moduleName = "PlacesNearby"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/webyog/Desktop/Places/PlacesNearby/PlacesNearby/PNBDataManager.swift"
-                  timestampString = "501448468.92131"
+                  urlString = "file:///Users/webyog/Desktop/TestProjects/PlacesNearby/PlacesNearby/PNBDataManager.swift"
+                  timestampString = "501532842.167395"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "326"
@@ -97,22 +81,6 @@
                   offsetFromSymbolStart = "7877">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlacesNearby/PNBApiManager.swift"
-            timestampString = "501448610.820088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "getUrlForPlaceDetails(placeID:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
