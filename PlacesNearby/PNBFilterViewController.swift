@@ -31,6 +31,9 @@ class PNBFilterViewController: UIViewController, UITableViewDataSource, UITableV
 	let sortByCellID = "PNBSortByTableViewCell"
 	weak var delegate:FilterDelegate?
 
+	var mapTypeCellID = "PNBMapTypeTableViewCell"
+	var mapTypeCell:PNBMapTypeTableViewCell?
+
 	init(delegate:FilterDelegate){
 		self.delegate = delegate
 		super.init(nibName: "PNBFilterViewController", bundle: nil)
@@ -45,6 +48,7 @@ class PNBFilterViewController: UIViewController, UITableViewDataSource, UITableV
 		self.tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.register(UINib(nibName: "PNBFilterSearchDistanceTableViewCell", bundle: nil), forCellReuseIdentifier: distanceSettingsCellID)
 		tableView.register(UINib(nibName: "PNBSortByTableViewCell", bundle: nil), forCellReuseIdentifier: sortByCellID)
+		tableView.register(UINib(nibName: "PNBMapTypeTableViewCell", bundle: nil), forCellReuseIdentifier: mapTypeCellID)
     }
 
 
@@ -66,9 +70,12 @@ class PNBFilterViewController: UIViewController, UITableViewDataSource, UITableV
 			hasValueChanged = true
 		}
 
+		if self.mapTypeCell!.intialValue != self.mapTypeCell!.getValueForMapType() {
+			PNBUserDefaultManager().setValueForObject(value: self.mapTypeCell!.getValueForMapType() as AnyObject?, forKey: PNBUserDefaultManager.KeysForUserDefault.mapType)
+			hasValueChanged = true
+		}
+
 		closeView(hasValueChanged: hasValueChanged, hasRadiusChanged: hasDistanceChanged)
-
-
 	}
 
 	@IBAction func didSelectedCancelFilter(_ sender: Any) {
@@ -84,7 +91,7 @@ class PNBFilterViewController: UIViewController, UITableViewDataSource, UITableV
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 2
+		return 3
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,11 +99,15 @@ class PNBFilterViewController: UIViewController, UITableViewDataSource, UITableV
 			let cell = tableView.dequeueReusableCell(withIdentifier: distanceSettingsCellID, for: indexPath) as! PNBFilterSearchDistanceTableViewCell
 			self.distanceSettingsCell = cell
 			return cell
-		}else {
+		}else if indexPath.row == 1{
 			let cell = tableView.dequeueReusableCell(withIdentifier: sortByCellID, for: indexPath) as! PNBSortByTableViewCell
 			self.sortByCell = cell
 			return cell
 		}
+
+		let cell = tableView.dequeueReusableCell(withIdentifier: mapTypeCellID, for: indexPath) as! PNBMapTypeTableViewCell
+		self.mapTypeCell = cell
+		return cell
 
 	}
 	

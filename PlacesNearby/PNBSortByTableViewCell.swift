@@ -22,9 +22,9 @@ class PNBSortByTableViewCell: UITableViewCell {
 	override func awakeFromNib() {
         super.awakeFromNib()
 		self.backGroundViewForCell.layer.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.2).cgColor
-		self.distanceSelectedButton.layer.borderWidth = 1.0
+		self.distanceSelectedButton.layer.borderWidth = 0.7
 		self.distanceSelectedButton.layer.borderColor = UIColor(red: 217/255, green: 217/255, blue: 217/255, alpha: 0.5).cgColor
-		self.ratingSelectedButton.layer.borderWidth = 1.0
+		self.ratingSelectedButton.layer.borderWidth = 0.7
 		self.ratingSelectedButton.layer.borderColor = UIColor(red: 217/255, green: 217/255, blue: 217/255, alpha: 0.5).cgColor
 		diastanceSelectedImage.isHidden = true
 		ratingSelectedImage.isHidden = true
