@@ -194,10 +194,25 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 				}else {
 					blockSelf.hasMoreToLoad = false
 				}
-				blockSelf.listOfPlacesFromApi = listOfPlaces
+				blockSelf.listOfPlacesFromApi = blockSelf.getSortedListAccordingToPreferences(listOfPlaces: listOfPlaces!)
 				blockSelf.loadCurrentUIType(currentType: nil)
 			}
 		}
+	}
+
+	private func getSortedListAccordingToPreferences(listOfPlaces:[PlaceDataForListAndMap]) -> [PlaceDataForListAndMap]
+	{
+		let sortBy = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.sortBy) as! Int
+		if sortBy == SortingMethod.rating.rawValue{
+			let sortedArray = listOfPlaces.sorted(by: { (first, second) -> Bool in
+				first.rating > second.rating
+			})
+			return sortedArray
+		}
+		let sortedArray = listOfPlaces.sorted(by: { (first, second) -> Bool in
+			first.distanceFromCurrentLocation < second.distanceFromCurrentLocation
+		})
+		return sortedArray
 	}
 
 	final func loadMore(completion:@escaping (_ success:Bool, _ listOfPlacesFromApi:[PlaceDataForListAndMap]?) -> ()){
@@ -227,6 +242,22 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 			}
 			completion(true, listOfPlaces)
 		}
+	}
+
+	private func checkPreferencesAndReloadData(shouldReloadDataFromApi:Bool){
+		if shouldReloadDataFromApi{
+			tryToFetchListOfPlacesNearBy()
+			return
+		}
+		self.listOfPlacesFromApi = getSortedListAccordingToPreferences(listOfPlaces: self.listOfPlacesFromApi!)
+
+		if self.childViewControllers[0] is PNBMapViewController {
+			 (self.childViewControllers[0] as! PNBMapViewController).updateMapTypeFromUserDefaults()
+
+		}else if self.childViewControllers[0] is PNBListTableControllerViewController {
+			(self.childViewControllers[0] as! PNBListTableControllerViewController).updateListOfPlacesFromParent()
+		}
+
 	}
 
 	private func loadCurrentUIType(currentType:currentUIState?){
@@ -341,7 +372,7 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 
 	//MARK:FilterDelegate
 	func didApplyFilter(hasRadiusChanged:Bool) {
-
+		checkPreferencesAndReloadData(shouldReloadDataFromApi: hasRadiusChanged)
 	}
 	func didCloseWithoutFilter() {
 		

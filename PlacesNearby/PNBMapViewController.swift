@@ -24,9 +24,11 @@ class PNBMapViewController: UIViewController, MKMapViewDelegate, DetailsViewProt
 	}
 
 
+
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+
 
 	private func addAnnotationForListOfPlaces(){
 		var annoationArray = [PNBAnnotation]()
@@ -37,10 +39,22 @@ class PNBMapViewController: UIViewController, MKMapViewDelegate, DetailsViewProt
 		self.mapView.showAnnotations(annoationArray, animated: true)
 	}
 
+	final func updateMapTypeFromUserDefaults(){
+		let mapType = PNBUserDefaultManager().getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.mapType) as! Int
+		if mapType == MapType.standard.rawValue {
+			self.mapView.mapType = MKMapType.standard
+		}else if mapType == MapType.satelite.rawValue {
+			self.mapView.mapType = MKMapType.satellite
+		}else {
+			self.mapView.mapType = MKMapType.hybrid
+		}
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		mapView.delegate = self
 		mapView.showsUserLocation = true
+		updateMapTypeFromUserDefaults()
 	}
 
 

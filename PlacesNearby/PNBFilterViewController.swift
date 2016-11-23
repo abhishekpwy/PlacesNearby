@@ -83,7 +83,15 @@ class PNBFilterViewController: UIViewController, UITableViewDataSource, UITableV
 	}
 
 	private func closeView(hasValueChanged:Bool, hasRadiusChanged:Bool){
-		self.dismiss(animated: true, completion: nil)
+		self.dismiss(animated: true) { 
+			[weak self]
+			in
+			if let blockSelf = self {
+				if hasValueChanged{
+					blockSelf.delegate?.didApplyFilter(hasRadiusChanged: hasRadiusChanged)
+				}
+			}
+		}
 	}
 
 	func numberOfSections(in tableView: UITableView) -> Int {
