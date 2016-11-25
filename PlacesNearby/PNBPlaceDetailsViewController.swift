@@ -212,6 +212,7 @@ class PNBReviews{
 
 class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ErrorControllerDelagte {
 
+	@IBOutlet weak var showDirectionBottonConstraint: NSLayoutConstraint!
 	@IBOutlet weak var tableContainerView: UIView!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var containerView: UIView!
@@ -313,6 +314,15 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 	func loadPlaceDetails(){
 		self.errorView?.removeFromSuperview()
 		self.tableView.reloadData()
+		slideInBottomBar()
+
+	}
+
+	private func slideInBottomBar(){
+		self.showDirectionBottonConstraint.constant = 0
+		UIView.animate(withDuration: 0.15) {
+			self.view.layoutIfNeeded()
+		}
 	}
 
 	func showError(error:NSError){

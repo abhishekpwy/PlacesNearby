@@ -208,7 +208,7 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 				first.rating > second.rating
 			})
 			return sortedArray
-		}else if sortBy == SortingMethod.rating.rawValue {
+		}else if sortBy == SortingMethod.distance.rawValue {
 			let sortedArray = listOfPlaces.sorted(by: { (first, second) -> Bool in
 				first.distanceFromCurrentLocation < second.distanceFromCurrentLocation
 			})
