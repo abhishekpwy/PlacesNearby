@@ -320,9 +320,9 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 
 	private func slideInBottomBar(){
 		self.showDirectionBottonConstraint.constant = 0
-		UIView.animate(withDuration: 0.15) {
-			self.view.layoutIfNeeded()
-		}
+//		UIView.animate(withDuration: 0.40) {
+//			self.view.layoutIfNeeded()
+//		}
 	}
 
 	func showError(error:NSError){

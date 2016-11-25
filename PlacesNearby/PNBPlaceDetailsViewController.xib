@@ -25,10 +25,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZH-b0-IYX">
-                    <rect key="frame" x="0.0" y="72" width="375" height="605"/>
+                    <rect key="frame" x="0.0" y="72" width="375" height="635"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="oWF-bZ-WOh">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="605"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="635"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="4qA-aS-Lz1"/>
@@ -45,7 +45,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XW0-Ht-US8">
-                    <rect key="frame" x="0.0" y="677" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="707" width="375" height="50"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Direction" translatesAutoresizingMaskIntoConstraints="NO" id="8jL-Q1-AOI">
                             <rect key="frame" x="88" y="10" width="30" height="30"/>
@@ -120,7 +120,7 @@
             <constraints>
                 <constraint firstItem="XW0-Ht-US8" firstAttribute="top" secondItem="DZH-b0-IYX" secondAttribute="bottom" id="BJc-oe-8b0"/>
                 <constraint firstItem="XW0-Ht-US8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DCy-9G-O3L"/>
-                <constraint firstAttribute="bottom" secondItem="XW0-Ht-US8" secondAttribute="bottom" constant="-60" id="FuP-vo-avy"/>
+                <constraint firstAttribute="bottom" secondItem="XW0-Ht-US8" secondAttribute="bottom" constant="-90" id="FuP-vo-avy"/>
                 <constraint firstItem="DZH-b0-IYX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Glg-b4-VLF"/>
                 <constraint firstItem="D9Y-El-YR3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QbV-of-CT8"/>
                 <constraint firstItem="DZH-b0-IYX" firstAttribute="top" secondItem="D9Y-El-YR3" secondAttribute="bottom" id="Yrb-54-XuJ"/>
