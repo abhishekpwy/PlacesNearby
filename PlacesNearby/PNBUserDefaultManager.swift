@@ -38,7 +38,7 @@ class PNBUserDefaultManager{
 			return [String]() as AnyObject?
 
 		case .sortBy:
-			return SortingMethod.distance.rawValue as AnyObject?
+			return SortingMethod.releavence.rawValue as AnyObject?
 
 		case .mapType:
 			return MapType.standard.rawValue as AnyObject?

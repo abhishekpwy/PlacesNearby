@@ -13,7 +13,7 @@ protocol FilterDelegate:class {
 }
 
 enum SortingMethod:Int {
-	case distance, rating
+	case distance, rating, releavence
 }
 
 enum MapType:Int {

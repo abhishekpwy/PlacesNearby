@@ -26,10 +26,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgw-gZ-8sh">
-                            <rect key="frame" x="15" y="28.5" width="25" height="25"/>
+                            <rect key="frame" x="15" y="23.5" width="35" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="0Mi-Un-RWX"/>
-                                <constraint firstAttribute="height" constant="25" id="dJh-K8-AWC"/>
+                                <constraint firstAttribute="width" constant="35" id="0Mi-Un-RWX"/>
+                                <constraint firstAttribute="height" constant="35" id="dJh-K8-AWC"/>
                             </constraints>
                             <state key="normal" image="Header-Back_button"/>
                             <connections>
@@ -37,10 +37,10 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghz-bf-Zjv">
-                            <rect key="frame" x="67" y="23.5" width="263" height="35"/>
+                            <rect key="frame" x="77" y="23.5" width="253" height="35"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-ke-1oG">
-                                    <rect key="frame" x="34" y="0.0" width="221" height="35"/>
+                                    <rect key="frame" x="34" y="0.0" width="211" height="35"/>
                                     <color key="tintColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>

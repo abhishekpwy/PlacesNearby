@@ -116,10 +116,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqk-tp-uO4">
-                                        <rect key="frame" x="338" y="33" width="22" height="22"/>
+                                        <rect key="frame" x="320" y="26.5" width="35" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="5Ek-s5-rg4"/>
-                                            <constraint firstAttribute="height" constant="22" id="wct-ZG-XS9"/>
+                                            <constraint firstAttribute="width" constant="35" id="5Ek-s5-rg4"/>
+                                            <constraint firstAttribute="height" constant="35" id="wct-ZG-XS9"/>
                                         </constraints>
                                         <state key="normal" image="HeaderSearch"/>
                                         <connections>
@@ -134,7 +134,7 @@
                                     <constraint firstItem="lmk-KK-5tC" firstAttribute="centerY" secondItem="gqk-tp-uO4" secondAttribute="centerY" constant="-3" id="4Wb-xv-WnA"/>
                                     <constraint firstItem="lmk-KK-5tC" firstAttribute="centerX" secondItem="4we-iu-vWd" secondAttribute="centerX" id="GEq-vB-ty0"/>
                                     <constraint firstAttribute="height" constant="72" id="Pm4-TT-DW6"/>
-                                    <constraint firstAttribute="trailing" secondItem="gqk-tp-uO4" secondAttribute="trailing" constant="15" id="mxM-fg-7Sf"/>
+                                    <constraint firstAttribute="trailing" secondItem="gqk-tp-uO4" secondAttribute="trailing" constant="20" id="mxM-fg-7Sf"/>
                                 </constraints>
                             </view>
                         </subviews>

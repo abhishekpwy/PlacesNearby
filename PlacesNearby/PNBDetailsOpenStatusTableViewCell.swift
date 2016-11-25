@@ -29,7 +29,8 @@ class PNBDetailsOpenStatusTableViewCell: UITableViewCell {
     
 	@IBAction func didSelectedCall(_ sender: Any) {
 		if self.pnNoLabel.text != "Phone Number not shared"{
-			UIApplication.shared.open(NSURL(string:"telprompt://\(self.pnNoLabel.text)") as! URL , options: [:], completionHandler: nil)
+			let phoneNumber = self.pnNoLabel.text!.replacingOccurrences(of: " ", with: "")
+			UIApplication.shared.open(NSURL(string:"telprompt://\(phoneNumber)") as! URL , options: [:], completionHandler: nil)
 		}
 	}
 

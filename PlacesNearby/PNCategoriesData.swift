@@ -18,11 +18,11 @@ enum PlaceType:Int{
 	Bank,
 	GasStation,
 	Parking,
-	TrainStation,
+	Transit,
 	BusStation,
 	Car,
 	Shopping,
-	Laundry,
+	Clothing,
 	LocalSee,
 	Movies,
 	Books,
@@ -55,8 +55,8 @@ enum PlaceType:Int{
 		case .Parking:
 			return PlacesCategory(imageName: "PlacesParking", placeTitle: "Parking", placeSubtitle: "Car parking, RV Parking")
 
-		case .TrainStation:
-			return PlacesCategory(imageName: "PlacesTrainStation", placeTitle: "Train Station", placeSubtitle: "Train, Transit, Subway")
+		case .Transit:
+			return PlacesCategory(imageName: "PlacesTrainStation", placeTitle: "Transit", placeSubtitle: "Train, Transit, Subway")
 
 		case .BusStation:
 			return PlacesCategory(imageName: "PlacesBusStation", placeTitle: "Bus Station", placeSubtitle: "Bus Station, Taxi Stand")
@@ -67,8 +67,8 @@ enum PlaceType:Int{
 		case .Shopping:
 			return PlacesCategory(imageName: "PlacesShopping", placeTitle: "Shopping", placeSubtitle: " Grocery, Electronics, Tools")
 
-		case .Laundry:
-			return PlacesCategory(imageName: "PlacesLaundry", placeTitle: "Laundry", placeSubtitle: "Clothing, Laundry")
+		case .Clothing:
+			return PlacesCategory(imageName: "PlacesLaundry", placeTitle: "Clothing", placeSubtitle: "Clothing, Laundry")
 
 		case .LocalSee:
 			return PlacesCategory(imageName: "PlacesLocalSee", placeTitle: "Local See", placeSubtitle: "Local seeable places")
@@ -117,7 +117,7 @@ enum PlaceType:Int{
 		case .Parking:
 			return "parking|rv_park"
 
-		case .TrainStation:
+		case .Transit:
 			return "train_station|subway_station|transit_station"
 
 		case .BusStation:
@@ -129,7 +129,7 @@ enum PlaceType:Int{
 		case .Shopping:
 			return "department_store|convenience_store|electronics_store|home_goods_store|shopping_mall|store|grocery_or_supermarket|hardware_store|furniture_store"
 
-		case .Laundry:
+		case .Clothing:
 			return "clothing_store|laundry"
 
 		case .LocalSee:
@@ -177,7 +177,7 @@ enum PlaceType:Int{
 		case .Parking:
 			return UIImage(named: "headerParking")!
 
-		case .TrainStation:
+		case .Transit:
 			return UIImage(named: "headerTrain")!
 
 		case .BusStation:
@@ -189,7 +189,7 @@ enum PlaceType:Int{
 		case .Shopping:
 			return UIImage(named: "headerShopping")!
 
-		case .Laundry:
+		case .Clothing:
 			return UIImage(named: "headerLaundry")!
 
 		case .LocalSee:
@@ -237,8 +237,8 @@ enum PlaceType:Int{
 		case .Parking:
 			return "Parking"
 
-		case .TrainStation:
-			return "Train Station"
+		case .Transit:
+			return "Transit"
 
 		case .BusStation:
 			return "Bus station"
@@ -249,8 +249,8 @@ enum PlaceType:Int{
 		case .Shopping:
 			return "Shopping"
 
-		case .Laundry:
-			return "Laundry"
+		case .Clothing:
+			return "Clothing"
 
 		case .LocalSee:
 			return "Local See"
@@ -294,11 +294,11 @@ class PNCategoriesData{
 	.Bank,
 	.GasStation,
 	.Parking,
-	.TrainStation,
+	.Transit,
 	.BusStation,
 	.Car,
 	.Shopping,
-	.Laundry,
+	.Clothing,
 	.LocalSee,
 	.Movies,
 	.Books,

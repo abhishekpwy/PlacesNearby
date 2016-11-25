@@ -208,11 +208,13 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 				first.rating > second.rating
 			})
 			return sortedArray
+		}else if sortBy == SortingMethod.rating.rawValue {
+			let sortedArray = listOfPlaces.sorted(by: { (first, second) -> Bool in
+				first.distanceFromCurrentLocation < second.distanceFromCurrentLocation
+			})
+			return sortedArray
 		}
-		let sortedArray = listOfPlaces.sorted(by: { (first, second) -> Bool in
-			first.distanceFromCurrentLocation < second.distanceFromCurrentLocation
-		})
-		return sortedArray
+		return listOfPlaces
 	}
 
 	final func loadMore(completion:@escaping (_ success:Bool, _ listOfPlacesFromApi:[PlaceDataForListAndMap]?) -> ()){
@@ -229,6 +231,9 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 
 			}
 			if error != nil {
+				runInMainQueue {
+					blockSelf.showErrorForLoadMore(error: error! as NSError)
+				}
 				completion(false, nil)
 				return
 			}
@@ -243,6 +248,23 @@ class PNBListOfResultViewController: UIViewController, ErrorControllerDelagte, F
 			blockSelf.listOfPlacesFromApi = blockSelf.getSortedListAccordingToPreferences(listOfPlaces: blockSelf.listOfPlacesFromApi!)
 			completion(true, blockSelf.listOfPlacesFromApi)
 		}
+	}
+
+
+	private func showErrorForLoadMore(error:NSError){
+		var message = "Something is wrong!!"
+		if error.domain == PNBErrorDomain{
+			if error.code == PNBErrorCodes.InternetNotAvailable.rawValue{
+				message = "Internet not working? Please enable internet to fetch more places"
+			}else if error.code == PNBErrorCodes.locationServiceDisabled.rawValue {
+				message = "Location disabled? Please enable location to fetch more similer places around you!"
+			}
+		}
+		let alert = UIAlertController(title: "Oops!!", message: message, preferredStyle: UIAlertControllerStyle.alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+		self.present(alert, animated: true, completion: nil)
+		return
+
 	}
 
 	private func checkPreferencesAndReloadData(shouldReloadDataFromApi:Bool){

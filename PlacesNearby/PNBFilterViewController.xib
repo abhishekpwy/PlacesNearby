@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11761" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,10 +24,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHK-3Q-N4e">
-                            <rect key="frame" x="16" y="23.5" width="25" height="25"/>
+                            <rect key="frame" x="16" y="18.5" width="35" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="25" id="WqI-0g-fVl"/>
-                                <constraint firstAttribute="height" constant="25" id="xlE-Uf-7KO"/>
+                                <constraint firstAttribute="width" constant="35" id="WqI-0g-fVl"/>
+                                <constraint firstAttribute="height" constant="35" id="xlE-Uf-7KO"/>
                             </constraints>
                             <state key="normal" image="ApplyFilter"/>
                             <connections>
@@ -35,10 +35,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EH0-xM-DXj">
-                            <rect key="frame" x="334" y="24" width="25" height="25"/>
+                            <rect key="frame" x="324" y="19" width="35" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="25" id="BAQ-1e-jex"/>
-                                <constraint firstAttribute="width" constant="25" id="otF-pc-5uM"/>
+                                <constraint firstAttribute="height" constant="35" id="BAQ-1e-jex"/>
+                                <constraint firstAttribute="width" constant="35" id="otF-pc-5uM"/>
                             </constraints>
                             <state key="normal" image="ClearFilter"/>
                             <connections>

@@ -79,6 +79,16 @@ class PNBPlaceDetails{
 		return numberOfRows
 	}
 
+	var indexOfCostRow:Int {
+		if shouldShowOpenNowRow {
+			return 3
+		}
+		return 2
+	}
+
+	var indexOfRatingRow:Int {
+		return indexOfCostRow + 1
+	}
 	final func costImageTextAndColor() -> (cost:String, color:UIColor, image:UIImage){
 		var cost:String = "Cost- Unknown"
 		var image:UIImage = UIImage(named: "NotInfoCost")!
@@ -206,6 +216,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var containerView: UIView!
 	@IBOutlet weak var tableView: UITableView!
+	var isCostRowAdded:Bool = false
 	var errorView:UIView?
 	let placesPicDetailsID = "PNBDetailsImages"
 	let placeDetailsTitleAndAddress = "placetitleandaddress"
@@ -359,6 +370,8 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 			return cell
 		}
 
+		//first two rows will always be there
+
 		if indexPath.row == 2 && (placeDetails!.shouldShowOpenNowRow) {
 			let cell = tableView.dequeueReusableCell(withIdentifier: openNowCellID, for: indexPath) as! PNBDetailsOpenStatusTableViewCell
 			//open now
@@ -395,7 +408,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 
 			return cell
 		}
-		if indexPath.row == 3 && placeDetails!.shouldShowCostRow {
+		if indexPath.row == placeDetails!.indexOfCostRow && placeDetails!.shouldShowCostRow {
 			let cell = tableView.dequeueReusableCell(withIdentifier: costCellID, for: indexPath) as! PNBDetailsCostTableViewCell
 			let costData = placeDetails!.costImageTextAndColor()
 			cell.costImage.image = costData.image
@@ -408,7 +421,7 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 			return cell
 		}
 
-		if indexPath.row == 4 && self.placeDetails!.rating != nil{
+		if indexPath.row == placeDetails!.indexOfRatingRow && self.placeDetails!.rating != nil{
 			let cell = tableView.dequeueReusableCell(withIdentifier: topRowReviewID, for: indexPath) as! PNBReviewsTopTableViewCell
 			let dataForRating = placeDetails!.ratingImageTextAndTextColor()
 			cell.starImage?.image = dataForRating.image
@@ -420,13 +433,16 @@ class PNBPlaceDetailsViewController: UIViewController, UITableViewDelegate, UITa
 		}
 
 		if indexPath.row <= self.placeDetails!.numberOfRowNeeded && self.placeDetails?.reviews != nil{
-			let cell = tableView.dequeueReusableCell(withIdentifier: reviewCellID, for: indexPath) as! PNBPlaceDetailsReviewsTableViewCell
-			let data = self.placeDetails!.ratingTextAndColor(forIndex: indexPath.row)
-			cell.name.text = data.name
-			cell.rating.text = data.rating
-			cell.rating.textColor = data.color
-			cell.review.text = data.text
-			return cell
+			let rowCountExceptReview = self.placeDetails!.numberOfRowNeeded - self.placeDetails!.reviews!.count
+			if indexPath.row >= rowCountExceptReview - 1{
+				let cell = tableView.dequeueReusableCell(withIdentifier: reviewCellID, for: indexPath) as! PNBPlaceDetailsReviewsTableViewCell
+				let data = self.placeDetails!.ratingTextAndColor(forIndex: indexPath.row)
+				cell.name.text = data.name
+				cell.rating.text = data.rating
+				cell.rating.textColor = data.color
+				cell.review.text = data.text
+				return cell
+			}
 		}
 		let blankCell = tableView.dequeueReusableCell(withIdentifier: blankCellID, for: indexPath) as! PNBDetailsTableViewCell
 		return blankCell
