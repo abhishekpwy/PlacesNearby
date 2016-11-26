@@ -141,10 +141,11 @@ class PNBDataManager {
 	private func addPlaceInTextSearchHistory(textSearch:String){
 		let userDefaultsManager = PNBUserDefaultManager()
 		var array = userDefaultsManager.getValueObject(key: PNBUserDefaultManager.KeysForUserDefault.searchHisory) as! [String]
+		if array.index(of: textSearch) != nil {
+			return
+		}
 		if array.count < 4{
-			if array.index(of: textSearch) == nil{
 				array.append(textSearch)
-			}
 		}else {
 			array.removeLast()
 			array.insert(textSearch, at: 0)
