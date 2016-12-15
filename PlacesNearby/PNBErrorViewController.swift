@@ -53,7 +53,7 @@ class PNBErrorViewController: UIViewController {
 			discriptionForError = "Location Disabled? \n We need it to get your current location!"
 			imageToShow = UIImage(named: "LocationDisabled")
 		case PNBErrorCodes.listOfPlacesFromApiEmpty.rawValue, PNBErrorCodes.statusCodeNot200.rawValue:
-			discriptionForError = "Oops! \n We can't find any relevant places around you :("
+			discriptionForError = "Oops! \n We can't find any relevant places around you:( \n Please try increasing search radius."
 			buttonTitle = "Modify Search"
 		default:
 			discriptionForError = "Oops!! \n Something went wrong :("

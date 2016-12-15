@@ -26,7 +26,7 @@ class PNBUserDefaultManager{
 		//default values
 		switch key{
 		case .radiusOfSearch:
-			return Int(10) as AnyObject?
+			return Int(3) as AnyObject?
 
 		case .defaultUI:
 			return PNBListOfResultViewController.currentUIState.list.rawValue as AnyObject?
