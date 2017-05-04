@@ -72,6 +72,7 @@
 		46D734621DDCC2DE003B7889 /* PNBErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D734601DDCC2DE003B7889 /* PNBErrorViewController.swift */; };
 		46D734631DDCC2DE003B7889 /* PNBErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46D734611DDCC2DE003B7889 /* PNBErrorViewController.xib */; };
 		46E45BDC1DCBA30D006DA378 /* PNHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */; };
+		8CA4BD571EBB7653008D0424 /* PNBRootNavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4BD561EBB7653008D0424 /* PNBRootNavigationControllerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +143,7 @@
 		46D734601DDCC2DE003B7889 /* PNBErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBErrorViewController.swift; sourceTree = "<group>"; };
 		46D734611DDCC2DE003B7889 /* PNBErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBErrorViewController.xib; sourceTree = "<group>"; };
 		46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNHeaderView.swift; sourceTree = "<group>"; };
+		8CA4BD561EBB7653008D0424 /* PNBRootNavigationControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNBRootNavigationControllerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +298,7 @@
 				46E45BDB1DCBA30D006DA378 /* PNHeaderView.swift */,
 				4689CBAF1DCA518E00329905 /* PNCollectionViewCell.swift */,
 				469B712B1DCA469C002B00A8 /* ViewController.swift */,
+				8CA4BD561EBB7653008D0424 /* PNBRootNavigationControllerViewController.swift */,
 			);
 			name = AppLaunch;
 			sourceTree = "<group>";
@@ -424,7 +427,7 @@
 					469B71251DCA469C002B00A8 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = RR2E3EH7YW;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA4BD571EBB7653008D0424 /* PNBRootNavigationControllerViewController.swift in Sources */,
 				469B712C1DCA469C002B00A8 /* ViewController.swift in Sources */,
 				4618B2DA1DE174E4004E4022 /* PNBPageDetailsPageViewController.swift in Sources */,
 				464071F91DD0DC7B00D9170F /* PNBLocationManager.swift in Sources */,
@@ -645,14 +649,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = RR2E3EH7YW;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlacesNearby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Abhishek.PlacesNearby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "96df0b31-1817-45aa-bcb0-d73ae2ac7281";
-				PROVISIONING_PROFILE_SPECIFIER = "Places NearBy App Store Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -662,14 +666,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = RR2E3EH7YW;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlacesNearby/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Abhishek.PlacesNearby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "96df0b31-1817-45aa-bcb0-d73ae2ac7281";
-				PROVISIONING_PROFILE_SPECIFIER = "Places NearBy App Store Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
